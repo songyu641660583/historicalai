@@ -1,0 +1,46 @@
+ /* @use "sass:math"; */
+body, html,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+
+html,
+body,#app {
+  width: 100vw;
+  overflow-x: hidden; 
+}
+
+/* &::-webkit-scrollbar {
+  width: 0;
+  height:0;
+} */
+/* @mixin scroll-bar ($width: 5px, $thumb-bg: #e0e2ed, $track-bg: #ffffff, $thumb-hover-bg: false, $border-radius: 10px) {
+  
+
+
+  &::-webkit-scrollbar-thumb {
+    height: 10px;
+    background: $thumb-bg;
+    border-radius: $border-radius;
+    @if $thumb-hover-bg {
+      &:hover{
+        background: $thumb-hover-bg;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-bg;
+    border-radius: $border-radius;
+  }
+} */

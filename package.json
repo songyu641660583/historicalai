@@ -1,0 +1,28 @@
+{
+  "name": "offical",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@vicons/ionicons5": "^0.13.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "naive-ui": "^2.41.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.85.1",
+    "typescript": "~5.7.2",
+    "vfonts": "^0.0.3",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.4"
+  }
+}

@@ -1,0 +1,125 @@
+$contentWidth: 1280px;
+.learn-module {
+  padding: 120px 0;
+  background-color: #f1f1f1;
+  &-in {
+    margin: 0 auto;
+    width: $contentWidth;
+    overflow: hidden;
+    .learn-tips {
+      color: #6d6d6d;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .learn-title {
+      padding: 20px 0;
+      color: #000;
+      text-align: center;
+      font-family: Inter;
+      font-size: 48px;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 60px;
+    }
+    .learn-content {
+      color: #6d6d6d;
+      text-align: center;
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+    }
+    .learn-main {
+      margin-top: 100px;
+      position: relative;
+      width: 100%;
+      height: 700px;
+      background: url('@/assets/bg-quick-learning-01.png') no-repeat;
+      background-size: cover;
+
+      &-item {
+        display: flex;
+        padding: 20px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        position: absolute;
+        width: 280px;
+        height: 148px;
+        box-sizing: border-box;
+        border-radius: 12px;
+        border: 2px solid #c6c6c6;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 4px 24px 0px rgba(198, 215, 209, 0.2);
+
+        &:nth-child(1) {
+          top: 270px;
+        }
+        &:nth-child(2) {
+          top: 20px;
+          left: 330px;
+          img {
+            transform: scale(1.6);
+          }
+        }
+        &:nth-child(3) {
+          top: 122px;
+          right: 334px;
+        }
+        &:nth-child(4) {
+          top: 280px;
+          right: 2px;
+        }
+        &:nth-child(5) {
+          top: 401px;
+          right: 480px;
+          width: 320px;
+          border-radius: 12px;
+          background: #18ca8d;
+          box-shadow: 0px 0px 40px 0px rgba(105, 255, 225, 0.4);
+          border: none;
+          img {
+            transform: scale(1.6);
+          }
+          div {
+            color: #fff !important;
+          }
+        }
+        &-title {
+          color: #000;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 28px; /* 175% */
+        }
+
+        &-content {
+          color: #b0b0b0;
+          font-family: Inter;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 142.857% */
+        }
+
+        &-img {
+         
+          position: absolute;
+          bottom: -68px;
+          left: 50%;
+          margin-left: -32px;
+          img {
+            width: 64px;
+            height: 48px;
+          }
+        }
+      }
+    }
+  }
+}

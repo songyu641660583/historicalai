@@ -1,0 +1,171 @@
+$contentWidth: 1280px;
+.key-features {
+  height: 1277px;
+  background-color: rgba(249, 249, 249, 1);
+
+  &-in {
+    margin: 0 auto;
+    width: $contentWidth;
+    overflow: hidden;
+
+    .key-features-title {
+      margin-top: 120px;
+      color: #202020;
+      font-size: 48px;
+      line-height: 60px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .key-features-content {
+      margin: 20px auto 0;
+      width: 876px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6d6d6d;
+      text-align: center;
+    }
+
+    .card-box {
+      padding: 24px;
+      border-radius: 8px;
+      background: #fff;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.04);
+      .title {
+        color: #000;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .content {
+        color: #6d6d6d;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .kf-card1 {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+
+      &-left {
+        width: 868px;
+        height: 379px;
+        &-img {
+          margin-top: 30px;
+          width: 836px;
+          height: 235px;
+        }
+      }
+
+      &-right {
+        width: 396px;
+        height: 379px;
+        .title,
+        .content {
+          text-align: center;
+        }
+        .content {
+          margin-top: 12px;
+        }
+        &-img {
+          margin: 0 auto 22px;
+          width: 302px;
+          height: 226px;
+        }
+      }
+    }
+    .kf-card2 {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      &-left {
+        width: 632px;
+        height: 340px;
+
+        padding: 24px;
+        &-in {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          background: url('@/assets/kf-card3-bg.png') no-repeat;
+          background-size: cover;
+          overflow: hidden;
+          .title {
+            width: 258px;
+            text-align: center;
+            font-size: 32px;
+            line-height: 38px;
+          }
+          .content {
+            margin-top: 14px;
+            width: 258px;
+            text-align: center;
+            font-size: 12px;
+          }
+        }
+      }
+
+      &-right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 632px;
+        height: 340px;
+        .title {
+          margin-bottom: 10px;
+          white-space: nowrap;
+        }
+
+        &-direc {
+          width: 218px;
+        }
+
+        &-img {
+          width: 300px;
+          height: 292px;
+        }
+      }
+    }
+    .kf-footer {
+      margin-top: 40px;
+      text-align: center;
+      &-tips {
+        padding: 16px 0;
+
+        color: #b0b0b0;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%; /* 18px */
+      }
+      &-type {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        color: #6d6d6d;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        span::after {
+          position: relative;
+          top: -6px;
+          content: 'TM';
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
