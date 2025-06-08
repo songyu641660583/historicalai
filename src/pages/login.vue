@@ -5,21 +5,6 @@
       <div id=page_layout class=layoutNew-s99CBg
         style=background-image:url(../assets/6ff826a5a02aadea185996e1124a8799.jpg)>
         <div class="header-V8bS8f pc_height-MzOLkZ"><img src=../assets/29f291580ba76077509936cd4afb93cf.svg>
-          <div role=combobox aria-haspopup=listbox aria-autocomplete=list aria-expanded=false tabindex=0
-            class="arco-select arco-select-single arco-select-size-default arco-select-no-border changeLanguage-wLJyhE"
-            aria-controls=arco-select-popup-44>
-            <div class=arco-select-view title=简体中文><span class=arco-select-view-selector><input aria-hidden=true
-                  autocomplete=off tabindex=-1 class="arco-select-view-input arco-select-hidden" value
-                  style=width:100%;pointer-events:none><span class=arco-select-view-value>简体中文</span></span>
-              <div aria-hidden=true class=arco-select-suffix><span class=arco-select-suffix-icon><svg
-                    class="force-icon force-icon-down" width=1em height=1em viewBox="0 0 12 12" fill=currentColor
-                    xmlns=http://www.w3.org/2000/svg>
-                    <path fill-rule=evenodd clip-rule=evenodd
-                      d="M3.87654 4.05542C3.68128 3.86016 3.3647 3.86016 3.16943 4.05542L2.81588 4.40897C2.62062 4.60424 2.62062 4.92082 2.81588 5.11608L5.64431 7.94451C5.74246 8.04266 5.87127 8.09148 5.99992 8.09095C6.12856 8.09148 6.25737 8.04266 6.35552 7.94451L9.18395 5.11608C9.37921 4.92082 9.37921 4.60424 9.18395 4.40897L8.8304 4.05542C8.63514 3.86016 8.31855 3.86016 8.12329 4.05542L5.99992 6.1788L3.87654 4.05542Z">
-                    </path>
-                  </svg></span></div>
-            </div>
-          </div>
         </div>
         <div style=height:11px></div>
         <div class="container-YxxiFS login-isG0Ae">
@@ -32,21 +17,21 @@
             <div class="arco-spin layoutSpin-pr7cPJ">
               <div class=arco-spin-children>
                 <div class="loginCard-w1Ov0n cardHasTab-Uzr9RE">
-                  <div class=title-EHSTny>欢迎来到火山引擎</div>
+                  <div class=title-EHSTny>欢迎来到历史漫绘</div>
                   <div
                     class="arco-tabs arco-tabs-horizontal arco-tabs-line arco-tabs-top arco-tabs-size-default accountTab-uAbUd4">
                     <div
                       class="arco-tabs-header-nav arco-tabs-header-nav-horizontal arco-tabs-header-nav-top arco-tabs-header-size-default arco-tabs-header-nav-line">
                       <div class=arco-tabs-header-scroll>
                         <div class=arco-tabs-header-wrapper>
-                          <div class=arco-tabs-header style=transform:translateX(0px)>
-                            <div class=arco-tabs-header-title role=tab aria-selected=false tabindex=0
+                          <div class=arco-tabs-header style="transform:translateX(0px)">
+                            <!-- <div class=arco-tabs-header-title role=tab aria-selected=false tabindex=0
                               id=arco-tabs-6-tab-0 aria-controls=arco-tabs-6-panel-0><span
-                                class=arco-tabs-header-title-text>账号登录</span></div>
+                                class=arco-tabs-header-title-text>账号登录</span></div> -->
                             <div class="arco-tabs-header-title arco-tabs-header-title-active" role=tab
                               aria-selected=true tabindex=0 id=arco-tabs-6-tab-1 aria-controls=arco-tabs-6-panel-1><span
                                 class=arco-tabs-header-title-text>手机号登录</span></div>
-                            <div class=arco-tabs-header-ink style=left:100px;width:80px></div>
+                            <div class=arco-tabs-header-ink style="left:0px;width:80px"></div>
                           </div>
                         </div>
                       </div>
@@ -103,7 +88,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class=protocol-SyDruS>登录视为您已阅读并同意火山引擎 <a
+                                <div class=protocol-SyDruS>登录视为您已阅读并同意历史漫绘 <a
                                     href=https://www.volcengine.cn/docs/6256/64903 target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     href=https://www.volcengine.cn/docs/6256/64902 target=_blank
@@ -125,7 +110,7 @@
                               <form autocomplete=off
                                 class="arco-form arco-form-horizontal arco-form-size-default telIdpForm-U0cPiZ">
                                 <div
-                                  class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-error arco-form-item-status-error arco-form-layout-horizontal">
+                                  class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-error  arco-form-layout-horizontal">
                                   <div class="arco-col arco-col-24 arco-form-item-wrapper">
                                     <div class=arco-form-item-control-wrapper>
                                       <div class=arco-form-item-control id=Tel>
@@ -147,22 +132,24 @@
                                                             id=CallingCode_input
                                                             class="arco-select arco-select-single arco-select-size-default"
                                                             aria-controls=arco-select-popup-43
-                                                            style=width:68px;height:40px>
+                                                            style="width:68px;height:40px">
                                                             <div title=+86 class=arco-select-view><span
                                                                 class=arco-select-view-selector><input aria-hidden=true
                                                                   autocomplete=off tabindex=-1
                                                                   class="arco-select-view-input arco-select-hidden"
-                                                                  value style=width:100%;pointer-events:none><span
+                                                                  value style="width:100%;pointer-events:none;text-align: center;"><span
                                                                   class=arco-select-view-value>+86</span></span>
-                                                              <div aria-hidden=true class=arco-select-suffix><span
-                                                                  class=arco-select-suffix-icon><svg
+                                                              <!-- <div aria-hidden=true class=arco-select-suffix><span
+                                                                  class=arco-select-suffix-icon>
+                                                                  <svg
                                                                     class="force-icon force-icon-down" width=1em
                                                                     height=1em viewBox="0 0 12 12" fill=currentColor
                                                                     xmlns=http://www.w3.org/2000/svg>
                                                                     <path fill-rule=evenodd clip-rule=evenodd
                                                                       d="M3.87654 4.05542C3.68128 3.86016 3.3647 3.86016 3.16943 4.05542L2.81588 4.40897C2.62062 4.60424 2.62062 4.92082 2.81588 5.11608L5.64431 7.94451C5.74246 8.04266 5.87127 8.09148 5.99992 8.09095C6.12856 8.09148 6.25737 8.04266 6.35552 7.94451L9.18395 5.11608C9.37921 4.92082 9.37921 4.60424 9.18395 4.40897L8.8304 4.05542C8.63514 3.86016 8.31855 3.86016 8.12329 4.05542L5.99992 6.1788L3.87654 4.05542Z">
                                                                     </path>
-                                                                  </svg></span></div>
+                                                                  </svg>
+                                                                </span></div> -->
                                                             </div>
                                                           </div>
                                                         </div>
@@ -170,8 +157,16 @@
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </span><span
-                                                class="arco-input-inner-wrapper arco-input-inner-wrapper-error arco-input-inner-wrapper-focus arco-input-inner-wrapper-default arco-input-clear-wrapper"><input
+                                              </span>
+                                               <!-- arco-input-inner-wrapper-error -->
+                                              <span
+                                                
+                                                class="arco-input-inner-wrapper  arco-input-inner-wrapper-focus arco-input-inner-wrapper-default arco-input-clear-wrapper"
+                                                :class="{'arco-input-inner-wrapper-error': !!phoneErrorValue}"
+                                                >
+                                                <input
+                                                @blur="handlePhoneBlur"
+                                                v-model="phoneValue"
                                                   name=Tel id=Tel_input placeholder=请输入手机号
                                                   class="arco-input arco-input-size-default arco-input-error" value
                                                   aria-invalid=true></span></span></div>
@@ -179,7 +174,7 @@
                                       </div>
                                     </div>
                                     <div class="arco-form-message formblink-appear-done formblink-enter-done">
-                                      <div role=alert>请输入手机号</div>
+                                      <div role=alert v-if="!!phoneErrorValue">{{phoneErrorValue}}</div>
                                     </div>
                                   </div>
                                 </div>
@@ -192,6 +187,8 @@
                                           <div class=arco-form-item-control id=Code>
                                             <div class=arco-form-item-control-children><span
                                                 class="input-lInQvs arco-input-inner-wrapper arco-input-inner-wrapper-default arco-input-clear-wrapper"><input
+                                                 @input="handleCodeBlur"
+                                                v-model="codeValue"
                                                   id=Code_input maxlength=6 placeholder=请输入验证码
                                                   class="arco-input arco-input-size-default" value></span></div>
                                           </div>
@@ -199,13 +196,15 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div style=position:relative><button
+                                  <div style="position:relative"><button
+                                    @click="handleSendCode"
+                                    :class="{codeBtnPass: !codeDisabled}"
                                       class="arco-btn arco-btn-secondary arco-btn-size-default arco-btn-shape-square arco-btn-disabled verify-btn-cPZHKh"
-                                      type=button disabled><span>获取验证码</span></button>
+                                      type=button><span>获取验证码</span></button>
                                     <div id=pc_slide1749201642460605d3d58></div>
                                   </div>
                                 </div>
-                                <div class=protocol-eGDdjF>登录视为您已阅读并同意火山引擎 <a
+                                <div class=protocol-eGDdjF>登录视为您已阅读并同意历史漫绘 <a
                                     href=https://www.volcengine.cn/docs/6256/64903 target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     href=https://www.volcengine.cn/docs/6256/64902 target=_blank
@@ -222,34 +221,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class=linkWrap-9KWefP><a class=text-FipNf1
-                      href="https://console.volcengine.com/auth/login/user/?redirectURI=%2Fark%2Fregion%3Aark%2Bcn-beijing%2Fexperience%2Fvision%3FfoundationModelName%3Ddoubao-seedream-3-0-t2i%26type%3DGenImage">IAM子用户登录</a><span
-                      class=divide-IPg32G> | </span><a class=text-FipNf1
-                      href="https://console.volcengine.com/auth/login/federation/?redirectURI=%2Fark%2Fregion%3Aark%2Bcn-beijing%2Fexperience%2Fvision%3FfoundationModelName%3Ddoubao-seedream-3-0-t2i%26type%3DGenImage">企业联邦登录</a>
-                  </div>
-                  <div class="text-PdHKDz idp-login-JaXZHY ouathIdpForLogin-xtuRdL">
-                    <div role=separator
-                      class="arco-divider arco-divider-horizontal arco-divider-with-text arco-divider-with-text-center divider-AEiTI9">
-                      <span class="arco-divider-text arco-divider-text-center">其他登录方式</span></div>
-                    <div class=idps-rZewKm>
-                      <div class="logo-gkhwGl Mail-knTM9E"><svg fill=none stroke=currentColor stroke-width=4
-                          viewBox="0 0 48 48" aria-hidden=true focusable=false
-                          class="icon-Cd5BLR arco-icon arco-icon-email">
-                          <rect width=36 height=32 x=6 y=8 rx=1></rect>
-                          <path d="m37 17-12.43 8.606a1 1 0 0 1-1.14 0L11 17"></path>
-                        </svg>邮箱</div><a
-                        href="https://open-api.oceanengine.com/oauth/connect/?client_key=adu9n2b6qievo3c8&amp;response_type=code&amp;scope=mobile%2Cuser_info&amp;state=redirectURI%3D%252Fark%252Fregion%253Aark%252Bcn-beijing%252Fexperience%252Fvision%253FfoundationModelName%253Ddoubao-seedream-3-0-t2i%2526type%253DGenImage%26referrer_url%3Dhttps%253A%252F%252Fshimo.im%252F&amp;redirect_uri=https%3A%2F%2Fconsole.volcengine.com%2Fauth%2Flogin%2Foauth%2FOceanEngine%2F"
-                        class="logo-gkhwGl OceanEngine"><img src="../assets/76a1de8627a09b6772649fd61816d236.svg"></a><a
-                        href="https://www.csjplatform.com/ucenter_web/oauth/connect/?client_key=upuepnfco4b9rbgg&amp;response_type=code&amp;scope=mobile%2Cuser_info&amp;state=redirectURI%3D%252Fark%252Fregion%253Aark%252Bcn-beijing%252Fexperience%252Fvision%253FfoundationModelName%253Ddoubao-seedream-3-0-t2i%2526type%253DGenImage%26referrer_url%3Dhttps%253A%252F%252Fshimo.im%252F&amp;redirect_uri=https%3A%2F%2Fconsole.volcengine.com%2Fauth%2Flogin%2Foauth%2FPangle%2F"
-                        class="logo-gkhwGl Pangle"><img src=../assets/217ba6918e3e5c859af8fb1a287b676b.svg></a><a
-                        href="https://open.douyin.com/platform/oauth/connect/?client_key=awqvjwfpem17oloh&amp;response_type=code&amp;scope=mobile%2Cuser_info&amp;state=redirectURI%3D%252Fark%252Fregion%253Aark%252Bcn-beijing%252Fexperience%252Fvision%253FfoundationModelName%253Ddoubao-seedream-3-0-t2i%2526type%253DGenImage%26referrer_url%3Dhttps%253A%252F%252Fshimo.im%252F&amp;redirect_uri=https%3A%2F%2Fconsole.volcengine.com%2Fauth%2Flogin%2Foauth%2FDouyin%2F"
-                        class="logo-gkhwGl Douyin"><img src="../assets/e5b524fa0a69949a946b17eb7180516a.svg"></a><a
-                        href="https://open.snssdk.com/oauth/authorize/?client_key=ttfa798plvp3gi17&amp;response_type=code&amp;scope=mobile%2Cuser_info&amp;state=redirectURI%3D%252Fark%252Fregion%253Aark%252Bcn-beijing%252Fexperience%252Fvision%253FfoundationModelName%253Ddoubao-seedream-3-0-t2i%2526type%253DGenImage%26referrer_url%3Dhttps%253A%252F%252Fshimo.im%252F&amp;redirect_uri=https%3A%2F%2Fconsole.volcengine.com%2Fauth%2Flogin%2Foauth%2FToutiao%2F"
-                        class="logo-gkhwGl Toutiao"><img src="../assets/ac5099a74d0ea6ca4fe0b74adc9026aa.svg"></a><a
-                        href="https://passport.feishu.cn/accounts/auth_login/oauth2/authorize/?client_id=cli_a3c8cc1cd821100c&amp;response_type=code&amp;state=redirectURI%3D%252Fark%252Fregion%253Aark%252Bcn-beijing%252Fexperience%252Fvision%253FfoundationModelName%253Ddoubao-seedream-3-0-t2i%2526type%253DGenImage%26referrer_url%3Dhttps%253A%252F%252Fshimo.im%252F&amp;redirect_uri=https%3A%2F%2Fconsole.volcengine.com%2Fauth%2Flogin%2Foauth%2FFeishu%2F"
-                        class="logo-gkhwGl Feishu"><img src="../assets/65129fcec0a15f4fdf7246806848196c.svg"></a>
-                    </div>
-                  </div>
+                
                 </div>
                 <div class=passwordExpirationBox-yx6EE8></div>
               </div>
@@ -258,7 +230,7 @@
         </div>
         <div class=footer-YtwIpo>
           <div class=beian-QKzV2L>
-            <div class=text-wdR8Ms>版权所有©北京火山引擎科技有限公司2025 </div>
+            <div class=text-wdR8Ms>版权所有©北京历史漫绘科技有限公司2025 </div>
             <div class=below-fXUkWQ>
               <div class=beianAndICP-GiJ8Fz><img class=badge-iAUu6L src="../assets/702340561abc924294d76328b8a5c055.png"><a
                   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802032137" target=_blank
@@ -273,7 +245,49 @@
   </div>
 
 </template>
-<script></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+const phoneErrorValue = ref('')
+const phoneValue = ref('')
+const codeValue = ref('')
+const codeDisabled = ref(true)
+const handlePhoneBlur = (e) => {
+  if(!phoneValue.value) {
+     phoneErrorValue.value = '请输入手机号'
+     return
+  }
+  const phoneRegex = /^1[3-9]\d{9}$/;
+  if (!phoneRegex.test(phoneValue.value)) {
+    phoneErrorValue.value = '输入值不是有效电话号码';
+    return
+  } 
+  phoneErrorValue.value = ''
+  
+
+}
+const handleCodeBlur = (e) => {
+  if(codeValue.value.length >= 6) {
+     codeDisabled.value = false
+  }else {
+    codeDisabled.value = true
+  }
+  
+}
+const handleSendCode = () => {
+  const phoneRegex = /^1[3-9]\d{9}$/;
+   if (!phoneRegex.test(phoneValue.value)) {
+    phoneErrorValue.value = '输入值不是有效电话号码';
+    return
+  } 
+ 
+  if(codeValue.value.length === 6 ) {
+    console.log('登录')
+  }
+   
+}
+
+
+</script>
 <style>
   /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
   body,
@@ -3181,6 +3195,9 @@
     user-select: none;
     white-space: nowrap
   }
+   .arco-btn.codeBtnPass {
+    color: #333 !important;
+   }
 
   .arco-btn:active {
     transition: none
