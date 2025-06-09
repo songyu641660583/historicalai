@@ -29,7 +29,7 @@
                                 class=arco-tabs-header-title-text>账号登录</span></div> -->
                             <div class="arco-tabs-header-title arco-tabs-header-title-active" role=tab
                               aria-selected=true tabindex=0 id=arco-tabs-6-tab-1 aria-controls=arco-tabs-6-panel-1><span
-                                class=arco-tabs-header-title-text>手机号登录</span></div>
+                                class=arco-tabs-header-title-text>手机号注册</span></div>
                             <div class=arco-tabs-header-ink style="left:0px;width:80px"></div>
                           </div>
                         </div>
@@ -139,14 +139,14 @@
                                     <div class="count-down" v-if="countDownText">{{ countDownText }}s</div>
                                   </div>
                                 </div>
-                                <div class=protocol-eGDdjF>登录视为您已阅读并同意历史漫绘 <a
+                                <div class=protocol-eGDdjF>点击开始体验代表同意历史漫绘 <a
                                     href=https://www.volcengine.cn/docs/6256/64903 target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     href=https://www.volcengine.cn/docs/6256/64902 target=_blank
                                     rel="noopener noreferrer">隐私政策</a></div>
                                 <div style="position:relative">
                                   <button @click="handleLogin"
-                                    class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>登录</span>
+                                    class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>开始体验</span>
                                   </button>
                                 </div>
                               </div>
