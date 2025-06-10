@@ -6,6 +6,9 @@ import LoginView from '../pages/login.vue'
 import RegisterView from '../pages/register.vue'
 import MainView from '../pages/main/index.vue'
 import Creationiew from '../pages/main/creation.vue'
+import BillRevordView from '../pages/main/billRecord.vue'
+import RechargeView from '../pages/main/recharge.vue'
+import ConfirmPayView from '../pages/main/confirmPay.vue'
 
 export const routes = [
   {
@@ -21,8 +24,8 @@ export const routes = [
       hidden: true
   },
   {
-    path: '/regiser',
-    name: 'Regiser',
+    path: '/register',
+    name: 'Register',
     component: RegisterView,
       hidden: true
   },
@@ -39,10 +42,22 @@ export const routes = [
         component: Creationiew
       },
         {
-        path: 'creation',
+        path: 'recharge',
         text: '充值',
-        name: 'Creationiew',
-        component: Creationiew
+        name: 'RechargeView',
+        component: RechargeView
+      },
+       {
+        path: 'confirmPay',
+        text: '确认支付',
+        name: 'ConfirmPay',
+        component: ConfirmPayView
+      },
+       {
+        path: 'billRevord',
+        text: '账单',
+        name: 'BillRevordView',
+        component: BillRevordView
       },
     ]
   }

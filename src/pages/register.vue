@@ -139,15 +139,23 @@
                                     <div class="count-down" v-if="countDownText">{{ countDownText }}s</div>
                                   </div>
                                 </div>
-                                <div class=protocol-eGDdjF>点击开始体验代表同意历史漫绘 <a
+                                <div class=protocol-eGDdjF>
+        <el-checkbox style="margin-right: 6px;position: relative;top:2px" v-model="agreeValue" size="large" />
+                                  <span>点击开始体验代表同意历史漫绘 </span>
+                                  <a
                                     href=https://www.volcengine.cn/docs/6256/64903 target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     href=https://www.volcengine.cn/docs/6256/64902 target=_blank
                                     rel="noopener noreferrer">隐私政策</a></div>
                                 <div style="position:relative">
-                                  <button @click="handleLogin"
+                                  <el-button @click="handleLogin" class="submitBtn"
+                                   :disabled="!agreeValue" :class="{'arco-btn-disabled': !agreeValue}" type="primary">开始体验</el-button>
+                                  <!-- <button 
                                     class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>开始体验</span>
-                                  </button>
+                                  </button> -->
+                                </div>
+                                  <div class="register">
+                                  已有账号? <span @click="handleRegister">立即登录</span>
                                 </div>
                               </div>
                             </div>
@@ -171,12 +179,17 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import footerComponent from '../components/footer.vue'
+
+const router = useRouter()
 const phoneErrorValue = ref('')
 const phoneValue = ref('')
 const codeValue = ref('')
 const codeDisabled = ref(true)
 const countDownText = ref(0)
+
+const agreeValue = ref(false)
 const handlePhoneBlur = () => {
   if (!phoneValue.value) {
     phoneErrorValue.value = '请输入手机号'
@@ -229,9 +242,23 @@ const handleLogin = () => {
 
 }
 
+const handleRegister = () => { 
+   router.push('/login')
+}
+
+
 
 </script>
 <style>
+.register {
+  margin-top: 200px;
+  text-align: center;
+ 
+}
+.register span {
+    cursor: pointer;
+    color: #3370ff;
+  }
 body {
   --color-white: #fff;
   --color-black: #000;
@@ -1610,7 +1637,10 @@ html {
 }
 
 
-
+.submitBtn {
+  width: 100%;
+  height: 40px !important;
+}
 
 .title-EHSTny {
   color: #0c0d0e;

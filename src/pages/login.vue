@@ -149,6 +149,9 @@
                                     class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>登录</span>
                                   </button>
                                 </div>
+                                <div class="register">
+                                  没有账号? <span @click="handleRegister">现在就注册</span>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -171,7 +174,10 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import footerComponent from '../components/footer.vue'
+
+const router = useRouter()
 const phoneErrorValue = ref('')
 const phoneValue = ref('')
 const codeValue = ref('')
@@ -226,12 +232,28 @@ const handleLogin = () => {
   if (codeValue.value.length === 6) {
     console.log('登录')
   }
+}
 
+const handleRegister = () => { 
+   router.push('/register')
 }
 
 
 </script>
 <style>
+.register {
+  margin-top: 200px;
+  text-align: center;
+ 
+}
+.register span {
+    cursor: pointer;
+    color: #3370ff;
+  }
+  .submitBtn {
+  width: 100%;
+  height: 40px !important;
+}
 body {
   --color-white: #fff;
   --color-black: #000;

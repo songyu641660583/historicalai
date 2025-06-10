@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-// import 'animate.css';
-// import { NDropdown, NSpace, NIcon } from 'naive-ui'
-// import { ref, onMounted } from 'vue'
-// import { EarthOutline, ChevronDownSharp } from '@vicons/ionicons5'
+import { ref } from 'vue'
+
+const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
+const firstIndex = ref(0)
+const secondVideoSrc = ref('https://vjs.zencdn.net/v/oceans.mp4')
 const router = useRouter()
 const handleLogin = () => {
  router.push('/login')
 }
+const handleFirstChange = (index) => {
+  firstIndex.value = index
+}
+setInterval(() => {
+  let nextIndex = firstIndex.value + 1
+  if(nextIndex > firstData.value.length - 1) {
+    nextIndex = 0
+  }
+ handleFirstChange(nextIndex)
+}, 6000)
 
 </script>
 
@@ -36,70 +47,18 @@ const handleLogin = () => {
         </svg></div> -->
     </div>
     <section class=box-weRFZa>
-      <main class=main-_bMAqc>
-        <a class="btn-LHv9H0 mob-cta-nYfrVn sf-hidden" target=_self
-          href=https://jimeng.jianying.com/ai-tool/home><svg xmlns=http://www.w3.org/2000/svg width=18 height=18
-            fill=currentColor viewBox="0 0 18 18">
-            <path fill-rule=evenodd
-              d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-              clip-rule=evenodd></path>
-          </svg></a>
-      </main>
-      <div class=bg-box-iGxURO><video poster="../assets/8428def981198d7141ba3aec61fc761b.jpg" class=video-_dSgML
-          style="display:block" preload=auto width=100% height=100% disablepictureinpicture disableremoteplayback
-          playsinline muted loop>
+      <!-- <main class=main-_bMAqc>
+        
+      </main> -->
+      <div class=bg-box-iGxURO>
+        <video :src="firstData[firstIndex]" class=video-_dSgML
+          style="display:block" preload=auto  disablepictureinpicture disableremoteplayback
+          playsinline muted loop autoplay >
           <track kind=caption>
-        </video><a
-          href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/1.video.02f82601.mp4
-          target=_blank
-          style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important">
-          <img src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-            style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><video
-          poster="../assets/60b3ac6ce50cfb4a84749d117311eb20.jpg" class="video-_dSgML video-active-fDaDaY"
-          style="display:block" preload=auto width=100% height=100% disablepictureinpicture disableremoteplayback
-          playsinline muted loop>
-          <track kind=caption>
-        </video><a
-          href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/2.video.e7d47d5a.mp4
-          target=_blank
-          style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-            src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-            style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><video
-          poster="../assets/4bb08c2a6743fc9b9775ca262122c11a.jpg" class=video-_dSgML style="display:block" preload=auto
-          width=100% height=100% disablepictureinpicture disableremoteplayback playsinline muted loop>
-          <track kind=caption>
-        </video><a
-          href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/3.video.3de2fce3.mp4
-          target=_blank
-          style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-            src="../assets/fe18703bc2f2e2198248c1e3a821b045.png"
-            style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><video
-          poster="../assets/b55e28595e89c306707e3c9234515251.jpg" class=video-_dSgML style=display:none preload=auto
-          width=100% height=100% disablepictureinpicture disableremoteplayback playsinline muted loop></video><a
-          href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/4.video.918dc3f0.mp4
-          target=_blank
-          style=z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important><img
-            src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-            style=width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important></a><video
-          poster=../assets/3cf471981a0be5a52bf506ae32ba6be3.jpg class=video-_dSgML style=display:none preload=auto
-          width=100% height=100% disablepictureinpicture disableremoteplayback playsinline muted loop></video><a
-          href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/5.video.630ef480.mp4
-          target=_blank
-          style=z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important><img
-            src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-            style=width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important></a>
-        <div class=bg-box-mask-a6jaeQ></div>
+        </video>
       </div>
       <div class=right-box-rgRoBY>
-        <div class=right-box-item-qgzhq3 style="background-image:url(../assets/253d254a3954bb8015d994bb446d3f7e.jpg)">
-        </div>
-        <div class="right-box-item-qgzhq3 right-box-item-active-MeDmx_"
-          style="background-image:url(../assets/2e8b6ca2b2237416940fca4a0deec9aa.jpg)"></div>
-        <div class=right-box-item-qgzhq3 style=background-image:url(../assets/5f48c32db6792464787efe1c7c4ca85a.jpg)></div>
-        <div class=right-box-item-qgzhq3 style="background-image:url(../assets/1c5a54559d95c84161337eb41568584a.jpg)">
-        </div>
-        <div class=right-box-item-qgzhq3 style="background-image:url(../assets/77ccc4f40f9d2046acf4b4f7418a0971.jpg)">
-        </div>
+        <img @click="handleFirstChange(index)" class=right-box-item-qgzhq3 :class="{active: firstIndex === index}" src="@/assets/2e8b6ca2b2237416940fca4a0deec9aa.jpg" alt=""  v-for="(item, index) in firstData" :key="index" />
       </div>
       <!-- <div class=bottom-bYPxPC>
         <div class="input-DoV4AV input-flrsTo">
@@ -113,6 +72,8 @@ const handleLogin = () => {
         </div>
         <div class=tip-q4L709>此视频内容由 即梦AI 生成</div>
       </div> -->
+
+      
     </section>
     <section class=box-WDLjs6>
       <div class=header-tD8TNM>
@@ -134,21 +95,15 @@ const handleLogin = () => {
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>流畅运镜，生动自然</h3>
                 <div class=desc-egHxcp>视频动效效果连贯性强、流畅自然，可轻松操控运镜，调节速度变化，即梦AI为视频智能创作增添无限可能</div>
-              </div><a class=btn-EoHtfv target=_self href=https://jimeng.jianying.com/ai-tool/login><span>立即创作</span></a>
+              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>01</div>
           </div>
           <div class=media-wrapper-mac_RP>
-            <div class=glitch-wrapper-H049jO><video poster=../assets/c80186e1b9d10f78fbbc9ed87f6223cc.jpg playsinline muted
-                loop preload=auto crossorigin=anonymous logger="[object Object]" autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video><a
-                href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/0.485b16d2.mp4
-                target=_blank
-                style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-                  src="../assets/fe18703bc2f2e2198248c1e3a821b045.png"
-                  style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><canvas
-                class="canvas-ZaQYjd media-IWKWD4"
-                style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:center center!important;background-color:rgba(0,0,0,0)!important;background-image:url(../assets/dafa41586f8036551f5269b966e9d1f0.png)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></canvas>
+            <div class=glitch-wrapper-H049jO>
+              <video :src="secondVideoSrc" playsinline muted
+                loop preload=auto crossorigin=anonymous autoplay
+                class="placeholder-RiOie5 media-IWKWD4"></video>
             </div>
           </div>
         </div>
@@ -161,22 +116,16 @@ const handleLogin = () => {
                   <p>精准掌控</p>
                 </h3>
                 <div class=desc-egHxcp>创新的首帧图片和尾帧图片输入方式，增强视频生成的可控性，轻松打造高品质素材，提升你的视频内容创作效率</div>
-              </div><a class=btn-EoHtfv target=_self href=https://jimeng.jianying.com/ai-tool/login><span>立即创作</span></a>
+              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>02</div>
           </div>
           <div class=media-wrapper-mac_RP>
-            <div class=glitch-wrapper-H049jO><video poster="../assets/4df2879416cb647df27e35a85f8ee71d.jpg" playsinline
-                muted loop preload=auto crossorigin=anonymous logger="[object Object]" autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video><a
-                href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/1.55160634.mp4
-                target=_blank
-                style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-                  src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-                  style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><canvas
-                class="canvas-ZaQYjd media-IWKWD4"
-                style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:center center!important;background-color:rgba(0,0,0,0)!important;background-image:url(../assets/dafa41586f8036551f5269b966e9d1f0.png)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></canvas>
-            </div>
+            <div class=glitch-wrapper-H049jO>
+                            <video :src="secondVideoSrc" playsinline muted
+                loop preload=auto crossorigin=anonymous autoplay
+                class="placeholder-RiOie5 media-IWKWD4"></video>
+              </div>
           </div>
         </div>
         <div class=box-nt966n>
@@ -185,22 +134,16 @@ const handleLogin = () => {
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>中文创作，得心应手</h3>
                 <div class=desc-egHxcp>即梦AI支持根据中文提示词进行创作，拥有更好的语义理解能力，准确把握你的需求，将抽象的思路转化为视觉作品</div>
-              </div><a class=btn-EoHtfv target=_self href=https://jimeng.jianying.com/ai-tool/login><span>立即创作</span></a>
+              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>03</div>
           </div>
           <div class=media-wrapper-mac_RP>
-            <div class=glitch-wrapper-H049jO><video poster=../assets/a24b6a4a85a4c9cf3a5e57dbcc88ae9b.jpg playsinline muted
-                loop preload=auto crossorigin=anonymous logger="[object Object]" autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video><a
-                href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/2.7045d286.mp4
-                target=_blank
-                style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-                  src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-                  style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a><canvas
-                class="canvas-ZaQYjd media-IWKWD4"
-                style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:center center!important;background-color:rgba(0,0,0,0)!important;background-image:url(../assets/dafa41586f8036551f5269b966e9d1f0.png)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important"></canvas>
-            </div>
+            <div class=glitch-wrapper-H049jO>
+                          <video :src="secondVideoSrc" playsinline muted
+                loop preload=auto crossorigin=anonymous autoplay
+                class="placeholder-RiOie5 media-IWKWD4"></video>
+              </div>
           </div>
         </div>
       </div>
@@ -226,7 +169,7 @@ const handleLogin = () => {
           <div class=swiper-scroll-YOzToa>
             <div class=swiper-item-O8OmVh><img src="../assets/16553d704dd2ffeba394f23581d00a71.jpg"
                 class=swiper-item-img-MKsgw0 loading=lazy alt=3D游戏人物风格，戴夸张耳饰的民族风少女>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>3D游戏人物风格，戴夸张耳饰的民族风少女</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -235,11 +178,11 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
             <div class=swiper-item-O8OmVh><img src=../assets/a1ab53faaa03105af440097ce6994507.jpg
                 class=swiper-item-img-MKsgw0 loading=lazy alt=插画风格，太空飞行器在粉色星球低空飞行>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>插画风格，太空飞行器在粉色星球低空飞行</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -248,11 +191,11 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
             <div class=swiper-item-O8OmVh><img src="../assets/ef9a1c8cee8f2683f4cf86e1ed3b4568.jpg"
                 class=swiper-item-img-MKsgw0 loading=lazy alt=未来风，女性机械人形AI>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>未来风，女性机械人形AI</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -261,11 +204,11 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
             <div class=swiper-item-O8OmVh><img src="../assets/72e341cd2c10937149d15d4b0cabc29b.jpg"
                 class=swiper-item-img-MKsgw0 loading=lazy alt=超写实插画，夜晚月光下的花园>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>超写实插画，夜晚月光下的花园</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -274,11 +217,11 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
             <div class=swiper-item-O8OmVh><img src="../assets/2e964985358fdb6384627a7270a17169.jpg"
                 class=swiper-item-img-MKsgw0 loading=lazy alt=文艺复兴风格，身着贵族丝绸服饰猫咪>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>文艺复兴风格，身着贵族丝绸服饰猫咪</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -287,11 +230,11 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
             <div class=swiper-item-O8OmVh><img src=../assets/f705427ac51c673def0080daf37c1638.jpg
                 class=swiper-item-img-MKsgw0 loading=lazy alt=电影质感，盔甲勇士在火光下奔赴战场>
-              <div class="input-DoV4AV input-AGWlqC">
+              <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>电影质感，盔甲勇士在火光下奔赴战场</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
@@ -300,7 +243,7 @@ const handleLogin = () => {
                         d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                         clip-rule=evenodd></path>
                     </svg><span>即梦成片</span></button></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -358,17 +301,12 @@ const handleLogin = () => {
     <section class=box-u5bhZT>
       <div class=main-whiUyf>
         <h2 class=title-lyHCac>创意涌动 灵感绽放</h2>
-        <div class=desc-VYvN1G>在即梦AI的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div><a class=btn-EoHtfv target=_self
-          href=https://jimeng.jianying.com/ai-tool/explore><svg xmlns=http://www.w3.org/2000/svg width=18 height=18
-            fill=currentColor viewBox="0 0 18 18">
-            <path fill-rule=evenodd
-              d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-              clip-rule=evenodd></path>
-          </svg><span>获取创作灵感</span></a>
+        <div class=desc-VYvN1G>在即梦AI的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div>
+        <a class=btn-EoHtfv>
+          <span>立即创作</span></a>
       </div>
       <div class=animate-box-tJU6nw>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7383941417011285286&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-0 animate-box-col-item-ZEEtY9"
             style=opacity:1;transform:none;will-change:auto><img src="../assets/bc8ca9c978546c1f860a5f956a3e8a27.jpg"
               alt=🍰Berry的作品 loading=lazy class=img-ereslv>
@@ -392,7 +330,7 @@ const handleLogin = () => {
               </svg>
             </div>
           </a><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7353206216786595109&amp;workDetailType=Image&amp;itemType=9"
+
             target=_self class="box-T63Hos fifth-gli-0-1 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/7b6a9bfcab51b666af9617d5412fa7eb.jpg
               alt=盒饭饭喜欢吃丸子的作品 loading=lazy class=img-ereslv>
@@ -417,7 +355,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7382120899144731913&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-2 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/9117feceeca108fe7124ca0d3138833e.jpg
               alt=小树树爱世界！的作品 loading=lazy class=img-ereslv>
@@ -442,7 +379,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7376269586641046819&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-3 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/364a3909f4c74b6a3c9b7372ead7c3ac.jpg
               alt=晓梦的作品 loading=lazy class=img-ereslv>
@@ -467,7 +403,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7384327666322722100&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-4 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/3a9958c9996efd1262af55471d145a52.jpg"
               alt=公主的作品 loading=lazy class=img-ereslv>
@@ -491,7 +426,6 @@ const handleLogin = () => {
               </svg>
             </div>
           </a><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7387327513451564298&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-5 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/2e776a1b9bdae479f92d8177ae032888.jpg"
               alt=塔尼雅的作品 loading=lazy class=img-ereslv>
@@ -516,7 +450,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7387769101030051108&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-6 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/c262213618f5bf49c8659bc4b077d3f6.jpg"
               alt="不吃草的 花牛的作品" loading=lazy class=img-ereslv>
@@ -541,7 +474,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7389129537776373007&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-7 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/69e5540dd5d3baf99e21fe72faf26caf.jpg
               alt=水水的作品 loading=lazy class=img-ereslv>
@@ -565,7 +497,6 @@ const handleLogin = () => {
               </svg>
             </div>
           </a><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7324213975539879220&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-8 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/8a2a7d652b23189a3215883daea697c0.jpg
               alt=晗槑槑的作品 loading=lazy class=img-ereslv>
@@ -590,7 +521,6 @@ const handleLogin = () => {
             </div>
           </a></div>
         <div><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7355848479995989298&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-9 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/81189f2c63dbd7ce135736a0154a7900.jpg"
               alt=🍰Berry的作品 loading=lazy class=img-ereslv>
@@ -614,7 +544,6 @@ const handleLogin = () => {
               </svg>
             </div>
           </a><a
-            href="https://jimeng.jianying.com/ai-tool/home?detailId=7392826731456990500&amp;workDetailType=Image&amp;itemType=9"
             target=_self class="box-T63Hos fifth-gli-0-10 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/4e57aa45fa986a94bee227eaf53f9f68.jpg
               alt=檬檬的作品 loading=lazy class=img-ereslv>
@@ -642,68 +571,43 @@ const handleLogin = () => {
     </section>
     <section class=box-aQs010><img class=icon-SyMPuO src=../assets/6cce6b304b6e64adaa18722e1983ed26.png alt=即梦AI
         loading=lazy>
-      <div class=box-mtcGzQ><a href=https://jimeng.jianying.com/ai-tool/login target=_self
-          class="trigger-v7Eq_c cta-VrDRFc" style="opacity:1;will-change:auto"><svg xmlns=http://www.w3.org/2000/svg
-            width=18 height=18 fill=currentColor viewBox="0 0 18 18">
-            <path fill-rule=evenodd
-              d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-              clip-rule=evenodd></path>
-          </svg><span>开启智能创作</span></a>
-        <div class=video-wrapper-UwfzyM style="transform:none;will-change:auto"><video
-            poster="../assets/4d65202b2cb60a476c34b0c1d66147e4.jpg" class=video-yy6mi4 preload=auto width=100% height=100%
-            playsinline muted loop>
-            <track kind=caption>
-          </video><a
-            href=https://lf3-lv-buz.vlabstatic.com/obj/image-lvweb-buz/growth/jimeng/landing_page/static/media/amazing-btn-bg.5dcc8744.mp4
-            target=_blank
-            style="z-index:2147483647!important;position:absolute!important;top:8px!important;left:8px!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"><img
-              src=../assets/fe18703bc2f2e2198248c1e3a821b045.png
-              style="width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;max-width:16px!important;max-height:16px!important"></a>
-        </div>
-      </div>
+         <a class=btn-EoHtfv>
+          <span>开启智能创作</span></a>
     </section>
     <section class=footer-container_b27af>
       <div class="links-wrapper_b27af nav-wrapper_b27af"><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" target=_blank
-            href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>视频生成</a></span><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>智能画布</a></span><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" target=_blank
-            href=https://jimeng.jianying.com/ai-tool/explore>探索</a></span><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" target=_blank
-            href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div>
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >文生图</a></span><span><a
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af">视频生成</a></span><span><a
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >智能画布</a></span><span><a
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >探索</a></span><span><a
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af">未来影像计划</a></span></div>
       <div class="links-wrapper_b27af privacy-wrapper_b27af">
         <div class=anchor-wrapper_b27af>
           <div class=inner-wrapper_b27af><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-营业执照 target=_blank rel=noopener;noreferrer
-              href=https://lf9-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/vco/jimeng_certification.html>营业执照</a><span
+              aria-label=即梦AI-营业执照 >营业执照</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-用户协议 target=_blank rel=noopener;noreferrer
-              href=https://lf9-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/vco/17620dba-f821-4a18-85f9-b8b11f73304a.html>用户协议</a><span
+              aria-label=即梦AI-用户协议>用户协议</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-隐私政策 target=_blank rel=noopener;noreferrer
-              href=https://lf3-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/vco/fadfa00e-21c4-41ac-a1ac-c694e7ccedca.html>隐私政策</a>
+              aria-label=即梦AI-隐私政策 >隐私政策</a>
           </div>
           <div class="inner-wrapper_b27af company-wrapper_b27af">
             <div class=icp-wrapper_b27af><span class="divider_b27af small_b27af"></span>
               <a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
                 aria-label="即梦AI-粤ICP备13065114号" target="_blank" rel="noopener;noreferrer"
-                href="https://beian.miit.gov.cn" >粤ICP备13065114号</a>
+                 >粤ICP备13065114号</a>
                 <span class="divider_b27af small_b27af"></span>
                 <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-                aria-label=即梦AI-粤B2-20190879 target=_blank rel=noopener;noreferrer
-                href=https://lf3-cdn-tos.draftstatic.com/obj/ies-hotsoon-draft/vco/jimeng_icp.html>粤B2-20190879</a>
+                 target=_blank rel=noopener;noreferrer
+                >粤B2-20190879</a>
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
                 aria-label=即梦AI-粤公网安备44030002004191号 target=_blank rel=noopener;noreferrer
-                href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002004191"><img class=link-icon_b27af
+                ><img class=link-icon_b27af
                   src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>粤公网安备44030002004191号</a>
             </div>
           </div>
@@ -715,19 +619,19 @@ const handleLogin = () => {
       </div>
       <div class=social-wrapper_b27af><a class="jimeng-link jimeng-link-theme-black social_b27af"
           aria-label=即梦AI-undefined target=_blank
-          href=https://www.douyin.com/user/MS4wLjABAAAATAf2FKPSpZx_TdDWzwzNlznaEE6HttAqJgrnRPGdW24adAIlxfGeasDraUIR5JRp><svg
+         ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m5.57-13.22v.471l-.001.001V8.9a5.26 5.26 0 0 1-3.006-.919 468 468 0 0 0 .015 4.062c.002.13.004.26-.006.388a4.1 4.1 0 0 1-.584 1.818 4.1 4.1 0 0 1-1.126 1.237 3.74 3.74 0 0 1-2.072.684 4.7 4.7 0 0 1-1.12-.087 4 4 0 0 1-1.448-.61l-.03-.026a3.89 3.89 0 0 1-1.61-2.393 3.8 3.8 0 0 1 .504-2.819c.334-.53.79-.975 1.329-1.296a4.08 4.08 0 0 1 2.645-.54q0 .082-.002.166c-.001.11-.003.22.002.331.008.15.007.3.006.453l-.001.164v1.06a1.6 1.6 0 0 0-.862-.026 2.24 2.24 0 0 0-.926.432 1.55 1.55 0 0 0-.396.48 1.77 1.77 0 0 0-.188 1.015c.042.341.188.66.418.916q.241.265.553.442a1.84 1.84 0 0 0 2.443-.699c.15-.26.23-.552.235-.85V6.906q.008-1.19.005-2.38v-.7h2.185q-.002.274.049.54h.012q.096.452.316.856c.22.428.555.787.966 1.038a.3.3 0 0 1 .065.059c.49.3 1.054.46 1.63.462"
               clip-rule=evenodd></path>
           </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=即梦AI-B站空间 target=_blank
-          href="https://space.bilibili.com/3546611372264291?spm_id_from=333.337.0.0"><svg
+         ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m-2.45-4.844h4.92l-.028.007v.171c0 .178.064.343.193.471a.65.65 0 0 0 .47.193.65.65 0 0 0 .472-.193.65.65 0 0 0 .193-.471v-.164h.321c1.193 0 2.157-.886 2.157-1.978v-5.22a1.83 1.83 0 0 0-.55-1.335c-.4-.414-.986-.65-1.593-.65h-2.377l1.27-1.135q.354-.312.044-.657c-.207-.236-.429-.25-.657-.043l-2.042 1.821h-.686l-2.042-1.82c-.236-.2-.45-.186-.657.042-.2.236-.186.45.043.657L8.258 5.98H5.894c-1.192 0-2.156.886-2.156 1.978v5.22c0 1.092.964 1.977 2.156 1.977h.329v.165a.63.63 0 0 0 .192.47.68.68 0 0 0 .472.194.65.65 0 0 0 .47-.193.65.65 0 0 0 .194-.471zm3.435-2.378a.44.44 0 0 1-.278.093.45.45 0 0 1-.357-.179l-.372-.457-.378.45a.47.47 0 0 1-.65.057l-.514-.428a.28.28 0 0 1-.1-.257.26.26 0 0 1 .172-.207.27.27 0 0 1 .27.05l.458.378.393-.464a.45.45 0 0 1 .357-.164c.142 0 .27.064.357.17l.385.472.529-.393a.26.26 0 0 1 .285-.05c.1.036.164.122.172.229 0 .107-.043.207-.136.257zM8.722 9.322a.416.416 0 0 1-.322.5s-2.092.47-2.085.47a.413.413 0 0 1-.5-.32.413.413 0 0 1 .322-.5l2.078-.479a.45.45 0 0 1 .321.057q.152.1.186.272m4.977.978-2.078-.478a.466.466 0 0 1-.343-.507.44.44 0 0 1 .186-.272.4.4 0 0 1 .32-.057l2.079.479a.424.424 0 0 1 .235.7.43.43 0 0 1-.4.135"
               clip-rule=evenodd></path>
           </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=即梦AI-小红书主页 target=_blank
-          href=https://www.xiaohongshu.com/user/profile/6503ced7000000001603b380><svg xmlns=http://www.w3.org/2000/svg
+         ><svg xmlns=http://www.w3.org/2000/svg
             width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10M3.357 8.308H2.294c-.124 2.485-.248 2.603-.248 2.602l.541 1.18c.464-.534.58-1.376.614-1.689.032-.312.156-2.093.156-2.093m1.79-1.413H4.079l-.027 4.685v-.004.001c-.003.011-.013.078-.072.078h-.69l.468.927h.573c.6.01.818-.765.818-.765zM8.897 8.07l.539-1.218H8.417s-.609 1.338-.852 1.843.252.609.252.609l.548-.01s-.322.757-.54 1.236c-.217.478.314.556.314.556h1.22l.37-.87h-.556c-.147 0-.07-.217-.07-.217l.749-1.677s-.739.008-.896 0c-.156-.01-.06-.252-.06-.252m-1.983.226H5.861s.031.638.139 1.883c.13 1.508.626 1.882.626 1.882l.537-1.212c-.11-.01-.25-2.553-.25-2.553m1.183 3.225c-.4 0-.435-.095-.435-.095l-.498 1.034c-.01.122.367.113.367.113h1.296l.487-1.052zm4.513-3.216V7.25h-2.435l.026 1.036.635.008-.017 3.235h-.905l-.46 1.043h3.521v-1.052h-1.026V8.304zm5.386 3.347v-1.478c0-.878-.932-.913-.932-.913h-.27v-.974c.01-.895-1.077-1.035-1.077-1.035h-.67v-.408h-1.043l.017.408h-.739v1.035h.713v.983h-1.079v1.051l1.078.01v2.242h1.052v-2.25h1.678c.226 0 .243.225.243.225s.057.615.042.878c-.016.26-.207.243-.207.243h-.87l.418.905h.791c.923 0 .855-.922.855-.922m-2.228-3.273v.87h-.739v-.949h.631c.122 0 .108.079.108.079M17 8.268h.5c.275 0 .5-.225.5-.5s-.225-.5-.5-.5-.5.225-.5.5z"
@@ -746,6 +650,8 @@ const handleLogin = () => {
     </section>
   </div>
 </template>
+
+
 
 <style lang="scss" scoped></style>
 <style>
@@ -1707,7 +1613,7 @@ body {
   height: 100%;
   left: 0;
   object-fit: cover;
-  opacity: 0;
+  /* opacity: 0; */
   position: absolute;
   top: 0;
   transition-duration: .15s;
@@ -1746,18 +1652,12 @@ body {
   transition-duration: .3s;
   transition-property: width, height, opacity;
   transition-timing-function: ease-in-out;
-  width: 20px
+  width: 20px;
+  background: green;
+  
 }
-
-.right-box-item-active-MeDmx_+.right-box-item-qgzhq3,
-.right-box-item-qgzhq3:has(+.right-box-item-active-MeDmx_) {
-  height: 28px;
-  opacity: .6;
-  width: 28px
-}
-
-.right-box-item-active-MeDmx_ {
-  height: 40px;
+.right-box-item-qgzhq3.active {
+ height: 40px;
   opacity: 1;
   width: 40px
 }

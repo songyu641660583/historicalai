@@ -9,7 +9,7 @@
         </div>
         <div class="left-content">
           <!-- 这里写el-menu -->
-          <el-menu :collapse="isCollapse" :default-openeds="openedMenus" :default-active="activeMenu"
+          <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus" :default-active="activeMenu"
             class="el-menu-vertical" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router
             @select="handleMenuSelect">
 
@@ -21,9 +21,11 @@
                   </el-icon>
                   <span>{{ item.text }}</span>
                 </template>
-                <el-menu-item :index="child.path" v-for="child in item.children" :key="child.path"> <el-icon>
+                <el-menu-item :index="child.path" v-for="child in item.children" :key="child.path"> 
+                  <el-icon>
                     <House />
-                  </el-icon>{{ child.text }}</el-menu-item>
+                  </el-icon>
+                  {{ child.text }}</el-menu-item>
               </el-sub-menu>
             </div>
 
@@ -120,10 +122,11 @@ const handleSlider = () => {
     }
 
     &-right {
-      padding: 30px 30px 30px 40px;
+      transition: 2s;
       width: calc(100vw - 200px);
 
       &.slider {
+        transition: 2s;
         width: calc(100vw - 100px);
       }
     }
