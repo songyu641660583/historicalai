@@ -1,5 +1,5 @@
 <template>
-  <div class="creation">
+  <div class="creation" v-loading="submitLoading"  element-loading-text="生成中，请稍等...">
     <div class="creation-left module">
       <div class="title">文生图</div>
       <div class=form-wrapper-_4819c>
@@ -10,10 +10,10 @@
                 <div class=arco-form-item-control id=prompt>
                   <div class=arco-form-item-control-children>
                     <div class=prompt-container-_7730c>
-                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=800 class="arco-textarea input-d73634"
-                          placeholder=描述想要生成的图片，或点击下方的推荐词试试吧
+                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=800
+                          class="arco-textarea input-d73634" placeholder=描述想要生成的图片，或点击下方的推荐词试试吧
                           style="height:260px;min-height:260px;max-height:360px"></textarea><span
-                          class=arco-textarea-word-limit>{{keywords.length}}/800</span></div>
+                          class=arco-textarea-word-limit>{{ keywords.length }}/800</span></div>
                     </div>
                   </div>
                 </div>
@@ -26,7 +26,21 @@
             <div class="arco-col arco-form-item-wrapper" style="flex:1 1 0%">
               <div class=arco-form-item-control-wrapper>
                 <div class=arco-form-item-control id=ModelName>
-                  <div class=arco-form-item-control-children>
+                  <el-dropdown>
+                    <span class="el-dropdown-link" v-if="voiceDetail">
+                      {{ voiceDetail?.name || '请选择声音' }}
+                      <el-icon class="el-icon--right">
+                        <arrow-down />
+                      </el-icon>
+                    </span>
+                    <template #dropdown>
+                      <el-dropdown-menu>
+                        <el-dropdown-item v-for="(item, index) in voiceList" :key="index"
+                          @click="handleVoiceClick(item)">{{ item.name }}</el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+                  <!-- <div class=arco-form-item-control-children>
                     <div
                       class="flex flex-row items-center gap-2 justify-between p-[12px] rounded-md bg-[#F6F8FA] w-[380px] h-[52px]">
                       <div class="flex flex-row items-center gap-2">
@@ -42,14 +56,15 @@
                         </svg>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
           </div>
           <div class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-layout-horizontal">
             <div class="arco-col arco-form-label-item arco-form-label-item-left" style="flex:0 0 64px"><label
-                for=imgScale_input> 视频比例</label></div>
+                for=imgScale_input>
+                视频比例</label></div>
             <div class="arco-col arco-form-item-wrapper" style="flex:1 1 0%">
               <div class=arco-form-item-control-wrapper>
                 <div class=arco-form-item-control id=imgScale>
@@ -73,7 +88,8 @@
           <div v-if="activeIndex === -1"
             class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-layout-horizontal">
             <div class="arco-col arco-form-label-item arco-form-label-item-left" style="flex:0 0 64px"><label
-                for=imgScale_input> 视频尺寸</label></div>
+                for=imgScale_input>
+                视频尺寸</label></div>
             <div class="arco-col arco-form-item-wrapper" style="flex:1 1 0%">
               <el-input-number v-model="withNum" class="mx-4" :min="1" style="width: 120px;" controls-position="right">
                 <template #prefix>
@@ -91,7 +107,7 @@
             </div>
 
           </div>
-          <div
+          <div @click="handleGenerate"
             class="submit-button-container-_6fea6 submit-button-container-disabled-b37874 seaweed-submit-button-container-df22a0">
             <div style="display:flex;align-items:center;gap:8px"><svg xmlns=http://www.w3.org/2000/svg width=17
                 height=16 fill=none viewBox="0 0 17 16">
@@ -110,12 +126,21 @@
       </div>
       <div class="video-container" v-else>
         <video :src="videoResult" controls></video>
-      </div> 
+      </div>
     </div>
+  </div>
+  <div class="audio" style="position: absolute;right: -3000px;top: -2000px;width: 0;height: 0;overflow: hidden;">
+    <audio ref="audioRef"></audio>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
+import api from '@/api'
+import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/store'
+
+const audioRef: any = ref(null);
+const userStore = useUserStore()
 const keywords = ref('')
 const activeIndex = ref(0)
 const radioList = ref([
@@ -141,10 +166,18 @@ const radioList = ref([
     value: '21:9'
   }
 ])
+const submitLoading = ref(false)
+const voiceList: any = ref([])
+const voiceDetail: any = ref(null)
 
 const withNum = ref(0)
 const heightNum = ref(0)
 const videoResult = ref('https://media.w3.org/2010/05/sintel/trailer.mp4')
+let setTimeoutValue: any = null
+onMounted(() => {
+  getVoiceList()
+})
+
 const handleRate = (index: number) => {
   activeIndex.value = index
   const item = radioList.value[index]
@@ -154,10 +187,91 @@ const handleCustom = () => {
   activeIndex.value = -1
 }
 
+const handleVoiceClick = (item: any) => {
+  voiceDetail.value = item
+  if(!audioRef.value.paused){
+    clearTimeout(setTimeoutValue)
+    audioRef.value.pause()
+  }
+  if (audioRef.value) {
+    audioRef.value.src = item.url
+    audioRef.value.play()
+    setTimeoutValue = setTimeout(() => {
+      audioRef.value.pause()
+    }, 6000)
+  }
+}
+
+async function getVoiceList() {
+  try {
+    const userInfo = userStore.getUserInfo
+    const res = await api.home.getVoiceList({
+      "user_id": userInfo.user_id,
+    })
+  } catch (err) {
+    const res = [{
+      "id": "23456q4t",
+      "name": "美音男声",
+      "url": "http://music.163.com/song/media/outer/url?id=447925558.mp3"
+    },
+    {
+      "id": "23456q4t34r",
+      "name": "美音男声2",
+      "url": "https://www.cambridgeenglish.org/images/153149-movers-sample-listening-test-vol2.mp3"
+    },]
+    voiceList.value = res
+    voiceDetail.value = res[0]
+
+  }
+}
+
+const handleGenerate = async () => {
+  if (submitLoading.value) return
+  if (activeIndex.value === -1) {
+    if (withNum.value <= 0 || heightNum.value <= 0) {
+      ElMessage({
+        message: '请输入正确的宽高',
+        type: 'warning',
+      })
+      return
+    }
+  } else {
+    // const item = radioList.value[activeIndex.value]
+
+  }
+
+  if (!keywords.value.trim()) {
+    ElMessage({
+      message: '请输入关键词',
+      type: 'warning',
+    })
+    return
+  }
+  submitLoading.value = true
+  try {
+    const userInfo = userStore.getUserInfo
+    const res = await api.home.generatingVideo({
+      "user_id": userInfo.user_id,
+      "story": keywords.value,
+      "voice_id": voiceDetail.value.id,
+      "width": withNum.value,
+      "height": heightNum.value
+    })
+    submitLoading.value = false
+  } catch (err) {
+    submitLoading.value = false
+    const res = {
+      "user_name": "6650#12346ewwe",
+      "user_id": "12345uyts",
+    }
+
+  }
+}
+
 </script>
 <style lang="scss">
 .creation {
-      padding: 30px 30px 30px 40px;
+  padding: 30px 30px 30px 40px;
 
   width: 100%;
   height: 100%;
@@ -179,8 +293,10 @@ const handleCustom = () => {
 
   &-right {
     flex: auto;
-    .video-container, .video-container video {
-       width: 100%;
+
+    .video-container,
+    .video-container video {
+      width: 100%;
       height: 100%;
       border-radius: 20px;
       object-fit: cover;

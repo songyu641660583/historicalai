@@ -1,11 +1,11 @@
 import request from './request'
-import { ConfigType, RequesteType } from './type'
+type RequesteType = 'post' | 'get' | 'delete' | 'put'
 
 const api = (
   url: string,
   params: object,
   method: RequesteType = 'post',
-  extralConfig?: ConfigType
+  extralConfig?: any
 ) => {
   return new Promise((resolve, reject) => {
     request[method]?.(url, params, Object.assign({}, extralConfig))
@@ -18,19 +18,19 @@ const api = (
   })
 }
 
-export const post = (url: string, params: object, extralConfig?: ConfigType) => {
+export const post = (url: string, params: object, extralConfig?: any) => {
   return api(url, params, 'post', extralConfig)
 }
 
-export const get = (url: string, params?: object, extralConfig?: ConfigType) => {
+export const get = (url: string, params?: object, extralConfig?: any) => {
   return api(url, { params, extralConfig }, 'get')
 }
 
-export const del = (url: string, params?: object, extralConfig?: ConfigType) => {
+export const del = (url: string, params?: object, extralConfig?: any) => {
   return api(url, { data: params, extralConfig }, 'delete')
 }
 
-export const put = (url: string, params: object, extralConfig?: ConfigType) => {
+export const put = (url: string, params: object, extralConfig?: any) => {
   return api(url, params, 'put', extralConfig)
 }
 

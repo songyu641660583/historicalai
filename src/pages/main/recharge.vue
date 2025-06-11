@@ -11,7 +11,7 @@
         <div class="SJ7W8">
           <div class="CMIKu">
             <span class="mIO8Y">¥</span>
-            <span class="Zixiu">0.00</span>
+            <span class="Zixiu">{{ balanceValue }}</span>
           </div>
           <span class="GITIx">
             （现金余额：
@@ -63,10 +63,34 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useUserStore } from '@/store'
+
+const userStore = useUserStore()
 const moneyValue = ref(0)
 const agreeValue = ref(false)
 const submitLoading = ref(false)
+const balanceValue = ref(0)
+
+
+onMounted(() => {
+  getBalance()
+})
+
+async function getBalance() {
+  try {
+    const userInfo = userStore.getUserInfo
+    const res = await api.home.getBalance({
+      "user_id": userInfo.user_id,
+    })
+  } catch (err) {
+    const res = {
+    "money":19.2,
+  }
+    balanceValue.value = res.money
+
+  }
+}
 function getList() {}
 
 function handleSubmit() {
@@ -81,7 +105,7 @@ function handleRecord() {
 </script>
 <style>
 .el-input-number .el-input__inner {
-  text-align: left;
+  text-align: left !important;
 }
 </style>
 

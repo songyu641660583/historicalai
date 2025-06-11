@@ -1,17 +1,11 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios from 'axios'
 import qs from 'qs'
 import { ElMessage } from 'element-plus'
-import { ConfigType, ContentType, RequesteType } from './type'
+import { ContentType } from './type'
 // import { getToken } from '@/utils/auth'
 // import { useUserStore } from '@/store'
 import router from '../router'
 
-interface AxiosRequestConfigExtend extends AxiosRequestConfig {
-  extralConfig?: ConfigType
-  isStringify?: boolean
-  isExtral?: boolean
-  skipCancel?: boolean
-}
 
 const request = axios.create({
   baseURL: '',
@@ -44,7 +38,7 @@ const cleanMap = <T>(key?: T) => {
 }
 
 request.interceptors.request.use(
-  (config: AxiosRequestConfigExtend) => {
+  (config: any) => {
     const extralConfig = config.extralConfig
     const key: string = (config.url || '') + (config.method || '')
     if(!config.skipCancel && !extralConfig?.skipCancel){
@@ -64,7 +58,7 @@ request.interceptors.request.use(
     if (extralConfig?.isExtral || config?.isExtral) {
       const extralHeaders = extralConfig?.headers
       if (extralHeaders) {
-        Object.assign(config.headers![config.method as RequesteType], extralHeaders)
+        Object.assign(config.headers![config.method as any], extralHeaders)
       }
     }
 
@@ -84,15 +78,15 @@ request.interceptors.request.use(
 )
 
 request.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response: any) => {
     const config = response?.config
     config && cleanMap(config?.url || '' + config?.method)
     const { data, message, code } = response.data
-    if (code === undefined) {
-      return response.data
-    }
+    // if (code === undefined) {
+    //   return response.data
+    // }
 
-    if (code === 10000) {
+    if (code === 0) {
       return data
     }
     errorHandle(code, message || '请求异常')
@@ -120,7 +114,7 @@ const errorTips = (errMsg: string = '网络错误，请重试') => {
     message: `<div style="max-width:800px;word-break: break-all;">${errMsg}</div>`,
     type: 'error',
     duration: 3 * 1000,
-    center: true
+    // center: true
   })
 }
 

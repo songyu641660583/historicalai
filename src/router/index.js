@@ -39,13 +39,15 @@ export const routes = [
         path: 'creation',
         text: '漫绘创作',
         name: 'Creationiew',
-        component: Creationiew
+        component: Creationiew,
+        iconName: 'video-icon'
       },
         {
         path: 'recharge',
         text: '充值',
         name: 'RechargeView',
-        component: RechargeView
+        component: RechargeView,
+        iconName: 'pay-icon'
       },
        {
         path: 'confirmPay',
@@ -57,7 +59,8 @@ export const routes = [
         path: 'billRevord',
         text: '账单',
         name: 'BillRevordView',
-        component: BillRevordView
+        component: BillRevordView,
+        iconName: 'bill-icon'
       },
     ]
   }

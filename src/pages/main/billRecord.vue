@@ -46,50 +46,65 @@
         :pageNumber="pageMsg.current"
         @pageChange="pageChange"
       >
-        <el-table-column prop="date" label="流水编号" width="180" />
-        <el-table-column prop="name" label="交易时间" width="180" />
-        <el-table-column prop="type" label="交易类型" width="180" />
-        <el-table-column prop="address" label="交易渠道" width="180" />
-        <el-table-column prop="address" label="渠道流水号" width="180" />
+        <el-table-column prop="order_id" label="流水编号" />
+        <el-table-column prop="date" label="交易时间" />
+        <el-table-column prop="type" label="交易类型" >
+          <template  #default="scope">
+            <span>{{  scope.row.type === 0 ? '消费' : '充值'}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="money" label="交易金额" />
+        <!-- <el-table-column prop="address" label="渠道流水号" width="180" />
         <el-table-column prop="address" label="业务交易单号" width="180" />
         <el-table-column prop="address" label="变动余额" width="180" />
         <el-table-column prop="address" label="现金余额" width="180" />
         <el-table-column prop="address" label="冻结余额" width="180" />
-        <el-table-column prop="address" label="备注" width="180" />
+        <el-table-column prop="address" label="备注" width="180" /> -->
       </dd-table>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import api from '@/api'
+import { useUserStore } from '@/store'
+
+const userStore = useUserStore()
+
 let pageMsg = {
   size: 10,
   current: 1
 }
 const total = ref(0)
-const tableData = ref([
-  // {
-  //   date: '2016-05-03',
-  //   name: 'Tom',
-  //   address: 'No. 189, Grove St, Los Angeles'
-  // },
-  // {
-  //   date: '2016-05-02',
-  //   name: 'Tom',
-  //   address: 'No. 189, Grove St, Los Angeles'
-  // },
-  // {
-  //   date: '2016-05-04',
-  //   name: 'Tom',
-  //   address: 'No. 189, Grove St, Los Angeles'
-  // },
-  // {
-  //   date: '2016-05-01',
-  //   name: 'Tom',
-  //   address: 'No. 189, Grove St, Los Angeles'
-  // }
-])
-function getList() {}
+const tableData: any = ref([])
+onMounted(() => {
+  getList()
+})
+async function getList() {
+  try {
+    const userInfo = userStore.getUserInfo
+    const res = await api.home.getBill({
+      "user_id": userInfo.user_id,
+    })
+  } catch (err) {
+    const res = [
+   {
+        "order_id":"12345678765432q",
+        "date":"2025-05-20 12:01:12",
+        "money":3.5,
+        "type":0 
+      },
+      {
+        "order_id":"12345678765432q",
+        "date":"2025-05-20 12:06:12",
+        "money":4.1,
+        "type":0 
+      },
+]
+    tableData.value = res
+
+  }
+}
 const pageChange = (value: number) => {
   pageMsg.current = value
   getList()

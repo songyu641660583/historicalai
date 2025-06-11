@@ -8,7 +8,6 @@
           <span :style="{ display: isCollapse ? 'none' : 'block' }">历史漫绘</span>
         </div>
         <div class="left-content">
-          <!-- 这里写el-menu -->
           <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus" :default-active="activeMenu"
             class="el-menu-vertical" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router
             @select="handleMenuSelect">
@@ -16,15 +15,12 @@
             <div v-for="(item, index) in routes" :key="item.path">
               <el-sub-menu :index="index" v-if="!item.hidden">
                 <template #title>
-                  <el-icon>
-                    <location />
-                  </el-icon>
+                  <img class="menu-icon" style="width: 24px;height: 24px;" :src="getAssetsFile('suqare-icon.png')" alt="">
+
                   <span>{{ item.text }}</span>
                 </template>
                 <el-menu-item :index="child.path" v-for="child in item.children" :key="child.path"> 
-                  <el-icon>
-                    <House />
-                  </el-icon>
+                  <img class="menu-icon" :src="getAssetsFile(child.iconName + '.png')" alt="">
                   {{ child.text }}</el-menu-item>
               </el-sub-menu>
             </div>
@@ -49,6 +45,8 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted, watch } from 'vue'
 import { routes } from '../../router'
 import headerComponent from '../../components/header.vue'
+import { getAssetsFile } from '@/utils'
+
 const route = useRoute()
 const activeMenu = ref('/')
 const openedMenus = ref([3])
@@ -86,6 +84,11 @@ const handleSlider = () => {
       flex-direction: column;
       padding: 30px 10px 0;
       width: 200px;
+      .menu-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
 
       &.slider {
         width: 100px;
@@ -152,7 +155,7 @@ const handleSlider = () => {
 }
 
 .el-menu-item {
-  padding-left: 28px !important;
+  padding-left: 37px !important;
   height: 35px !important;
   border-radius: 8px;
 

@@ -39,19 +39,18 @@
                       <div class=arco-tabs-content-inner style="margin-left:-100%">
                         <div class="arco-tabs-content-item" role=tabpanel tabindex=-1 id=arco-tabs-6-panel-0
                           aria-labelledby=arco-tabs-6-tab-0 aria-hidden=true>
-                        
+
                         </div>
                         <div class="arco-tabs-content-item arco-tabs-content-item-active" role=tabpanel tabindex=0
                           id=arco-tabs-6-panel-1 aria-labelledby=arco-tabs-6-tab-1>
                           <div class=arco-tabs-pane>
                             <div>
-                              <div 
-                                class="arco-form arco-form-horizontal arco-form-size-default telIdpForm-U0cPiZ">
+                              <div class="arco-form arco-form-horizontal arco-form-size-default telIdpForm-U0cPiZ">
                                 <div
                                   class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-item-error  arco-form-layout-horizontal">
                                   <div class="arco-col arco-col-24 arco-form-item-wrapper">
                                     <div class=arco-form-item-control-wrapper>
-                                      <div class=arco-form-item-control >
+                                      <div class=arco-form-item-control>
                                         <div class=arco-form-item-control-children>
                                           <div
                                             class="arco-input-group-wrapper arco-input-group-wrapper-default arco-input-custom-height input-lInQvs"
@@ -101,8 +100,8 @@
                                               <span
                                                 class="arco-input-inner-wrapper  arco-input-inner-wrapper-focus arco-input-inner-wrapper-default arco-input-clear-wrapper"
                                                 :class="{ 'arco-input-inner-wrapper-error': !!phoneErrorValue }">
-                                                <input @blur="handlePhoneBlur" v-model="phoneValue"
-                                                  id=Tel_input placeholder=请输入手机号
+                                                <input @blur="handlePhoneBlur" v-model="phoneValue" id=Tel_input
+                                                  placeholder=请输入手机号
                                                   class="arco-input arco-input-size-default arco-input-error" value
                                                   aria-invalid=true></span></span></div>
                                         </div>
@@ -128,6 +127,9 @@
                                           </div>
                                         </div>
                                       </div>
+                                      <div class="arco-form-message formblink-appear-done formblink-enter-done">
+                                        <div role=alert v-if="codeErrorValue">{{ codeErrorValue }}</div>
+                                      </div>
                                     </div>
                                   </div>
                                   <div style="position:relative">
@@ -144,10 +146,12 @@
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     href=https://www.volcengine.cn/docs/6256/64902 target=_blank
                                     rel="noopener noreferrer">隐私政策</a></div>
-                                <div style="position:relative">
-                                  <button @click="handleLogin"
+                                <div style="position:relative;margin-top: 10px;">
+                                  <el-button @click="handleLogin" :loading="submitLoading" class="submitBtn"
+                                    type="primary">登录</el-button>
+                                  <!-- <button @click="handleLogin"
                                     class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>登录</span>
-                                  </button>
+                                  </button> -->
                                 </div>
                                 <div class="register">
                                   没有账号? <span @click="handleRegister">现在就注册</span>
@@ -173,16 +177,29 @@
 
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useUserStore } from '@/store'
+import api from '@/api'
 import { useRouter } from 'vue-router'
 import footerComponent from '../components/footer.vue'
 
+
+
+const userStore = useUserStore()
 const router = useRouter()
 const phoneErrorValue = ref('')
 const phoneValue = ref('')
 const codeValue = ref('')
 const codeDisabled = ref(true)
 const countDownText = ref(0)
+const submitLoading = ref(false)
+const codeErrorValue = ref('')
+const userInfo = userStore.getUserInfo
+onMounted(() => {
+  if(userInfo.user_id) {
+    router.push('/main/creation')
+  }
+})
 const handlePhoneBlur = () => {
   if (!phoneValue.value) {
     phoneErrorValue.value = '请输入手机号'
@@ -212,7 +229,7 @@ function countDown() {
     countDown()
   }, 1000)
 }
-const handleSendCode = () => {
+const handleSendCode = async () => {
   const phoneRegex = /^1[3-9]\d{9}$/;
   if (!phoneRegex.test(phoneValue.value)) {
     phoneErrorValue.value = '输入值不是有效电话号码';
@@ -220,22 +237,50 @@ const handleSendCode = () => {
   }
 
   if (codeValue.value.length === 6) {
-    console.log('发送验证码')
+    codeErrorValue.value = ''
     countDownText.value = 60
     countDown()
+    try {
+      const res = await api.home.getVerificationCode({
+        mobile: phoneValue.value
+      })
+    } catch (err) {
+      console.log('sendcode--', err)
+    }
+  } else {
+    codeErrorValue.value = '请输入6位验证码'
   }
 }
 
 
-const handleLogin = () => {
+const handleLogin = async () => {
   handlePhoneBlur()
   if (codeValue.value.length === 6) {
-    console.log('登录')
+    submitLoading.value = true
+    codeErrorValue.value = ''
+    try {
+      const res = await api.home.login({
+        mobile: phoneValue.value,
+        code: codeValue.value
+      })
+      submitLoading.value = false
+    } catch (err) {
+      console.log('err--', err)
+      const res = {
+        "user_name": "6650#12346ewwe",
+        "user_id": "12345uyts",
+      }
+      userStore.setUserInfo(res || null)
+      submitLoading.value = false
+      router.push('/main/creation')
+    }
+  } else {
+    codeErrorValue.value = '请输入6位验证码'
   }
 }
 
-const handleRegister = () => { 
-   router.push('/register')
+const handleRegister = () => {
+  router.push('/register')
 }
 
 
@@ -244,16 +289,19 @@ const handleRegister = () => {
 .register {
   margin-top: 200px;
   text-align: center;
- 
+
 }
+
 .register span {
-    cursor: pointer;
-    color: #3370ff;
-  }
-  .submitBtn {
+  cursor: pointer;
+  color: #3370ff;
+}
+
+.submitBtn {
   width: 100%;
   height: 40px !important;
 }
+
 body {
   --color-white: #fff;
   --color-black: #000;
@@ -578,8 +626,6 @@ a:hover {
   width: 100%;
   z-index: 1
 }
-
-
 </style>
 
 <style>
@@ -709,7 +755,6 @@ a:hover {
 .arco-btn.arco-btn-secondary.arco-btn-disabled {
   box-shadow: 0 1px 1px rgba(0, 0, 0, .08)
 }
-
 </style>
 <style>
 .arco-input {
@@ -964,8 +1009,6 @@ a:hover {
   border-radius: 4px 0 0 4px;
   border-right: none
 }
-
-
 </style>
 <style>
 .arco-select .arco-select-view {
@@ -1139,7 +1182,6 @@ a:hover {
   flex-direction: column;
   width: 100%
 }
-
 </style>
 
 <style>
@@ -1291,7 +1333,6 @@ a:hover {
   border-radius: 4px 4px 0 0;
   bottom: 1px
 }
-
 </style>
 
 <style>
@@ -1303,7 +1344,7 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  background:url('../assets/login-bg.jpeg') no-repeat;
+  background: url('../assets/login-bg.jpeg') no-repeat;
 }
 
 .layoutNew-s99CBg .header-V8bS8f {
@@ -1379,7 +1420,7 @@ a:hover {
     display: none
   }
 
-  
+
 }
 
 @media screen and (max-width:768px) {
@@ -1486,7 +1527,6 @@ a:hover {
   min-width: 81px;
   width: 81px
 }
-
 </style>
 
 <style>
@@ -1620,9 +1660,11 @@ html {
   line-height: 20px;
   margin-bottom: 4px
 }
-.telIdpForm-U0cPiZ .protocol-eGDdjF a{
- color: rgb(0, 85, 255);
+
+.telIdpForm-U0cPiZ .protocol-eGDdjF a {
+  color: rgb(0, 85, 255);
 }
+
 .telIdpForm-U0cPiZ .arco-form-item .arco-input-group-addbefore .arco-select .arco-select-view-value {
   margin-top: 4px
 }
@@ -1641,5 +1683,4 @@ html {
   letter-spacing: .003em;
   line-height: 32px
 }
-
 </style>

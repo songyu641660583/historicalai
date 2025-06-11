@@ -9,7 +9,7 @@ const router = useRouter()
 const handleLogin = () => {
  router.push('/login')
 }
-const handleFirstChange = (index) => {
+const handleFirstChange = (index: number) => {
   firstIndex.value = index
 }
 setInterval(() => {
