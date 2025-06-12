@@ -4,24 +4,28 @@
     <div class="main-container">
       <div class="main-container-left" :class="{ slider: isCollapse }">
         <div class="left-logo">
-          <img src="@/assets/user-avatar-default.png" alt="">
+          <img src="@/assets/logo.png" alt="">
           <span :style="{ display: isCollapse ? 'none' : 'block' }">历史漫绘</span>
         </div>
         <div class="left-content">
-          <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus" :default-active="activeMenu"
-            class="el-menu-vertical" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router
-            @select="handleMenuSelect">
+          <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus"
+            :default-active="activeMenu" background-color="red" text-color="#fff"
+            active-text-color="red" router @select="handleMenuSelect">
 
             <div v-for="(item, index) in routes" :key="item.path">
               <el-sub-menu :index="index" v-if="!item.hidden">
                 <template #title>
-                  <img class="menu-icon" style="width: 24px;height: 24px;" :src="getAssetsFile('suqare-icon.png')" alt="">
+                  <img class="menu-icon" style="width: 24px;height: 24px;" :src="getAssetsFile('suqare-icon.png')"
+                    alt="">
 
                   <span>{{ item.text }}</span>
                 </template>
-                <el-menu-item :index="child.path" v-for="child in item.children" :key="child.path"> 
-                  <img class="menu-icon" :src="getAssetsFile(child.iconName + '.png')" alt="">
-                  {{ child.text }}</el-menu-item>
+                <template v-for="child in item.children">
+                  <el-menu-item v-if="!child.hidden" :index="child.path" :key="child.path">
+                    <img class="menu-icon" :src="getAssetsFile(child.iconName + '.png')" alt="">
+                    {{ child.text }}</el-menu-item>
+                </template>
+
               </el-sub-menu>
             </div>
 
@@ -48,13 +52,13 @@ import headerComponent from '../../components/header.vue'
 import { getAssetsFile } from '@/utils'
 
 const route = useRoute()
-const activeMenu = ref('/')
-const openedMenus = ref([3])
+const activeMenu = ref('/main/creation')
+const openedMenus = ref(['3'])
 const isCollapse = ref(false)
 
 // 监听路由变化，更新激活的菜单项
 watch(() => route.path, (newPath) => {
-  console.log('newPath', newPath)
+  console.log('-------newPath', newPath)
   activeMenu.value = newPath
 }, { immediate: true })
 
@@ -79,11 +83,12 @@ const handleSlider = () => {
     display: flex;
 
     &-left {
-        background-color: #f6f8fa;
+      background-color: #f6f8fa;
       display: flex;
       flex-direction: column;
       padding: 30px 10px 0;
       width: 200px;
+
       .menu-icon {
         width: 20px;
         height: 20px;
@@ -155,12 +160,17 @@ const handleSlider = () => {
 }
 
 .el-menu-item {
+  margin-top: 5px;
   padding-left: 37px !important;
   height: 35px !important;
   border-radius: 8px;
+  &.is-active {
+    background:#dce5fa !important;
+    color: #1664ff !important;
+  }
 
   &:hover {
-    background: #c3d3f3 !important;
+    background: #dce5fa !important;
     color: #1664ff !important;
   }
 }

@@ -16,9 +16,9 @@
           <span class="GITIx">
             （现金余额：
             <span class="MLR7g">¥ 0.00</span>
-            <span class="KhOGX">—</span>冻结金额：
+            <span class="KhOGX"> — </span>冻结金额：
             <span class="MLR7g">¥ 0.00</span>）
-            <span class="KhOGX">—</span>欠费金额：
+            <span class="KhOGX"> — </span>欠费金额：
             <span class="MLR7g">¥ 0.00</span>
           </span>
         </div>
@@ -64,13 +64,17 @@
 </template>
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import api from '@/api'
 import { useUserStore } from '@/store'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
+const router = useRouter()
 const moneyValue = ref(0)
 const agreeValue = ref(false)
 const submitLoading = ref(false)
 const balanceValue = ref(0)
+let orderNumber = ''
 
 
 onMounted(() => {
@@ -91,16 +95,23 @@ async function getBalance() {
 
   }
 }
-function getList() {}
 
 function handleSubmit() {
   submitLoading.value = true
   setTimeout(() => {
     submitLoading.value = false
+    localStorage.setItem('rechargeMoney', moneyValue.value.toString())
+    router.push({
+      path: '/main/confirmPay',
+      query: {
+        orderNumber
+    }
+    })
+
   }, 2000)
 }
 function handleRecord() {
-  
+   router.push('/main/billRevord')
 }
 </script>
 <style>

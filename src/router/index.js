@@ -53,7 +53,8 @@ export const routes = [
         path: 'confirmPay',
         text: '确认支付',
         name: 'ConfirmPay',
-        component: ConfirmPayView
+        component: ConfirmPayView,
+        hidden: true
       },
        {
         path: 'billRevord',

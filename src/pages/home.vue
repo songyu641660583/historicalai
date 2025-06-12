@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import headerComponent from '../components/header.vue'
 import { ref } from 'vue'
 
 const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
 const firstIndex = ref(0)
 const secondVideoSrc = ref('https://vjs.zencdn.net/v/oceans.mp4')
-const router = useRouter()
-const handleLogin = () => {
- router.push('/login')
-}
+
 const handleFirstChange = (index: number) => {
   firstIndex.value = index
 }
@@ -24,32 +21,8 @@ setInterval(() => {
 
 <template>
   <div id=root>
-    <div class="navigation_43a49 bg-effects_43a49">
-      <div class=home-logo_43a49><img class=home-logo-img_43a49 width=84 height=22.13
-          src="../assets/9dbd484d8351690d1bf905bce6155cf3.png" alt=即梦AI></div>
-      <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=视频生成 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>视频生成</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=智能画布 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>智能画布</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=探索 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/explore>探索</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=未来影像计划 target=_blank
-            href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div> -->
-      <div class=actions-wrapper_43a49><span><button @click="handleLogin" class="jimeng-button jimeng-button-text undefined"
-            aria-label=登录-即梦AI>登录/注册</button></span><span></span></div>
-      <!-- <div class="menu-wrapper_43a49 sf-hidden"><svg xmlns=http://www.w3.org/2000/svg width=24 height=24 fill=none
-          viewBox="0 0 24 24">
-          <path fill=#E6E6E6
-            d="M21 6.5a.5.5 0 0 1-.5.5h-17a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h17a.5.5 0 0 1 .5.5zM21 12.5a.5.5 0 0 1-.5.5h-17a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h17a.5.5 0 0 1 .5.5zM21 18.5a.5.5 0 0 1-.5.5h-17a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h17a.5.5 0 0 1 .5.5z">
-          </path>
-        </svg></div> -->
-    </div>
+    <headerComponent isFixed/>
     <section class=box-weRFZa>
-      <!-- <main class=main-_bMAqc>
-        
-      </main> -->
       <div class=bg-box-iGxURO>
         <video :src="firstData[firstIndex]" class=video-_dSgML
           style="display:block" preload=auto  disablepictureinpicture disableremoteplayback
@@ -70,7 +43,7 @@ setInterval(() => {
                   clip-rule=evenodd></path>
               </svg><span>即梦成片</span></button></a>
         </div>
-        <div class=tip-q4L709>此视频内容由 即梦AI 生成</div>
+        <div class=tip-q4L709>此视频内容由 历史漫绘 生成</div>
       </div> -->
 
       
@@ -94,7 +67,7 @@ setInterval(() => {
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>流畅运镜，生动自然</h3>
-                <div class=desc-egHxcp>视频动效效果连贯性强、流畅自然，可轻松操控运镜，调节速度变化，即梦AI为视频智能创作增添无限可能</div>
+                <div class=desc-egHxcp>视频动效效果连贯性强、流畅自然，可轻松操控运镜，调节速度变化，历史漫绘为视频智能创作增添无限可能</div>
               </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>01</div>
@@ -133,7 +106,7 @@ setInterval(() => {
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>中文创作，得心应手</h3>
-                <div class=desc-egHxcp>即梦AI支持根据中文提示词进行创作，拥有更好的语义理解能力，准确把握你的需求，将抽象的思路转化为视觉作品</div>
+                <div class=desc-egHxcp>历史漫绘支持根据中文提示词进行创作，拥有更好的语义理解能力，准确把握你的需求，将抽象的思路转化为视觉作品</div>
               </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>03</div>
@@ -160,7 +133,7 @@ setInterval(() => {
               </svg><span>支持文/图生图片</span></section>
             <section class=header-right-Qj0MQu>
               <h2 class=header-right-title-wwVbiL>AI绘画 梦境成真</h2>
-              <div class=header-right-text-_sJ2oa>即梦AI绘画，仅需简单提示词，即可生成精彩的图片。
+              <div class=header-right-text-_sJ2oa>历史漫绘绘画，仅需简单提示词，即可生成精彩的图片。
                 你还可以对现有图片进行创意改造，自定义保留人物或主体的形象特征，实现背景替换、风格联想、画风保持、姿势保持等 操作，满足各种场景的创作需求</div>
             </section>
           </div>
@@ -254,7 +227,7 @@ setInterval(() => {
       <div class=header-VkY2QN>
         <h2 class=title-VW8Iaq>智能画布 多图AI融合</h2>
         <div class=desc-y0bP_u>
-          <div>即梦AI一站式智能画布，集成AI拼图生成能力，并提供局部重绘、一键扩图、图像消除和抠图等多功能强大操作。你可以在同一画布上实现多元素的无缝拼接，确保AI绘画的创作风格统一和谐。</div>
+          <div>历史漫绘一站式智能画布，集成AI拼图生成能力，并提供局部重绘、一键扩图、图像消除和抠图等多功能强大操作。你可以在同一画布上实现多元素的无缝拼接，确保AI绘画的创作风格统一和谐。</div>
         </div>
         <div class=cta-btn-wrapper-C8T0Ze><a class=btn-EoHtfv target=_self
             href=https://jimeng.jianying.com/ai-tool/login><svg xmlns=http://www.w3.org/2000/svg width=18 height=18
@@ -301,7 +274,7 @@ setInterval(() => {
     <section class=box-u5bhZT>
       <div class=main-whiUyf>
         <h2 class=title-lyHCac>创意涌动 灵感绽放</h2>
-        <div class=desc-VYvN1G>在即梦AI的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div>
+        <div class=desc-VYvN1G>在历史漫绘的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div>
         <a class=btn-EoHtfv>
           <span>立即创作</span></a>
       </div>
@@ -569,7 +542,7 @@ setInterval(() => {
           </a></div>
       </div>
     </section>
-    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/6cce6b304b6e64adaa18722e1983ed26.png alt=即梦AI
+    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/6cce6b304b6e64adaa18722e1983ed26.png alt=历史漫绘
         loading=lazy>
          <a class=btn-EoHtfv>
           <span>开启智能创作</span></a>
@@ -585,19 +558,19 @@ setInterval(() => {
         <div class=anchor-wrapper_b27af>
           <div class=inner-wrapper_b27af><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-营业执照 >营业执照</a><span
+              aria-label=历史漫绘-营业执照 >营业执照</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-用户协议>用户协议</a><span
+              aria-label=历史漫绘-用户协议>用户协议</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=即梦AI-隐私政策 >隐私政策</a>
+              aria-label=历史漫绘-隐私政策 >隐私政策</a>
           </div>
           <div class="inner-wrapper_b27af company-wrapper_b27af">
             <div class=icp-wrapper_b27af><span class="divider_b27af small_b27af"></span>
               <a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-                aria-label="即梦AI-粤ICP备13065114号" target="_blank" rel="noopener;noreferrer"
+                aria-label="历史漫绘-粤ICP备13065114号" target="_blank" rel="noopener;noreferrer"
                  >粤ICP备13065114号</a>
                 <span class="divider_b27af small_b27af"></span>
                 <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
@@ -606,7 +579,7 @@ setInterval(() => {
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
-                aria-label=即梦AI-粤公网安备44030002004191号 target=_blank rel=noopener;noreferrer
+                aria-label=历史漫绘-粤公网安备44030002004191号 target=_blank rel=noopener;noreferrer
                 ><img class=link-icon_b27af
                   src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>粤公网安备44030002004191号</a>
             </div>
@@ -618,19 +591,19 @@ setInterval(() => {
             class="link_b27af small_b27af text_b27af">深圳市南山区招商街道水湾社区太子路51号太子广场1104</span></div>
       </div>
       <div class=social-wrapper_b27af><a class="jimeng-link jimeng-link-theme-black social_b27af"
-          aria-label=即梦AI-undefined target=_blank
+          aria-label=历史漫绘-undefined target=_blank
          ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m5.57-13.22v.471l-.001.001V8.9a5.26 5.26 0 0 1-3.006-.919 468 468 0 0 0 .015 4.062c.002.13.004.26-.006.388a4.1 4.1 0 0 1-.584 1.818 4.1 4.1 0 0 1-1.126 1.237 3.74 3.74 0 0 1-2.072.684 4.7 4.7 0 0 1-1.12-.087 4 4 0 0 1-1.448-.61l-.03-.026a3.89 3.89 0 0 1-1.61-2.393 3.8 3.8 0 0 1 .504-2.819c.334-.53.79-.975 1.329-1.296a4.08 4.08 0 0 1 2.645-.54q0 .082-.002.166c-.001.11-.003.22.002.331.008.15.007.3.006.453l-.001.164v1.06a1.6 1.6 0 0 0-.862-.026 2.24 2.24 0 0 0-.926.432 1.55 1.55 0 0 0-.396.48 1.77 1.77 0 0 0-.188 1.015c.042.341.188.66.418.916q.241.265.553.442a1.84 1.84 0 0 0 2.443-.699c.15-.26.23-.552.235-.85V6.906q.008-1.19.005-2.38v-.7h2.185q-.002.274.049.54h.012q.096.452.316.856c.22.428.555.787.966 1.038a.3.3 0 0 1 .065.059c.49.3 1.054.46 1.63.462"
               clip-rule=evenodd></path>
-          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=即梦AI-B站空间 target=_blank
+          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=历史漫绘-B站空间 target=_blank
          ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m-2.45-4.844h4.92l-.028.007v.171c0 .178.064.343.193.471a.65.65 0 0 0 .47.193.65.65 0 0 0 .472-.193.65.65 0 0 0 .193-.471v-.164h.321c1.193 0 2.157-.886 2.157-1.978v-5.22a1.83 1.83 0 0 0-.55-1.335c-.4-.414-.986-.65-1.593-.65h-2.377l1.27-1.135q.354-.312.044-.657c-.207-.236-.429-.25-.657-.043l-2.042 1.821h-.686l-2.042-1.82c-.236-.2-.45-.186-.657.042-.2.236-.186.45.043.657L8.258 5.98H5.894c-1.192 0-2.156.886-2.156 1.978v5.22c0 1.092.964 1.977 2.156 1.977h.329v.165a.63.63 0 0 0 .192.47.68.68 0 0 0 .472.194.65.65 0 0 0 .47-.193.65.65 0 0 0 .194-.471zm3.435-2.378a.44.44 0 0 1-.278.093.45.45 0 0 1-.357-.179l-.372-.457-.378.45a.47.47 0 0 1-.65.057l-.514-.428a.28.28 0 0 1-.1-.257.26.26 0 0 1 .172-.207.27.27 0 0 1 .27.05l.458.378.393-.464a.45.45 0 0 1 .357-.164c.142 0 .27.064.357.17l.385.472.529-.393a.26.26 0 0 1 .285-.05c.1.036.164.122.172.229 0 .107-.043.207-.136.257zM8.722 9.322a.416.416 0 0 1-.322.5s-2.092.47-2.085.47a.413.413 0 0 1-.5-.32.413.413 0 0 1 .322-.5l2.078-.479a.45.45 0 0 1 .321.057q.152.1.186.272m4.977.978-2.078-.478a.466.466 0 0 1-.343-.507.44.44 0 0 1 .186-.272.4.4 0 0 1 .32-.057l2.079.479a.424.424 0 0 1 .235.7.43.43 0 0 1-.4.135"
               clip-rule=evenodd></path>
-          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=即梦AI-小红书主页 target=_blank
+          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=历史漫绘-小红书主页 target=_blank
          ><svg xmlns=http://www.w3.org/2000/svg
             width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
@@ -721,511 +694,10 @@ html {
   font-family: Albert Sans, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif !important
 }
 </style>
+
 <style>
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-body {
-  --lv-red-1: 255, 236, 232;
-  --lv-red-2: 253, 205, 197;
-  --lv-red-3: 251, 172, 163;
-  --lv-red-4: 249, 137, 129;
-  --lv-red-5: 247, 101, 96;
-  --lv-red-6: 245, 63, 63;
-  --lv-red-7: 203, 39, 45;
-  --lv-red-8: 161, 21, 30;
-  --lv-red-9: 119, 8, 19;
-  --lv-red-10: 77, 0, 10;
-  --lv-orangered-1: 255, 243, 232;
-  --lv-orangered-2: 253, 221, 195;
-  --lv-orangered-3: 252, 197, 159;
-  --lv-orangered-4: 250, 172, 123;
-  --lv-orangered-5: 249, 144, 87;
-  --lv-orangered-6: 247, 114, 52;
-  --lv-orangered-7: 204, 81, 32;
-  --lv-orangered-8: 162, 53, 17;
-  --lv-orangered-9: 119, 31, 6;
-  --lv-orangered-10: 77, 14, 0;
-  --lv-orange-1: 255, 247, 232;
-  --lv-orange-2: 255, 228, 186;
-  --lv-orange-3: 255, 207, 139;
-  --lv-orange-4: 255, 182, 93;
-  --lv-orange-5: 255, 154, 46;
-  --lv-orange-6: 255, 125, 0;
-  --lv-orange-7: 210, 95, 0;
-  --lv-orange-8: 166, 69, 0;
-  --lv-orange-9: 121, 46, 0;
-  --lv-orange-10: 77, 27, 0;
-  --lv-gold-1: 255, 252, 232;
-  --lv-gold-2: 253, 244, 191;
-  --lv-gold-3: 252, 233, 150;
-  --lv-gold-4: 250, 220, 109;
-  --lv-gold-5: 249, 204, 69;
-  --lv-gold-6: 247, 186, 30;
-  --lv-gold-7: 204, 146, 19;
-  --lv-gold-8: 162, 109, 10;
-  --lv-gold-9: 119, 75, 4;
-  --lv-gold-10: 77, 45, 0;
-  --lv-yellow-1: 254, 255, 232;
-  --lv-yellow-2: 254, 254, 190;
-  --lv-yellow-3: 253, 250, 148;
-  --lv-yellow-4: 252, 242, 107;
-  --lv-yellow-5: 251, 232, 66;
-  --lv-yellow-6: 250, 220, 25;
-  --lv-yellow-7: 207, 175, 15;
-  --lv-yellow-8: 163, 132, 8;
-  --lv-yellow-9: 120, 93, 3;
-  --lv-yellow-10: 77, 56, 0;
-  --lv-lime-1: 252, 255, 232;
-  --lv-lime-2: 237, 248, 187;
-  --lv-lime-3: 220, 241, 144;
-  --lv-lime-4: 201, 233, 104;
-  --lv-lime-5: 181, 226, 65;
-  --lv-lime-6: 159, 219, 29;
-  --lv-lime-7: 126, 183, 18;
-  --lv-lime-8: 95, 148, 10;
-  --lv-lime-9: 67, 112, 4;
-  --lv-lime-10: 42, 77, 0;
-  --lv-green-1: 232, 255, 234;
-  --lv-green-2: 175, 240, 181;
-  --lv-green-3: 123, 225, 136;
-  --lv-green-4: 76, 210, 99;
-  --lv-green-5: 35, 195, 67;
-  --lv-green-6: 0, 180, 42;
-  --lv-green-7: 0, 154, 41;
-  --lv-green-8: 0, 128, 38;
-  --lv-green-9: 0, 102, 34;
-  --lv-green-10: 0, 77, 28;
-  --lv-cyan-1: 232, 255, 251;
-  --lv-cyan-2: 183, 244, 236;
-  --lv-cyan-3: 137, 233, 224;
-  --lv-cyan-4: 94, 223, 214;
-  --lv-cyan-5: 55, 212, 207;
-  --lv-cyan-6: 20, 201, 201;
-  --lv-cyan-7: 13, 165, 170;
-  --lv-cyan-8: 7, 130, 139;
-  --lv-cyan-9: 3, 97, 108;
-  --lv-cyan-10: 0, 66, 77;
-  --lv-blue-1: 232, 247, 255;
-  --lv-blue-2: 195, 231, 254;
-  --lv-blue-3: 159, 212, 253;
-  --lv-blue-4: 123, 192, 252;
-  --lv-blue-5: 87, 169, 251;
-  --lv-blue-6: 52, 145, 250;
-  --lv-blue-7: 32, 108, 207;
-  --lv-blue-8: 17, 75, 163;
-  --lv-blue-9: 6, 48, 120;
-  --lv-blue-10: 0, 26, 77;
-  --lv-arcoblue-1: 232, 243, 255;
-  --lv-arcoblue-2: 190, 218, 255;
-  --lv-arcoblue-3: 148, 191, 255;
-  --lv-arcoblue-4: 106, 161, 255;
-  --lv-arcoblue-5: 64, 128, 255;
-  --lv-arcoblue-6: 22, 93, 255;
-  --lv-arcoblue-7: 14, 66, 210;
-  --lv-arcoblue-8: 7, 44, 166;
-  --lv-arcoblue-9: 3, 26, 121;
-  --lv-arcoblue-10: 0, 13, 77;
-  --lv-purple-1: 245, 232, 255;
-  --lv-purple-2: 221, 190, 246;
-  --lv-purple-3: 195, 150, 237;
-  --lv-purple-4: 168, 113, 227;
-  --lv-purple-5: 141, 78, 218;
-  --lv-purple-6: 114, 46, 209;
-  --lv-purple-7: 85, 29, 176;
-  --lv-purple-8: 60, 16, 143;
-  --lv-purple-9: 39, 6, 110;
-  --lv-purple-10: 22, 0, 77;
-  --lv-pinkpurple-1: 255, 232, 251;
-  --lv-pinkpurple-2: 247, 186, 239;
-  --lv-pinkpurple-3: 240, 142, 230;
-  --lv-pinkpurple-4: 232, 101, 223;
-  --lv-pinkpurple-5: 225, 62, 219;
-  --lv-pinkpurple-6: 217, 26, 217;
-  --lv-pinkpurple-7: 176, 16, 182;
-  --lv-pinkpurple-8: 138, 9, 147;
-  --lv-pinkpurple-9: 101, 3, 112;
-  --lv-pinkpurple-10: 66, 0, 77;
-  --lv-magenta-1: 255, 232, 241;
-  --lv-magenta-2: 253, 194, 219;
-  --lv-magenta-3: 251, 157, 199;
-  --lv-magenta-4: 249, 121, 183;
-  --lv-magenta-5: 247, 84, 168;
-  --lv-magenta-6: 245, 49, 157;
-  --lv-magenta-7: 203, 30, 131;
-  --lv-magenta-8: 161, 16, 105;
-  --lv-magenta-9: 119, 6, 79;
-  --lv-magenta-10: 77, 0, 52;
-  --lv-gray-1: 247, 248, 250;
-  --lv-gray-2: 242, 243, 245;
-  --lv-gray-3: 229, 230, 235;
-  --lv-gray-4: 201, 205, 212;
-  --lv-gray-5: 169, 174, 184;
-  --lv-gray-6: 134, 144, 156;
-  --lv-gray-7: 107, 119, 133;
-  --lv-gray-8: 78, 89, 105;
-  --lv-gray-9: 39, 46, 59;
-  --lv-gray-10: 29, 33, 41;
-  --lv-success-1: var(--lv-green-1);
-  --lv-success-2: var(--lv-green-2);
-  --lv-success-3: var(--lv-green-3);
-  --lv-success-4: var(--lv-green-4);
-  --lv-success-5: var(--lv-green-5);
-  --lv-success-6: var(--lv-green-6);
-  --lv-success-7: var(--lv-green-7);
-  --lv-success-8: var(--lv-green-8);
-  --lv-success-9: var(--lv-green-9);
-  --lv-success-10: var(--lv-green-10);
-  --lv-primary-1: var(--lv-arcoblue-1);
-  --lv-primary-2: var(--lv-arcoblue-2);
-  --lv-primary-3: var(--lv-arcoblue-3);
-  --lv-primary-4: var(--lv-arcoblue-4);
-  --lv-primary-5: var(--lv-arcoblue-5);
-  --lv-primary-6: var(--lv-arcoblue-6);
-  --lv-primary-7: var(--lv-arcoblue-7);
-  --lv-primary-8: var(--lv-arcoblue-8);
-  --lv-primary-9: var(--lv-arcoblue-9);
-  --lv-primary-10: var(--lv-arcoblue-10);
-  --lv-danger-1: var(--lv-red-1);
-  --lv-danger-2: var(--lv-red-2);
-  --lv-danger-3: var(--lv-red-3);
-  --lv-danger-4: var(--lv-red-4);
-  --lv-danger-5: var(--lv-red-5);
-  --lv-danger-6: var(--lv-red-6);
-  --lv-danger-7: var(--lv-red-7);
-  --lv-danger-8: var(--lv-red-8);
-  --lv-danger-9: var(--lv-red-9);
-  --lv-danger-10: var(--lv-red-10);
-  --lv-warning-1: var(--lv-orange-1);
-  --lv-warning-2: var(--lv-orange-2);
-  --lv-warning-3: var(--lv-orange-3);
-  --lv-warning-4: var(--lv-orange-4);
-  --lv-warning-5: var(--lv-orange-5);
-  --lv-warning-6: var(--lv-orange-6);
-  --lv-warning-7: var(--lv-orange-7);
-  --lv-warning-8: var(--lv-orange-8);
-  --lv-warning-9: var(--lv-orange-9);
-  --lv-warning-10: var(--lv-orange-10);
-  --lv-link-1: var(--lv-arcoblue-1);
-  --lv-link-2: var(--lv-arcoblue-2);
-  --lv-link-3: var(--lv-arcoblue-3);
-  --lv-link-4: var(--lv-arcoblue-4);
-  --lv-link-5: var(--lv-arcoblue-5);
-  --lv-link-6: var(--lv-arcoblue-6);
-  --lv-link-7: var(--lv-arcoblue-7);
-  --lv-link-8: var(--lv-arcoblue-8);
-  --lv-link-9: var(--lv-arcoblue-9);
-  --lv-link-10: var(--lv-arcoblue-10)
-}
 
-body {
-  --lv-color-white: #fff;
-  --lv-color-black: #000;
-  --lv-color-border: rgb(var(--lv-gray-3));
-  --lv-color-bg-popup: var(--lv-color-bg-5);
-  --lv-color-fill-bg-1: #fff;
-  --lv-color-fill-bg-2: #fff;
-  --lv-color-fill-bg-3: #fff;
-  --lv-color-fill-bg-4: #fff;
-  --lv-color-bg-5: #fff;
-  --lv-color-bg-white: #fff;
-  --lv-color-neutral-1: rgb(var(--lv-gray-1));
-  --lv-color-neutral-2: rgb(var(--lv-gray-2));
-  --lv-color-neutral-3: rgb(var(--lv-gray-3));
-  --lv-color-neutral-4: rgb(var(--lv-gray-4));
-  --lv-color-neutral-5: rgb(var(--lv-gray-5));
-  --lv-color-neutral-6: rgb(var(--lv-gray-6));
-  --lv-color-neutral-7: rgb(var(--lv-gray-7));
-  --lv-color-neutral-8: rgb(var(--lv-gray-8));
-  --lv-color-neutral-9: rgb(var(--lv-gray-9));
-  --lv-color-neutral-10: rgb(var(--lv-gray-10));
-  --lv-color-text-primary: var(--lv-color-neutral-10);
-  --lv-color-text-secondary: var(--lv-color-neutral-8);
-  --lv-color-text-tertiary: var(--lv-color-neutral-6);
-  --lv-color-text-placeholder: var(--lv-color-neutral-4);
-  --lv-color-border-1: var(--lv-color-neutral-2);
-  --lv-color-border-2: var(--lv-color-neutral-3);
-  --lv-color-border-3: var(--lv-color-neutral-4);
-  --lv-color-border-4: var(--lv-color-neutral-6);
-  --lv-color-fill-1: var(--lv-color-neutral-1);
-  --lv-color-fill-2: var(--lv-color-neutral-2);
-  --lv-color-fill-3: var(--lv-color-neutral-3);
-  --lv-color-fill-4: var(--lv-color-neutral-4);
-  --lv-color-primary-light-1: rgb(var(--lv-primary-1));
-  --lv-color-primary-light-2: rgb(var(--lv-primary-2));
-  --lv-color-primary-light-3: rgb(var(--lv-primary-3));
-  --lv-color-primary-light-4: rgb(var(--lv-primary-4));
-  --lv-color-secondary: var(--lv-color-neutral-2);
-  --lv-color-secondary-hover: var(--lv-color-neutral-3);
-  --lv-color-secondary-active: var(--lv-color-neutral-4);
-  --lv-color-secondary-disabled: var(--lv-color-neutral-1);
-  --lv-color-danger-light-1: rgb(var(--lv-danger-1));
-  --lv-color-danger-light-2: rgb(var(--lv-danger-2));
-  --lv-color-danger-light-3: rgb(var(--lv-danger-3));
-  --lv-color-danger-light-4: rgb(var(--lv-danger-4));
-  --lv-color-success-light-1: rgb(var(--lv-success-1));
-  --lv-color-success-light-2: rgb(var(--lv-success-2));
-  --lv-color-success-light-3: rgb(var(--lv-success-3));
-  --lv-color-success-light-4: rgb(var(--lv-success-4));
-  --lv-color-warning-light-1: rgb(var(--lv-warning-1));
-  --lv-color-warning-light-2: rgb(var(--lv-warning-2));
-  --lv-color-warning-light-3: rgb(var(--lv-warning-3));
-  --lv-color-warning-light-4: rgb(var(--lv-warning-4));
-  --lv-color-link-light-1: rgb(var(--lv-link-1));
-  --lv-color-link-light-2: rgb(var(--lv-link-2));
-  --lv-color-link-light-3: rgb(var(--lv-link-3));
-  --lv-color-link-light-4: rgb(var(--lv-link-4));
-  --lv-border-radius-none: 0;
-  --lv-border-radius-small: 2px;
-  --lv-border-radius-medium: 4px;
-  --lv-border-radius-large: 8px;
-  --lv-border-radius-circle: 50%;
-  --lv-color-tooltip-bg: rgb(var(--lv-gray-10));
-  --lv-color-spin-layer-bg: hsla(0, 0%, 100%, .6);
-  --lv-color-menu-dark-bg: #232324;
-  --lv-color-menu-light-bg: #fff;
-  --lv-color-menu-dark-hover: hsla(0, 0%, 100%, .04);
-  --lv-color-mask-bg: rgba(29, 33, 41, .6)
-}
 
-body {
-  --lvv-color-main-1: #daf5f8;
-  --lvv-color-main-2: #7cdfeb;
-  --lvv-color-main-3: #1fc4d9;
-  --lvv-color-main-4: #19abbe;
-  --lvv-color-main-5: #12525a;
-  --lvv-color-main-alpha-1: rgba(31, 196, 217, .12);
-  --lvv-color-main-alpha-2: rgba(31, 196, 217, .2);
-  --lvv-color-main-alpha-3: rgba(31, 196, 217, .4);
-  --lvv-color-main-alpha-4: rgba(31, 196, 217, .6);
-  --lvv-color-main-alpha-5: rgba(31, 196, 217, .8);
-  --lvv-color-text-1: #16161d;
-  --lvv-color-text-2: #46464c;
-  --lvv-color-text-3: #757580;
-  --lvv-color-text-4: #a9adb5;
-  --lvv-color-text-5: #cacad0;
-  --lvv-color-text-inverted: #e6e6e6;
-  --lvv-color-text-content-1: #fff;
-  --lvv-color-text-content-2: #cacace;
-  --lvv-color-text-content-3: #95959d;
-  --lvv-color-text-content-4: #808286;
-  --lvv-color-text-content-5: #62626d;
-  --lvv-color-bg-1: #fff;
-  --lvv-color-bg-2: #fafafa;
-  --lvv-color-bg-3: #f4f5f5;
-  --lvv-color-bg-4: #eeeff0;
-  --lvv-color-bg-5: #e4e5e7;
-  --lvv-color-bg-6: #1e1e28;
-  --lvv-color-bg-field: rgba(0, 0, 0, .04);
-  --lvv-color-bg-overlay: #fff;
-  --lvv-shadow-inputfocus: rgba(0, 193, 205, .2);
-  --lvv-color-black-1: rgba(0, 0, 0, .04);
-  --lvv-color-black-2: rgba(0, 0, 0, .12);
-  --lvv-color-black-3: rgba(0, 0, 0, .2);
-  --lvv-color-black-4: rgba(0, 0, 0, .4);
-  --lvv-color-black-5: rgba(0, 0, 0, .6);
-  --lvv-color-black-6: rgba(0, 0, 0, .8);
-  --lvv-color-black-7: #000;
-  --lvv-color-black-tooltip: #1e1e28;
-  --lvv-color-white-1: hsla(0, 0%, 100%, .04);
-  --lvv-color-white-2: hsla(0, 0%, 100%, .12);
-  --lvv-color-white-3: hsla(0, 0%, 100%, .2);
-  --lvv-color-white-4: hsla(0, 0%, 100%, .4);
-  --lvv-color-white-5: hsla(0, 0%, 100%, .6);
-  --lvv-color-white-6: hsla(0, 0%, 100%, .8);
-  --lvv-color-white-7: #fff;
-  --lvv-color-white-tooltip: #f3f3f3;
-  --lvv-color-line-1: rgba(0, 0, 0, .16);
-  --lvv-color-line-2: rgba(0, 0, 0, .08);
-  --lvv-color-line-3: rgba(0, 0, 0, .04);
-  --lvv-color-common-yellow-1: #ff832a;
-  --lvv-color-common-red-1: #fc5d5b;
-  --lvv-color-common-pink-1: #f75997;
-  --lvv-color-common-purple-1: #b75cff;
-  --lvv-color-common-deep-purple-1: #7d5cff;
-  --lvv-color-common-blue-1: #5b8fff;
-  --lvv-color-common-green-1: #00be93;
-  --lvv-color-common-pro-1: #caa06d;
-  --lvv-color-negative-1: #ffe6e3;
-  --lvv-color-negative-2: #ff9b99;
-  --lvv-color-negative-3: #ff6663;
-  --lvv-color-negative-4: #db4852;
-  --lvv-color-negative-5: #800a12;
-  --lvv-color-warning-1: #fff7e5;
-  --lvv-color-warning-2: #ffd670;
-  --lvv-color-warning-3: #ffaf02;
-  --lvv-color-warning-4: #fb9600;
-  --lvv-color-warning-5: #996900;
-  --lvv-color-positive-1: #d5f6ea;
-  --lvv-color-positive-2: #85eabc;
-  --lvv-color-positive-3: #2dd196;
-  --lvv-color-positive-4: #20b38d;
-  --lvv-color-positive-5: #136852;
-  --lvv-color-info-1: #e0e8ff;
-  --lvv-color-info-2: #82a1ff;
-  --lvv-color-info-3: #597eff;
-  --lvv-color-info-4: #415fdb;
-  --lvv-color-info-5: #132467;
-  --lvv-color-linear-1: linear-gradient(180deg, transparent, rgba(0, 0, 0, .2));
-  --lvv-color-linear-2: linear-gradient(180deg, transparent, rgba(0, 0, 0, .6));
-  --lvv-color-linear-3: linear-gradient(180deg, transparent, rgba(0, 0, 0, .6));
-  --lvv-color-linear-4: linear-gradient(180deg, transparent, rgba(0, 0, 0, .6))
-}
-
-body {
-  --lvv-size-caption: 12px;
-  --lvv-size-body-2: 14px;
-  --lvv-size-body-1: 16px;
-  --lvv-size-h3: 18px;
-  --lvv-size-h2: 24px;
-  --lvv-size-h1: 32px;
-  --lvv-size-title: 36px;
-  --lvv-line-height-caption: 16px;
-  --lvv-line-height-body-2: 20px;
-  --lvv-line-height-body-1: 24px;
-  --lvv-line-height-h3: 24px;
-  --lvv-line-height-h2: 32px;
-  --lvv-line-height-h1: 48px;
-  --lvv-line-height-title: 56px;
-  --lvv-border-radius-none: 0;
-  --lvv-border-radius-tiny: 4px;
-  --lvv-border-radius-small: 8px;
-  --lvv-border-radius-medium: 12px;
-  --lvv-border-radius-large: 16px;
-  --lvv-border-radius-circle: 50%
-}
-
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-body,
-html {
-  line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: Albert Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
-}
-
-body {
-  margin: 0;
-  padding: 0
-}
-
-a {
-  background-color: transparent
-}
-
-img {
-  border-style: none
-}
-
-button {
-  font-family: inherit;
-  margin: 0
-}
-
-button {
-  overflow: visible
-}
-
-button {
-  text-transform: none
-}
-
-button {
-  -webkit-appearance: button
-}
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit
-}
-
-* {
-  outline: none
-}
-
-@keyframes lv-loading-circle {
-  to {
-    transform: rotate(1turn)
-  }
-}
-
-body {
-  font-size: 14px
-}
-</style>
-<style>
-:root {
-  --lvv-color-black-06: rgba(0, 0, 0, .6)
-}
-
-.box-mtcGzQ,
-.trigger-v7Eq_c {
-  position: relative
-}
-
-.trigger-v7Eq_c {
-  align-items: center;
-  background: rgba(0, 0, 0, .5);
-  border: 1px solid hsla(0, 0%, 100%, .122);
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  gap: 4px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  justify-content: center;
-  line-height: 20px;
-  outline: none;
-  padding: 19px 0;
-  transition-duration: .3s;
-  transition-property: color, background-color;
-  transition-timing-function: ease-in-out;
-  width: 300px;
-  z-index: 1;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-}
-
-@media (hover:hover) and (pointer:fine) {
-  .trigger-v7Eq_c:hover {
-    background-color: #ebf8ff;
-    color: #1d2129
-  }
-}
-
-.video-wrapper-UwfzyM {
-  border-radius: 8px;
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  width: 100%
-}
-
-.video-yy6mi4 {
-  height: 100%;
-  object-fit: cover;
-  width: 100%
-}
-
-@media screen and (max-width:1440px) {
-  .trigger-v7Eq_c {
-    width: 270px
-  }
-}
-
-@media screen and (max-width:1024px) {
-  .trigger-v7Eq_c {
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 22px;
-    padding: 11px 0;
-    width: 200px
-  }
-}
 
 .box-aQs010 {
   align-items: center;
@@ -1245,9 +717,6 @@ body {
   width: 280px
 }
 
-.cta-VrDRFc>* {
-  pointer-events: none
-}
 
 @media screen and (max-width:1440px) {
   .box-aQs010 {
@@ -1661,20 +1130,6 @@ body {
   opacity: 1;
   width: 40px
 }
-
-.main-_bMAqc {
-  height: 100%
-}
-
-.bottom-bYPxPC,
-.main-_bMAqc {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%
-}
-
 .bottom-bYPxPC {
   bottom: 0;
   box-sizing: border-box;
@@ -1682,18 +1137,6 @@ body {
   left: 0;
   padding-bottom: 16px;
   position: absolute
-}
-
-.title-2LzQDu {
-  background: url(../assets/0864f3a5add9d30d8a0e6f05d86f5db1.svg)no-repeat 50%/contain;
-  color: transparent;
-  font-size: 64px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  line-height: 64px;
-  margin: 0 !important;
-  text-align: center;
-  width: 330px
 }
 
 .tip-q4L709 {
@@ -1724,12 +1167,6 @@ body {
 @media screen and (max-width:1024px) {
   .box-weRFZa {
     height: 620px
-  }
-
-  .title-2LzQDu {
-    font-size: 36px;
-    line-height: 36px;
-    width: 186px
   }
 
   .input-flrsTo,

@@ -134,7 +134,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted } from 'vue'
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
@@ -172,7 +172,7 @@ const voiceDetail: any = ref(null)
 
 const withNum = ref(0)
 const heightNum = ref(0)
-const videoResult = ref('https://media.w3.org/2010/05/sintel/trailer.mp4')
+const videoResult = ref('')
 let setTimeoutValue: any = null
 onMounted(() => {
   getVoiceList()
@@ -261,9 +261,9 @@ const handleGenerate = async () => {
   } catch (err) {
     submitLoading.value = false
     const res = {
-      "user_name": "6650#12346ewwe",
-      "user_id": "12345uyts",
+      "video_url": 'https://media.w3.org/2010/05/sintel/trailer.mp4'
     }
+    videoResult.value= res.video_url
 
   }
 }

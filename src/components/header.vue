@@ -1,8 +1,7 @@
 <template>
-  <div class="header ">
+  <div class="header" :style="{position: isFixed ? 'fixed' : 'initial'}">
     <div class="header-logo">
-      <img class="header-logo-img" width="84" height="22.13" src="../assets/9dbd484d8351690d1bf905bce6155cf3.png"
-        alt="即梦AI" />
+      <img class="header-logo-img" width="84" height="22.13" src="../assets/logo.png" alt="历史漫绘" />
     </div>
     <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
             href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
@@ -13,70 +12,99 @@
             class="jimeng-link jimeng-link-theme-white" aria-label=探索 target=_blank
             href=https://jimeng.jianying.com/ai-tool/explore>探索</a></span><span><a
             class="jimeng-link jimeng-link-theme-white" aria-label=未来影像计划 target=_blank
-      href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div>-->
-    <div class="actions-wrapper">
+    href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div>-->
+    <div class="actions-wrapper_43a49" v-if="!userInfo.user_id">
+      <span>
+        <button
+          @click="handleLogin"
+          class="jimeng-button jimeng-button-text undefined"
+          aria-label="登录-历史漫绘"
+        >登录/注册</button>
+      </span>
+      <span></span>
+    </div>
+    <div class="actions-wrapper" v-else>
       <el-dropdown>
         <span class="el-dropdown-link">
-          <img style="width: 40px;height: 40px;cursor: pointer;" src="../assets/user-avatar-default.png" alt="">
+          <img
+            style="width: 40px;height: 40px;cursor: pointer;"
+            src="../assets/user-avatar-default.png"
+          />
         </span>
         <template #dropdown>
           <div class="dropdown-content">
             <div class="dropdown-base">
-              <img class="img" src="../assets/user-avatar-default.png" alt="">
+              <img class="img" src="../assets/user-avatar-default.png" alt />
               <div class="base-info">
                 <div class="base-info-name base-info-item">
                   <span class="text">{{ userInfo.user_name }}</span>
-                  <span class="copy" @click="handleCopy(userInfo.user_name)"><el-icon size="12" color="#666">
+                  <span class="copy" @click="handleCopy(userInfo.user_name)">
+                    <el-icon size="12" color="#666">
                       <CopyDocument />
-                    </el-icon></span>
+                    </el-icon>
+                  </span>
                 </div>
                 <div class="base-info-item base-info-account">
-                  <span class="text">
-                    账号ID：{{ userInfo.user_id }}
-                  </span>
-                  <span class="copy" @click="handleCopy(userInfo.user_id)"><el-icon size="12" color="#666">
+                  <span class="text">账号ID：{{ userInfo.user_id }}</span>
+                  <span class="copy" @click="handleCopy(userInfo.user_id)">
+                    <el-icon size="12" color="#666">
                       <CopyDocument />
-                    </el-icon></span>
+                    </el-icon>
+                  </span>
                 </div>
               </div>
             </div>
-            <div class="logout-btn"> <el-button style="width: 100%;" @click="handleLogout">退出登录</el-button></div>
+            <div class="logout-btn">
+              <el-button style="width: 100%;" @click="handleLogout">退出登录</el-button>
+            </div>
           </div>
-
         </template>
       </el-dropdown>
     </div>
-
   </div>
-
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
+import { useRouter } from 'vue-router'
+import { defineEmits, withDefaults,  ref } from 'vue'
+
+interface PropsType {
+  isFixed: boolean 
+}
+
+const emit = defineEmits(['pageChange', 'selectionChange'])
+withDefaults(defineProps<PropsType>(), {
+  isFixed: false
+})
 
 const userStore = useUserStore()
 // const userInfo = ref({
 //   name: '1760000用户1760000用户',
 //   account: '123423424'
 // })
+const router = useRouter()
 
- const userInfo = userStore.getUserInfo
+const userInfo = userStore.getUserInfo
 
- const handleLogout = () => {
+const handleLogout = () => {
   userStore.logout()
+}
+const handleLogin = () => {
+  console.log('handleLogin')
+  router.push('/login')
 }
 
 const handleCopy = (value: string) => {
-  const el = document.createElement('textarea');
-  el.value = value;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
+  const el = document.createElement('textarea')
+  el.value = value
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
   ElMessage({
     message: '复制成功',
-    type: 'success',
+    type: 'success'
   })
 }
 </script>
@@ -131,7 +159,6 @@ const handleCopy = (value: string) => {
         .text {
           display: -webkit-box;
           -webkit-line-clamp: 1;
-          /* 显示的行数 */
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
@@ -141,12 +168,12 @@ const handleCopy = (value: string) => {
           cursor: pointer;
         }
       }
-
     }
   }
 }
 
 .header {
+  top: 0;
   align-items: center;
   display: flex;
   flex-direction: row;
