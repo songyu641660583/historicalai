@@ -175,6 +175,7 @@ const heightNum = ref(0)
 const videoResult = ref('')
 let setTimeoutValue: any = null
 onMounted(() => {
+
   getVoiceList()
 })
 
@@ -205,6 +206,17 @@ const handleVoiceClick = (item: any) => {
 async function getVoiceList() {
   try {
     const userInfo = userStore.getUserInfo
+    console.log('userInfo', userInfo.user_id)
+    if(!userInfo.user_id) {
+      ElMessage({
+        message: '请先登录',
+        type: 'warning',
+      })
+      setInterval(() => {
+        userStore.logout()
+      }, 1000)
+      return
+    }
     const res = await api.home.getVoiceList({
       "user_id": userInfo.user_id,
     })

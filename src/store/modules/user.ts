@@ -24,7 +24,6 @@ const userStore = defineStore('user', {
   getters: {
   
     getUserInfo(): any {
-      console.log('this.userInfo', this.userInfo)
       return (this.userInfo as any)?.user_id ? this.userInfo : {}
     },
     getIsLogin(): boolean {
@@ -41,13 +40,8 @@ const userStore = defineStore('user', {
    
     // 登出
     logout() {
-
-      // const token = this.getToken
       this.userInfo = {}
       router.push('/')
-      // removeToken()
-      // authLogout(token)
-   
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div id=container>
+  <!-- <div id=container>
     <div id=navbar class=vconsole--2IN_4></div>
     <div id=root>
       <div id=page_layout class="layoutNew-s99CBg">
@@ -13,7 +13,15 @@
                 src="../assets/93e9c4955eecdc7cfa756bd1cfb7d62e.png"> </div>
           </div>
           <div>
-            <div class="arco-spin layoutSpin-pr7cPJ">
+           
+          </div>
+        </div>
+        <footerComponent />
+      </div>
+    </div>
+  </div> -->
+ 
+  <div class="arco-spin layoutSpin-pr7cPJ">
               <div class=arco-spin-children>
                 <div class="loginCard-w1Ov0n cardHasTab-Uzr9RE">
                   <div class=title-EHSTny>欢迎来到历史漫绘</div>
@@ -168,23 +176,14 @@
                 <div class=passwordExpirationBox-yx6EE8></div>
               </div>
             </div>
-          </div>
-        </div>
-        <footerComponent />
-      </div>
-    </div>
-  </div>
-
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/store'
 import api from '@/api'
 import { useRouter } from 'vue-router'
-import footerComponent from '../components/footer.vue'
 
-
-
+const emit = defineEmits(['loginSuccess', 'onLinkReg'])
 const userStore = useUserStore()
 const router = useRouter()
 const phoneErrorValue = ref('')
@@ -194,12 +193,12 @@ const codeDisabled = ref(true)
 const countDownText = ref(0)
 const submitLoading = ref(false)
 const codeErrorValue = ref('')
-const userInfo = userStore.getUserInfo
-onMounted(() => {
-  if(userInfo.user_id) {
-    router.push('/main/creation')
-  }
-})
+// const userInfo = userStore.getUserInfo
+// onMounted(() => {
+//   if(userInfo.user_id) {
+//     router.push('/main/creation')
+//   }
+// })
 const handlePhoneBlur = () => {
   if (!phoneValue.value) {
     phoneErrorValue.value = '请输入手机号'
@@ -266,13 +265,14 @@ const handleLogin = async () => {
       submitLoading.value = false
     } catch (err) {
       console.log('err--', err)
+      emit('loginSuccess')
+
       const res = {
         "user_name": "6650#12346ewwe",
         "user_id": "12345uyts",
       }
       userStore.setUserInfo(res || null)
       submitLoading.value = false
-      router.push('/main/creation')
     }
   } else {
     codeErrorValue.value = '请输入6位验证码'
@@ -280,7 +280,7 @@ const handleLogin = async () => {
 }
 
 const handleRegister = () => {
-  router.push('/register')
+  emit('onLinkReg')
 }
 
 
@@ -1559,34 +1559,37 @@ html {
 }
 
 
-.login-isG0Ae .layoutSpin-pr7cPJ .arco-spin-children:after {
+.layoutSpin-pr7cPJ .arco-spin-children:after {
   border-radius: 20px
 }
 
-.login-isG0Ae .layoutSpin-pr7cPJ .cardHasTab-Uzr9RE {
+.layoutSpin-pr7cPJ .cardHasTab-Uzr9RE {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
   padding: 48px 48px 32px
 }
+.layoutSpin-pr7cPJ {
+  width: 476px;
+}
 
 
 
-.login-isG0Ae .accountTab-uAbUd4 {
+.accountTab-uAbUd4 {
   margin-top: 32px
 }
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-nav:before {
+.accountTab-uAbUd4 .arco-tabs-header-nav:before {
   display: none
 }
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-title {
+.accountTab-uAbUd4 .arco-tabs-header-title {
   margin: 0;
   padding: 8px 0 6px 0
 }
 
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-title .arco-tabs-header-title-text {
+.accountTab-uAbUd4 .arco-tabs-header-title .arco-tabs-header-title-text {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px

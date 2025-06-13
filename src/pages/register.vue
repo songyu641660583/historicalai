@@ -1,19 +1,5 @@
 <template>
-  <div id=container>
-    <div id=navbar class=vconsole--2IN_4></div>
-    <div id=root>
-      <div id=page_layout class="layoutNew-s99CBg">
-        <div class="header-V8bS8f pc_height-MzOLkZ"><img src=../assets/29f291580ba76077509936cd4afb93cf.svg>
-        </div>
-        <div style=height:11px></div>
-        <div class="container-YxxiFS login-isG0Ae">
-          <div class=leftBanner-NFCN12 data-monitor-comp-id=c293915 data-monitor-comp-topic=auth_banner
-            data-monitor-comp-mark-id=d78b5743-5ffa-42a7-9606-4004c5cf1bca>
-            <div class=hotspot-o3yTUu data-monitor-click-id=d098441 style=cursor:pointer><img
-                src="../assets/93e9c4955eecdc7cfa756bd1cfb7d62e.png"> </div>
-          </div>
-          <div>
-            <div class="arco-spin layoutSpin-pr7cPJ">
+ <div class="arco-spin layoutSpin-pr7cPJ">
               <div class=arco-spin-children>
                 <div class="loginCard-w1Ov0n cardHasTab-Uzr9RE">
                   <div class=title-EHSTny>欢迎来到历史漫绘</div>
@@ -173,21 +159,13 @@
                 <div class=passwordExpirationBox-yx6EE8></div>
               </div>
             </div>
-          </div>
-        </div>
-        <footerComponent />
-      </div>
-    </div>
-  </div>
 
 </template>
 <script setup lang="ts">
 import api from '@/api'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import footerComponent from '../components/footer.vue'
 
-const router = useRouter()
+const emit = defineEmits(['registerSuccess', 'onLinkLogin'])
 const phoneErrorValue = ref('')
 const phoneValue = ref('')
 const codeValue = ref('')
@@ -263,7 +241,7 @@ const handleLogin = async () => {
       submitLoading.value = false
     } catch (err) {
       submitLoading.value = false
-      router.push('/login')
+      emit('registerSuccess')
     }
   } else {
     codeErrorValue.value = '请输入6位验证码'
@@ -272,7 +250,7 @@ const handleLogin = async () => {
 }
 
 const handleRegister = () => {
-  router.push('/login')
+   emit('onLinkLogin')
 }
 
 
@@ -1547,11 +1525,15 @@ html {
 }
 
 
-.login-isG0Ae .layoutSpin-pr7cPJ .arco-spin-children:after {
+.layoutSpin-pr7cPJ .arco-spin-children:after {
   border-radius: 20px
 }
+.layoutSpin-pr7cPJ {
+  width: 476px;
+}
 
-.login-isG0Ae .layoutSpin-pr7cPJ .cardHasTab-Uzr9RE {
+
+.layoutSpin-pr7cPJ .cardHasTab-Uzr9RE {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
@@ -1560,21 +1542,21 @@ html {
 
 
 
-.login-isG0Ae .accountTab-uAbUd4 {
+.accountTab-uAbUd4 {
   margin-top: 32px
 }
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-nav:before {
+.accountTab-uAbUd4 .arco-tabs-header-nav:before {
   display: none
 }
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-title {
+.accountTab-uAbUd4 .arco-tabs-header-title {
   margin: 0;
   padding: 8px 0 6px 0
 }
 
 
-.login-isG0Ae .accountTab-uAbUd4 .arco-tabs-header-title .arco-tabs-header-title-text {
+.accountTab-uAbUd4 .arco-tabs-header-title .arco-tabs-header-title-text {
   font-size: 16px;
   font-weight: 500;
   line-height: 22px

@@ -62,12 +62,23 @@
       </el-dropdown>
     </div>
   </div>
+  <!-- <div class="login-module">
+       <LoginComponent></LoginComponent>
+  </div> -->
+   <el-dialog v-model="loginVisible" header-class="loginDialogHeader" :show-close="false"  width="476px">
+     <LoginComponent @loginSuccess="loginSuccess" @onLinkReg="onLinkReg"></LoginComponent>
+   </el-dialog>
+    <el-dialog v-model="registerVisible" header-class="loginDialogHeader" :show-close="false"  width="476px">
+       <RegisterComponent @registerSuccess="registerSuccess" @onLinkLogin="onLinkLogin"></RegisterComponent>
+   </el-dialog>
 </template>
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { defineEmits, withDefaults,  ref } from 'vue'
+import LoginComponent from '../pages/login.vue'
+import RegisterComponent from '../pages/register.vue'
 
 interface PropsType {
   isFixed: boolean 
@@ -77,6 +88,8 @@ const emit = defineEmits(['pageChange', 'selectionChange'])
 withDefaults(defineProps<PropsType>(), {
   isFixed: false
 })
+const loginVisible = ref(false)
+const registerVisible = ref(false)
 
 const userStore = useUserStore()
 // const userInfo = ref({
@@ -87,12 +100,31 @@ const router = useRouter()
 
 const userInfo = userStore.getUserInfo
 
+const loginSuccess = () => {
+  loginVisible.value = false
+  router.push('/main/creation')
+}
+
+const registerSuccess = () => {
+  registerVisible.value = false
+  handleLogin()
+}
+
+const onLinkReg = () => {
+  loginVisible.value = false
+  registerVisible.value = true
+}
+
+const onLinkLogin = () => {
+  registerVisible.value = false
+  loginVisible.value = true
+}
+
 const handleLogout = () => {
   userStore.logout()
 }
 const handleLogin = () => {
-  console.log('handleLogin')
-  router.push('/login')
+  loginVisible.value = true
 }
 
 const handleCopy = (value: string) => {
@@ -110,6 +142,22 @@ const handleCopy = (value: string) => {
 </script>
 
 <style lang="scss">
+.el-dialog {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.loginDialogHeader {
+  display: none;
+}
+.login-module {
+  position: fixed;
+  width: 576px;
+  height: 662px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .dropdown-content {
   width: 270px;
   background-color: #fff;
