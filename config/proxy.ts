@@ -15,16 +15,18 @@ function addProxyOptions(options, viteEnv) {
    * }
    */
   const apiProxyMatches = [
-    { path: '^/api', pathRewrite: {}, apiProxyTarget: proxyUrl },
+    { path: '^/api', pathRewrite: { '^/api': ''}, apiProxyTarget: proxyUrl },
   ]
 
   const devProxyOptions = {}
   apiProxyMatches.forEach((api: any) => {
     devProxyOptions[api.path] = {
       target: api.apiProxyTarget,
-      pathRewrite: api.pathRewrite,
-      changeOrigin: true,
-      // bypass(req, res, proxyOpt) {}
+      // pathRewrite: api.pathRewrite,
+      rewrite: (path) => {
+        return path.replace(/^\/api/, '');
+      },
+      changeOrigin: true
     }
   })
 

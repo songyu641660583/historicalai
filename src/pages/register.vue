@@ -164,6 +164,7 @@
 <script setup lang="ts">
 import api from '@/api'
 import { ref } from 'vue'
+import { ElMessage } from "element-plus";
 
 const emit = defineEmits(['registerSuccess', 'onLinkLogin'])
 const phoneErrorValue = ref('')
@@ -211,19 +212,16 @@ const handleSendCode = async () => {
     return
   }
 
-  if (codeValue.value.length === 6) {
-    codeErrorValue.value = ''
-    countDownText.value = 60
-    countDown()
-    try {
-      const res = await api.home.getVerificationCode({
-        mobile: phoneValue.value
-      })
-    } catch (err) {
-      console.log('sendcode--', err)
-    }
-  } else {
-    codeErrorValue.value = '请输入6位验证码'
+  codeErrorValue.value = ''
+  countDownText.value = 60
+  countDown()
+  try {
+    await api.home.getVerificationCode({
+      mobile: phoneValue.value
+    })
+    ElMessage.success('验证码已发送，请注意查收')    
+  } catch (err) {
+    console.log('sendcode--', err)
   }
 }
 
@@ -234,14 +232,15 @@ const handleLogin = async () => {
     submitLoading.value = true
     codeErrorValue.value = ''
     try {
-      const res = await api.home.sign({
+      await api.home.sign({
         mobile: phoneValue.value,
         code: codeValue.value
       })
-      submitLoading.value = false
-    } catch (err) {
+      ElMessage.success('注册成功')    
       submitLoading.value = false
       emit('registerSuccess')
+    } catch (err) {
+      submitLoading.value = false
     }
   } else {
     codeErrorValue.value = '请输入6位验证码'

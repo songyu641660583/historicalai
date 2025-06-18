@@ -1,7 +1,7 @@
 <template>
-  <div class="creation" v-loading="submitLoading"  element-loading-text="生成中，请稍等...">
+  <div class="creation" v-loading="submitLoading" element-loading-text="生成中，请稍等...">
     <div class="creation-left module">
-      <div class="title">文生图</div>
+      <div class="title">生成漫画视频</div>
       <div class=form-wrapper-_4819c>
         <form class="arco-form arco-form-horizontal arco-form-size-default">
           <div class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-layout-horizontal">
@@ -11,7 +11,7 @@
                   <div class=arco-form-item-control-children>
                     <div class=prompt-container-_7730c>
                       <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=800
-                          class="arco-textarea input-d73634" placeholder=描述想要生成的图片，或点击下方的推荐词试试吧
+                          class="arco-textarea input-d73634" placeholder="描述想要生成的视频内容"
                           style="height:260px;min-height:260px;max-height:360px"></textarea><span
                           class=arco-textarea-word-limit>{{ keywords.length }}/800</span></div>
                     </div>
@@ -26,7 +26,7 @@
             <div class="arco-col arco-form-item-wrapper" style="flex:1 1 0%">
               <div class=arco-form-item-control-wrapper>
                 <div class=arco-form-item-control id=ModelName>
-                  <el-dropdown>
+                  <el-dropdown popper-class="voiceList-dropdown">
                     <span class="el-dropdown-link" v-if="voiceDetail">
                       {{ voiceDetail?.name || '请选择声音' }}
                       <el-icon class="el-icon--right">
@@ -190,24 +190,23 @@ const handleCustom = () => {
 
 const handleVoiceClick = (item: any) => {
   voiceDetail.value = item
-  if(!audioRef.value.paused){
+  if (!audioRef.value.paused) {
     clearTimeout(setTimeoutValue)
     audioRef.value.pause()
   }
   if (audioRef.value) {
-    audioRef.value.src = item.url
+    audioRef.value.src = 'http://' + item.url
     audioRef.value.play()
-    setTimeoutValue = setTimeout(() => {
-      audioRef.value.pause()
-    }, 6000)
+    // setTimeoutValue = setTimeout(() => {
+    //   audioRef.value.pause()
+    // }, 6000)
   }
 }
 
 async function getVoiceList() {
   try {
     const userInfo = userStore.getUserInfo
-    console.log('userInfo', userInfo.user_id)
-    if(!userInfo.user_id) {
+    if (!userInfo.user_id) {
       ElMessage({
         message: '请先登录',
         type: 'warning',
@@ -220,20 +219,10 @@ async function getVoiceList() {
     const res = await api.home.getVoiceList({
       "user_id": userInfo.user_id,
     })
+    voiceList.value = res.voices
+    voiceDetail.value = res.voices[0]
   } catch (err) {
-    const res = [{
-      "id": "23456q4t",
-      "name": "美音男声",
-      "url": "http://music.163.com/song/media/outer/url?id=447925558.mp3"
-    },
-    {
-      "id": "23456q4t34r",
-      "name": "美音男声2",
-      "url": "https://www.cambridgeenglish.org/images/153149-movers-sample-listening-test-vol2.mp3"
-    },]
-    voiceList.value = res
-    voiceDetail.value = res[0]
-
+    voiceList.value = []
   }
 }
 
@@ -265,23 +254,27 @@ const handleGenerate = async () => {
     const res = await api.home.generatingVideo({
       "user_id": userInfo.user_id,
       "story": keywords.value,
-      "voice_id": voiceDetail.value.id,
+      "voice_id": voiceDetail.value?.id || '',
       "width": withNum.value,
       "height": heightNum.value
     })
     submitLoading.value = false
   } catch (err) {
     submitLoading.value = false
-    const res = {
-      "video_url": 'https://media.w3.org/2010/05/sintel/trailer.mp4'
-    }
-    videoResult.value= res.video_url
+    // const res = {
+    //   "video_url": 'https://media.w3.org/2010/05/sintel/trailer.mp4'
+    // }
+    // videoResult.value = res.video_url
 
   }
 }
 
 </script>
 <style lang="scss">
+.voiceList-dropdown .el-dropdown-menu {
+  max-height: 180px; /* 设置最大高度 */
+  overflow-y: auto;  /* 超出时显示垂直滚动条 */
+}
 .creation {
   padding: 30px 30px 30px 40px;
 

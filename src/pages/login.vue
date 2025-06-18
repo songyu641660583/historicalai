@@ -62,11 +62,11 @@
                                         <div class=arco-form-item-control-children>
                                           <div
                                             class="arco-input-group-wrapper arco-input-group-wrapper-default arco-input-custom-height input-lInQvs"
-                                            style=height:40px><span class=arco-input-group><span
+                                            style="height:40px"><span class=arco-input-group><span
                                                 class=arco-input-group-addbefore>
                                                 <div
                                                   class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-layout-horizontal"
-                                                  style=margin:0px>
+                                                  style="margin:0px">
                                                   <div
                                                     class="arco-col arco-col-24 arco-form-item-wrapper arco-form-item-wrapper-flex">
                                                     <div class=arco-form-item-control-wrapper>
@@ -157,9 +157,6 @@
                                 <div style="position:relative;margin-top: 10px;">
                                   <el-button @click="handleLogin" :loading="submitLoading" class="submitBtn"
                                     type="primary">登录</el-button>
-                                  <!-- <button @click="handleLogin"
-                                    class="arco-btn arco-btn-primary arco-btn-size-default arco-btn-shape-square btn-M2kVma"><span>登录</span>
-                                  </button> -->
                                 </div>
                                 <div class="register">
                                   没有账号? <span @click="handleRegister">现在就注册</span>
@@ -182,6 +179,7 @@ import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/store'
 import api from '@/api'
 import { useRouter } from 'vue-router'
+import { ElMessage } from "element-plus";
 
 const emit = defineEmits(['loginSuccess', 'onLinkReg'])
 const userStore = useUserStore()
@@ -235,20 +233,21 @@ const handleSendCode = async () => {
     return
   }
 
-  if (codeValue.value.length === 6) {
+  // if (codeValue.value.length === 6) {
     codeErrorValue.value = ''
     countDownText.value = 60
     countDown()
     try {
-      const res = await api.home.getVerificationCode({
+      await api.home.getVerificationCode({
         mobile: phoneValue.value
       })
+      ElMessage.success('验证码已发送，请注意查收')  
     } catch (err) {
       console.log('sendcode--', err)
     }
-  } else {
-    codeErrorValue.value = '请输入6位验证码'
-  }
+  // } else {
+  //   codeErrorValue.value = '请输入6位验证码'
+  // }
 }
 
 
@@ -262,16 +261,12 @@ const handleLogin = async () => {
         mobile: phoneValue.value,
         code: codeValue.value
       })
+      console.log('resres-login', res)
+      emit('loginSuccess')
+      userStore.setUserInfo(res)
       submitLoading.value = false
     } catch (err) {
-      console.log('err--', err)
-      emit('loginSuccess')
-
-      const res = {
-        "user_name": "6650#12346ewwe",
-        "user_id": "12345uyts",
-      }
-      userStore.setUserInfo(res || null)
+      
       submitLoading.value = false
     }
   } else {

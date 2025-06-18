@@ -81,7 +81,7 @@ import LoginComponent from '../pages/login.vue'
 import RegisterComponent from '../pages/register.vue'
 
 interface PropsType {
-  isFixed: boolean 
+  isFixed?: boolean 
 }
 
 const emit = defineEmits(['pageChange', 'selectionChange'])

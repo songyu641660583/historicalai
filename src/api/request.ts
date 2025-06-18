@@ -9,7 +9,7 @@ import router from '../router'
 
 const request = axios.create({
   baseURL: '',
-  timeout: 10000
+  timeout: 600000
 })
 // request.defaults.withCredentials = true
 request.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -85,7 +85,6 @@ request.interceptors.response.use(
     // if (code === undefined) {
     //   return response.data
     // }
-
     if (code === 0) {
       return data
     }
@@ -156,7 +155,7 @@ export const errorHandle = (status: number, msg?: string) => {
       break
     case 500:
     case 400: 
-    case -1:
+    case 1:
       errorTips(msg || '请求异常')
       break
   }

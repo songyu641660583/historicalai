@@ -86,8 +86,7 @@ async function getList() {
     const res = await api.home.getBill({
       "user_id": userInfo.user_id,
     })
-  } catch (err) {
-    const res = [
+     const res2 = [
    {
         "order_id":"12345678765432q",
         "date":"2025-05-20 12:01:12",
@@ -101,8 +100,10 @@ async function getList() {
         "type":0 
       },
 ]
-    tableData.value = res
+    tableData.value = res2
 
+  } catch (err) {
+   
   }
 }
 const pageChange = (value: number) => {

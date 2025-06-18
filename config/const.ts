@@ -1,7 +1,7 @@
 const PROXY_URL_ENUM = {
-  development: 'https://bm-cloud-dev.dingcloud.com',
-  alpha: 'https://bm-cloud-alpha.dingcloud.com',
-  production: 'https://bm-cloud.dingcloud.com'
+  development: 'http://www.historicalai.cn:8013',
+  alpha: 'http://www.historicalai.cn:8013',
+  production: 'http://www.historicalai.cn:8013'
 }
 
 export { PROXY_URL_ENUM }

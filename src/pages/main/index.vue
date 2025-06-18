@@ -9,11 +9,10 @@
         </div>
         <div class="left-content">
           <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus"
-            :default-active="activeMenu" background-color="red" text-color="#fff"
-            active-text-color="red" router @select="handleMenuSelect">
+            :default-active="activePath" router @select="handleMenuSelect">
 
             <div v-for="(item, index) in routes" :key="item.path">
-              <el-sub-menu :index="index" v-if="!item.hidden">
+              <el-sub-menu :index="String(index)" v-if="!item.hidden">
                 <template #title>
                   <img class="menu-icon" style="width: 24px;height: 24px;" :src="getAssetsFile('suqare-icon.png')"
                     alt="">
@@ -21,7 +20,7 @@
                   <span>{{ item.text }}</span>
                 </template>
                 <template v-for="child in item.children">
-                  <el-menu-item v-if="!child.hidden" :index="child.path" :key="child.path">
+                  <el-menu-item :class="{'is-active': item.path + '/' + child.path === activePath}" v-if="!child.hidden" :index="child.path" :key="child.path">
                     <img class="menu-icon" :src="getAssetsFile(child.iconName + '.png')" alt="">
                     {{ child.text }}</el-menu-item>
                 </template>
@@ -52,14 +51,13 @@ import headerComponent from '../../components/header.vue'
 import { getAssetsFile } from '@/utils'
 
 const route = useRoute()
-const activeMenu = ref('/main/creation')
+const activePath = ref('')
 const openedMenus = ref(['3'])
 const isCollapse = ref(false)
 
 // 监听路由变化，更新激活的菜单项
 watch(() => route.path, (newPath) => {
-  console.log('-------newPath', newPath)
-  activeMenu.value = newPath
+  activePath.value = newPath
 }, { immediate: true })
 
 const handleMenuSelect = (index: number) => {
