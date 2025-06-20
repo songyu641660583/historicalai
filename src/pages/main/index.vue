@@ -8,7 +8,7 @@
           <span :style="{ display: isCollapse ? 'none' : 'block' }">历史漫绘</span>
         </div>
         <div class="left-content">
-          <el-menu :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus"
+          <el-menu :hide-timeout="20000" :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus"
             :default-active="activePath" router @select="handleMenuSelect">
 
             <div v-for="(item, index) in routes" :key="item.path">
@@ -71,6 +71,15 @@ const handleSlider = () => {
 
 </script>
 <style lang="scss">
+ .menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .el-menu--popup {
+    padding-left: 10px !important;
+        padding-right: 10px !important;
+  }
 .main {
   width: 100vw;
   height: 100vh;
@@ -79,6 +88,7 @@ const handleSlider = () => {
   &-container {
     height: calc(100vh - 68px);
     display: flex;
+   
 
     &-left {
       background-color: #f6f8fa;
@@ -86,12 +96,6 @@ const handleSlider = () => {
       flex-direction: column;
       padding: 30px 10px 0;
       width: 200px;
-
-      .menu-icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-      }
 
       &.slider {
         width: 100px;
@@ -130,6 +134,8 @@ const handleSlider = () => {
     &-right {
       transition: 2s;
       width: calc(100vw - 200px);
+      overflow-y: auto;
+      padding-bottom: 20px;
 
       &.slider {
         transition: 2s;

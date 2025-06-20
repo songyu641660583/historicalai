@@ -276,7 +276,7 @@ const handleGenerate = async () => {
   overflow-y: auto;  /* 超出时显示垂直滚动条 */
 }
 .creation {
-  padding: 30px 30px 30px 40px;
+  padding: 20px 30px 0;
 
   width: 100%;
   height: 100%;
