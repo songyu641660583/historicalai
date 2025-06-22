@@ -66,7 +66,7 @@
             </span>
           </div>
         </li>
-        <li @click="handlePayChannel('alipay')">
+        <!-- <li @click="handlePayChannel('alipay')">
           <div
             class="pay-channel-item line"
             :class="{ ' pay-channel-active': payType === 'alipay' }"
@@ -87,7 +87,7 @@
               </span>
             </span>
           </div>
-        </li>
+        </li> -->
       </ul>
       <div class="alipay-content" v-if="payType === 'alipay'">
         <p class="info">支付宝网站支付需要在支付页面输入您的支付信息，</p>

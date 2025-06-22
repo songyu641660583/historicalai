@@ -25,5 +25,5 @@ export default {
   getBill: (data: any) => post('/api/bill', data), // 获取账单
   getBalance: (data: any) => post('/api/balance', data), // 获取余额
   getWeChatQyCode: (data: any) => post('/api/qr_code', data), // 获取微信支付二维码
-  payDetails: (data: any) => post('/api/paydetails', data), // 获取支付结果
+  payDetails: (data: any) => post('/api/paydetail', data), // 获取支付结果
 }

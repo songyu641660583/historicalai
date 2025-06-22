@@ -145,27 +145,47 @@ const keywords = ref('')
 const activeIndex = ref(0)
 const radioList = ref([
   {
-    value: '1:1'
+    value: '1:1',
+    width: 1024,
+    height: 1024
   },
   {
-    value: '3:4'
+    value: '3:4',
+    width: 864,
+    height: 1152
   },
   {
-    value: '4:3'
+    value: '4:3',
+    width: 1152,
+    height: 864
   },
   {
-    value: '16:9'
+    value: '16:9',
+    width: 1280,
+    height: 720
+  },
+   {
+    value: '9:16',
+    width: 720,
+    height: 1280
   },
   {
-    value: '2:3'
+    value: '2:3',
+    width: 832,
+    height: 1248
   },
   {
-    value: '3:2'
+    value: '3:2',
+    width: 1248,
+    height: 832
   },
   {
-    value: '21:9'
+    value: '21:9',
+    width: 512,
+    height: 648
   }
 ])
+let radioDetail: any = null
 const submitLoading = ref(false)
 const voiceList: any = ref([])
 const voiceDetail: any = ref(null)
@@ -181,7 +201,7 @@ onMounted(() => {
 
 const handleRate = (index: number) => {
   activeIndex.value = index
-  const item = radioList.value[index]
+  radioDetail = radioList.value[index]
 }
 
 const handleCustom = () => {
@@ -228,6 +248,8 @@ async function getVoiceList() {
 
 const handleGenerate = async () => {
   if (submitLoading.value) return
+  let width = null
+  let height = null
   if (activeIndex.value === -1) {
     if (withNum.value <= 0 || heightNum.value <= 0) {
       ElMessage({
@@ -236,9 +258,13 @@ const handleGenerate = async () => {
       })
       return
     }
+    width = withNum.value
+    height = heightNum.value
   } else {
-    // const item = radioList.value[activeIndex.value]
-
+    if(radioDetail) {
+      width = radioDetail.width
+      height = radioDetail.height
+    }
   }
 
   if (!keywords.value.trim()) {
@@ -255,8 +281,8 @@ const handleGenerate = async () => {
       "user_id": userInfo.user_id,
       "story": keywords.value,
       "voice_id": voiceDetail.value?.id || '',
-      "width": withNum.value,
-      "height": heightNum.value
+      "width": width,
+      "height": height
     })
     submitLoading.value = false
   } catch (err) {
