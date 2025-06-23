@@ -9,6 +9,7 @@ import Creationiew from '../pages/main/creation.vue'
 import BillRevordView from '../pages/main/billRecord.vue'
 import RechargeView from '../pages/main/recharge.vue'
 import ConfirmPayView from '../pages/main/confirmPay.vue'
+import HelpView from '../pages/main/help.vue'
 
 export const routes = [
   {
@@ -62,6 +63,13 @@ export const routes = [
         name: 'BillRevordView',
         component: BillRevordView,
         iconName: 'bill-icon'
+      },
+       {
+        path: 'help',
+        text: '帮助文档',
+        name: 'HelpView',
+        component: HelpView,
+        iconName: 'help-icon'
       },
     ]
   }

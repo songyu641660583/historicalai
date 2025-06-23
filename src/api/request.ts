@@ -9,7 +9,7 @@ import router from '../router'
 
 const request = axios.create({
   baseURL: '',
-  timeout: 600000
+  // timeout: 6000000
 })
 // request.defaults.withCredentials = true
 request.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -88,7 +88,9 @@ request.interceptors.response.use(
     if (code === 0) {
       return data
     }
-    errorHandle(code, message || '请求异常')
+    if(config.url.indexOf('paydetail') === -1) {
+      errorHandle(code, message || '请求异常')
+    }
 
     return Promise.reject(response.data)
   },

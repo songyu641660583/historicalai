@@ -39,8 +39,10 @@
       </div>
       <div class="main-container-right" :class="{ slider: isCollapse }">
         <router-view />
+        <footerComponent />
       </div>
     </div>
+    
   </div>
 </template>
 <script setup lang="ts">
@@ -48,6 +50,7 @@ import { useRoute } from 'vue-router'
 import { ref, onMounted, watch } from 'vue'
 import { routes } from '../../router'
 import headerComponent from '../../components/header.vue'
+import footerComponent from '../../components/footer.vue'
 import { getAssetsFile } from '@/utils'
 
 const route = useRoute()
@@ -135,7 +138,6 @@ const handleSlider = () => {
       transition: 2s;
       width: calc(100vw - 200px);
       overflow-y: auto;
-      padding-bottom: 20px;
 
       &.slider {
         transition: 2s;

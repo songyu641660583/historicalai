@@ -1,5 +1,5 @@
 <template>
-  <div class="creation" v-loading="submitLoading" element-loading-text="生成中，请稍等...">
+  <div class="creation" v-loading="submitLoading" element-loading-text="正在创作中，预计需要5-10分钟，请耐心等待...">
     <div class="creation-left module">
       <div class="title">生成漫画视频</div>
       <div class=form-wrapper-_4819c>
@@ -10,10 +10,10 @@
                 <div class=arco-form-item-control id=prompt>
                   <div class=arco-form-item-control-children>
                     <div class=prompt-container-_7730c>
-                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=800
+                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=3000
                           class="arco-textarea input-d73634" placeholder="描述想要生成的视频内容"
                           style="height:260px;min-height:260px;max-height:360px"></textarea><span
-                          class=arco-textarea-word-limit>{{ keywords.length }}/800</span></div>
+                          class=arco-textarea-word-limit>{{ keywords.length }}/3000</span></div>
                     </div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ const heightNum = ref(0)
 const videoResult = ref('')
 let setTimeoutValue: any = null
 onMounted(() => {
-
+   radioDetail = radioList.value[0]
   getVoiceList()
 })
 
@@ -305,7 +305,7 @@ const handleGenerate = async () => {
   padding: 20px 30px 0;
 
   width: 100%;
-  height: 100%;
+   min-height: 90%;
   display: flex;
   gap: 30px;
 

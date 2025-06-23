@@ -5,22 +5,22 @@
       <div class="bwOG1">
         <div class="rkd5p">
           <img src="@/assets/money.png" class="JZIjf" />
-          <div class="NOy8I">可用余额</div>
+          <div class="NOy8I">可用嗨币</div>
         </div>
 
         <div class="SJ7W8">
           <div class="CMIKu">
-            <span class="mIO8Y">¥</span>
+            <!-- <span class="mIO8Y">¥</span> -->
             <span class="Zixiu">{{ balanceValue }}</span>
           </div>
-          <span class="GITIx">
+          <!-- <span class="GITIx">
             （现金余额：
             <span class="MLR7g">¥ 0.00</span>
             <span class="KhOGX"> — </span>冻结金额：
             <span class="MLR7g">¥ 0.00</span>）
             <span class="KhOGX"> — </span>欠费金额：
             <span class="MLR7g">¥ 0.00</span>
-          </span>
+          </span> -->
         </div>
       </div>
       <div class="BQlzJ">
@@ -54,16 +54,21 @@
         </div>
       </div>
     </div>
-    <div class="recharge-title">充值金额</div>
-    <div>
+    <div class="recharge-title">购买嗨币</div>
+    <div class="money-list">
+      <div  v-for="(item, index) in moneyList"  :key="index">
+        <el-radio :label="item.value" v-model="moneyValue">{{ item.label }}</el-radio>
+      </div>
+    </div>
+    <!-- <div>
       <el-input-number placeholder="请输入金额" v-model="moneyValue" class="mx-4" :min="1" style="width: 300px;"
         controls-position="right">
         <template #prefix>
           <span style="color: #000;font-size:12px;">¥</span>
         </template>
-      </el-input-number>
-    </div>
-    <ul class="tips-list">
+</el-input-number>
+</div> -->
+    <!-- <ul class="tips-list">
       <div class="checkbox-wrap">
         <el-checkbox class="checkbox" v-model="agreeValue" size="large" />我已知悉：
       </div>
@@ -75,8 +80,8 @@
         充值金额只可用于购买和使用火山引擎产品和服务，仅支持原路回退至付款账户。
         <a class="arco-link" target="_blank">了解更多</a>
       </li>
-    </ul>
-    <el-button type="primary" @click="handleSubmit" :loading="submitLoading"
+    </ul> -->
+    <el-button style="margin-top: 20px;" type="primary" @click="handleSubmit" :loading="submitLoading"
       :disabled="!agreeValue || !moneyValue">确认充值</el-button>
   </div>
 </template>
@@ -88,11 +93,25 @@ import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 const router = useRouter()
-const moneyValue = ref(0)
-const agreeValue = ref(false)
+const moneyValue = ref()
+const agreeValue = ref(true)
 const submitLoading = ref(false)
 const balanceValue = ref(0)
-let orderNumber = ''
+
+const moneyList = [
+  {
+    label: '200嗨币, ¥10.0',
+    value: 10
+  },
+  {
+    label: '450嗨币, ¥20.0',
+    value: 20
+  },
+  {
+    label: '1150嗨币, ¥50.0',
+    value: 50
+  },
+]
 
 
 onMounted(() => {
@@ -119,9 +138,9 @@ function handleSubmit() {
     localStorage.setItem('rechargeMoney', moneyValue.value.toString())
     router.push({
       path: '/main/confirmPay',
-      query: {
-        orderNumber
-      }
+      // query: {
+      //   orderNumber
+      // }
     })
 
   }, 2000)
@@ -134,9 +153,13 @@ function handleRecord() {
 .el-input-number .el-input__inner {
   text-align: left !important;
 }
+.money-list .el-radio__label{
+  color: #333;
+}
 </style>
 
 <style lang="scss" scoped>
+
 .MuO_f {
   border-radius: 4px;
   -moz-box-sizing: border-box;
@@ -238,7 +261,7 @@ function handleRecord() {
 
 .recharge {
   width: 100%;
-  min-height: 100%;
+  min-height: 90%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;

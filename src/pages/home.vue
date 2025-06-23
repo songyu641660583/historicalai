@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import headerComponent from '../components/header.vue'
 import { ref } from 'vue'
+import { useUserStore } from "@/store"
+import { useRouter } from "vue-router"
+
+const userStore = useUserStore()
+const router = useRouter()
+const headerRef: any = ref(null)
 
 const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
 const firstIndex = ref(0)
@@ -17,11 +23,22 @@ setInterval(() => {
  handleFirstChange(nextIndex)
 }, 6000)
 
+const handleCreate = () => {
+  if(userStore.getUserInfo.user_id) {
+    router.push('/main/creation')
+  }else{
+if (headerRef.value) {
+    headerRef.value.handleLogin()
+  }
+  }
+  // window.location.href = '/create'
+}
+
 </script>
 
 <template>
   <div id=root>
-    <headerComponent isFixed/>
+    <headerComponent isFixed ref="headerRef" />
     <section class=box-weRFZa>
       <div class=bg-box-iGxURO>
         <video :src="firstData[firstIndex]" class=video-_dSgML
@@ -68,7 +85,7 @@ setInterval(() => {
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>流畅运镜，生动自然</h3>
                 <div class=desc-egHxcp>视频动效效果连贯性强、流畅自然，可轻松操控运镜，调节速度变化，历史漫绘为视频智能创作增添无限可能</div>
-              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
+              </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>01</div>
           </div>
@@ -89,7 +106,7 @@ setInterval(() => {
                   <p>精准掌控</p>
                 </h3>
                 <div class=desc-egHxcp>创新的首帧图片和尾帧图片输入方式，增强视频生成的可控性，轻松打造高品质素材，提升你的视频内容创作效率</div>
-              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
+              </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>02</div>
           </div>
@@ -107,7 +124,7 @@ setInterval(() => {
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>中文创作，得心应手</h3>
                 <div class=desc-egHxcp>历史漫绘支持根据中文提示词进行创作，拥有更好的语义理解能力，准确把握你的需求，将抽象的思路转化为视觉作品</div>
-              </div><a class=btn-EoHtfv target=_self><span>立即创作</span></a>
+              </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>03</div>
           </div>
@@ -229,13 +246,13 @@ setInterval(() => {
         <div class=desc-y0bP_u>
           <div>历史漫绘一站式智能画布，集成AI拼图生成能力，并提供局部重绘、一键扩图、图像消除和抠图等多功能强大操作。你可以在同一画布上实现多元素的无缝拼接，确保AI绘画的创作风格统一和谐。</div>
         </div>
-        <div class=cta-btn-wrapper-C8T0Ze><a class=btn-EoHtfv target=_self
+        <div class=cta-btn-wrapper-C8T0Ze><a class="btn-EoHtfv"
             href=https://jimeng.jianying.com/ai-tool/login><svg xmlns=http://www.w3.org/2000/svg width=18 height=18
               fill=currentColor viewBox="0 0 18 18">
               <path fill-rule=evenodd
                 d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                 clip-rule=evenodd></path>
-            </svg><span>立即创作</span></a></div>
+            </svg><span @click="handleCreate">立即创作</span></a></div>
       </div>
       <div class=tab-hNTmV4>
         <div class="tab-item-MBIsXG tab-item-active-bGPvXj">多图层编辑</div>
@@ -275,12 +292,12 @@ setInterval(() => {
       <div class=main-whiUyf>
         <h2 class=title-lyHCac>创意涌动 灵感绽放</h2>
         <div class=desc-VYvN1G>在历史漫绘的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div>
-        <a class=btn-EoHtfv>
+        <a class="btn-EoHtfv" @click="handleCreate">
           <span>立即创作</span></a>
       </div>
       <div class=animate-box-tJU6nw>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-0 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-0 animate-box-col-item-ZEEtY9"
             style=opacity:1;transform:none;will-change:auto><img src="../assets/bc8ca9c978546c1f860a5f956a3e8a27.jpg"
               alt=🍰Berry的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -304,7 +321,7 @@ setInterval(() => {
             </div>
           </a><a
 
-            target=_self class="box-T63Hos fifth-gli-0-1 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-1 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/7b6a9bfcab51b666af9617d5412fa7eb.jpg
               alt=盒饭饭喜欢吃丸子的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -328,7 +345,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-2 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-2 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/9117feceeca108fe7124ca0d3138833e.jpg
               alt=小树树爱世界！的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -352,7 +369,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-3 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-3 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/364a3909f4c74b6a3c9b7372ead7c3ac.jpg
               alt=晓梦的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -376,7 +393,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-4 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-4 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/3a9958c9996efd1262af55471d145a52.jpg"
               alt=公主的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -399,7 +416,7 @@ setInterval(() => {
               </svg>
             </div>
           </a><a
-            target=_self class="box-T63Hos fifth-gli-0-5 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-5 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/2e776a1b9bdae479f92d8177ae032888.jpg"
               alt=塔尼雅的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -423,7 +440,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-6 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-6 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/c262213618f5bf49c8659bc4b077d3f6.jpg"
               alt="不吃草的 花牛的作品" loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -447,7 +464,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-7 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-7 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/69e5540dd5d3baf99e21fe72faf26caf.jpg
               alt=水水的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -470,7 +487,7 @@ setInterval(() => {
               </svg>
             </div>
           </a><a
-            target=_self class="box-T63Hos fifth-gli-0-8 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-8 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/8a2a7d652b23189a3215883daea697c0.jpg
               alt=晗槑槑的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -494,7 +511,7 @@ setInterval(() => {
             </div>
           </a></div>
         <div><a
-            target=_self class="box-T63Hos fifth-gli-0-9 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-9 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src="../assets/81189f2c63dbd7ce135736a0154a7900.jpg"
               alt=🍰Berry的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -517,7 +534,7 @@ setInterval(() => {
               </svg>
             </div>
           </a><a
-            target=_self class="box-T63Hos fifth-gli-0-10 animate-box-col-item-ZEEtY9"
+            class="box-T63Hos fifth-gli-0-10 animate-box-col-item-ZEEtY9"
             style="opacity:1;transform:none;will-change:auto"><img src=../assets/4e57aa45fa986a94bee227eaf53f9f68.jpg
               alt=檬檬的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
@@ -544,7 +561,7 @@ setInterval(() => {
     </section>
     <section class=box-aQs010><img class=icon-SyMPuO src=../assets/6cce6b304b6e64adaa18722e1983ed26.png alt=历史漫绘
         loading=lazy>
-         <a class=btn-EoHtfv>
+         <a class="btn-EoHtfv" @click="handleCreate">
           <span>开启智能创作</span></a>
     </section>
     <section class=footer-container_b27af>

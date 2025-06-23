@@ -1,6 +1,7 @@
 <template>
-   <div class=footer-YtwIpo>
-          <div class=beian-QKzV2L>
+   <div class="footer-YtwIpo">
+     <div class="custom-module">试用体验内容均由人工智能模型生成，不代表平台立场 <span>免责声明</span><span>测试协议</span><span>隐私政策</span></div> 
+          <!-- <div class=beian-QKzV2L>
             <div class=text-wdR8Ms>版权所有©北京历史漫绘科技有限公司2025 </div>
             <div class=below-fXUkWQ>
               <div class=beianAndICP-GiJ8Fz><img class=badge-iAUu6L
@@ -10,15 +11,26 @@
                   target=_blank rel=noreferrer>京ICP备20018813号-3</a></div>
               <div class=text-wdR8Ms>增值电信业务经营许可证：牌照京B2-20202418</div>
             </div>
-          </div>
+          </div> -->
         </div>
 </template>
 <style>
 .footer-YtwIpo {
+  height: 80px;
+  line-height: 80px;
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  justify-content: center
+  justify-content: center;
+  font-size: 14px;
+  color: #999;
+}
+.custom-module {
+  text-align: center;
+}
+.custom-module span {
+  cursor: pointer;
+  margin-left: 30px;
 }
 
 .beian-QKzV2L {

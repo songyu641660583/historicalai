@@ -1,6 +1,6 @@
 <template>
   <div class="header" :style="{position: isFixed ? 'fixed' : 'initial'}">
-    <div class="header-logo">
+    <div class="header-logo" @click="handleHome">
       <img class="header-logo-img" width="84" height="22.13" src="../assets/logo.png" alt="历史漫绘" />
     </div>
     <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
@@ -76,7 +76,7 @@
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
 import { useRouter } from 'vue-router'
-import { defineEmits, withDefaults,  ref } from 'vue'
+import { defineEmits, withDefaults,  ref, computed } from 'vue'
 import LoginComponent from '../pages/login.vue'
 import RegisterComponent from '../pages/register.vue'
 
@@ -92,13 +92,14 @@ const loginVisible = ref(false)
 const registerVisible = ref(false)
 
 const userStore = useUserStore()
+const userInfo = computed(() => userStore.getUserInfo)
 // const userInfo = ref({
 //   name: '1760000用户1760000用户',
 //   account: '123423424'
 // })
 const router = useRouter()
 
-const userInfo = userStore.getUserInfo
+// const userInfo = userStore.getUserInfo
 
 const loginSuccess = () => {
   loginVisible.value = false
@@ -139,6 +140,14 @@ const handleCopy = (value: string) => {
     type: 'success'
   })
 }
+
+const handleHome = () => {
+  router.push('/')
+}
+
+defineExpose({
+  handleLogin
+})
 </script>
 
 <style lang="scss">
