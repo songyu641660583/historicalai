@@ -64,13 +64,13 @@ export const routes = [
         component: BillRevordView,
         iconName: 'bill-icon'
       },
-       {
-        path: 'help',
-        text: '帮助文档',
-        name: 'HelpView',
-        component: HelpView,
-        iconName: 'help-icon'
-      },
+      //  {
+      //   path: 'help',
+      //   text: '帮助文档',
+      //   name: 'HelpView',
+      //   component: HelpView,
+      //   iconName: 'help-icon'
+      // },
     ]
   }
 ]

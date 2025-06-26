@@ -3,14 +3,24 @@ import headerComponent from '../components/header.vue'
 import { ref } from 'vue'
 import { useUserStore } from "@/store"
 import { useRouter } from "vue-router"
+import firstVideo1 from '@/assets/video/home-1.mp4'
+import firstVideo2 from '@/assets/video/home-2.mp4'
+import firstVideo3 from '@/assets/video/home-3.mp4'
+import firstVideo4 from '@/assets/video/home-4.mp4'
+import firstVideoPoster1 from '@/assets/home-banner3.jpeg'
+import firstVideoPoster2 from '@/assets/home-banner6.jpeg'
+import firstVideoPoster3 from '@/assets/home-banner12.jpeg'
+import firstVideoPoster4 from '@/assets/home-banner13.jpeg'
+
 
 const userStore = useUserStore()
 const router = useRouter()
 const headerRef: any = ref(null)
 
-const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
+const firstData = ref([firstVideo1, firstVideo2, firstVideo3, firstVideo4])
+const firstDataPoster = ref([firstVideoPoster1, firstVideoPoster2, firstVideoPoster3, firstVideoPoster4])
+// const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
 const firstIndex = ref(0)
-const secondVideoSrc = ref('https://vjs.zencdn.net/v/oceans.mp4')
 
 const handleFirstChange = (index: number) => {
   firstIndex.value = index
@@ -21,7 +31,7 @@ setInterval(() => {
     nextIndex = 0
   }
  handleFirstChange(nextIndex)
-}, 6000)
+}, 15000)
 
 const handleCreate = () => {
   if(userStore.getUserInfo.user_id) {
@@ -48,7 +58,7 @@ if (headerRef.value) {
         </video>
       </div>
       <div class=right-box-rgRoBY>
-        <img @click="handleFirstChange(index)" class=right-box-item-qgzhq3 :class="{active: firstIndex === index}" src="@/assets/2e8b6ca2b2237416940fca4a0deec9aa.jpg" alt=""  v-for="(item, index) in firstData" :key="index" />
+        <img @click="handleFirstChange(index)" class=right-box-item-qgzhq3 :class="{active: firstIndex === index}" :src="item" alt=""  v-for="(item, index) in firstDataPoster" :key="index" />
       </div>
       <!-- <div class=bottom-bYPxPC>
         <div class="input-DoV4AV input-flrsTo">
@@ -67,15 +77,15 @@ if (headerRef.value) {
     </section>
     <section class=box-WDLjs6>
       <div class=header-tD8TNM>
-        <div class=header-tips-KCLXJJ><svg xmlns=http://www.w3.org/2000/svg width=18 height=18 fill=currentColor
+        <!-- <div class=header-tips-KCLXJJ><svg xmlns=http://www.w3.org/2000/svg width=18 height=18 fill=currentColor
             viewBox="0 0 18 18">
             <path fill-rule=evenodd
               d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
               clip-rule=evenodd></path>
-          </svg><span>支持文/图 生视频</span></div>
+          </svg><span>支持文/图 生视频</span></div> -->
         <div class=header-right-wrapper-acr3jw>
-          <h2 class=header-title-_0vLTk>灵感即刻成片</h2>
-          <div class=header-desc-HoXsdg>AI视频生成，输入简单的文案或图片，即可快速生成优质视频片段</div>
+          <h2 style="#000" class=header-title-_0vLTk>灵感即刻成片</h2>
+          <div style="#000" class=header-desc-HoXsdg>A漫绘历史故事，AI生成漫画，输入一段历史或文化故事，即刻生成优质有声漫画</div>
         </div>
       </div>
       <div>
@@ -83,17 +93,19 @@ if (headerRef.value) {
           <div class=left-wrapper-_KDFs8>
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
-                <h3 class=title-ITEvEZ>流畅运镜，生动自然</h3>
-                <div class=desc-egHxcp>视频动效效果连贯性强、流畅自然，可轻松操控运镜，调节速度变化，历史漫绘为视频智能创作增添无限可能</div>
+                <h3 class=title-ITEvEZ>意境深远，以简驭繁</h3>
+                <div class=desc-egHxcp>中国文化故事与中国绘画结合，讲最好听的中国故事</div>
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>01</div>
           </div>
           <div class=media-wrapper-mac_RP>
             <div class=glitch-wrapper-H049jO>
-              <video :src="secondVideoSrc" playsinline muted
+              <img src="../assets/home-banner2.jpeg"
+                class="swiper-item-img-MKsgw0" loading=lazy>
+              <!-- <video :src="secondVideoSrc" playsinline muted
                 loop preload=auto crossorigin=anonymous autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video>
+                class="placeholder-RiOie5 media-IWKWD4"></video> -->
             </div>
           </div>
         </div>
@@ -102,19 +114,20 @@ if (headerRef.value) {
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>
-                  <p>从首帧到尾帧，</p>
-                  <p>精准掌控</p>
+                  <p>文化基因的现代表达</p>
                 </h3>
-                <div class=desc-egHxcp>创新的首帧图片和尾帧图片输入方式，增强视频生成的可控性，轻松打造高品质素材，提升你的视频内容创作效率</div>
+                <div class=desc-egHxcp>使用ai技术把历史从一维空间变换到多维空间，更生动的表达</div>
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>02</div>
           </div>
           <div class=media-wrapper-mac_RP>
             <div class=glitch-wrapper-H049jO>
-                            <video :src="secondVideoSrc" playsinline muted
+              <img src="../assets/home-banner3.jpeg"
+                class="swiper-item-img-MKsgw0" loading=lazy>
+                            <!-- <video :src="secondVideoSrc" playsinline muted
                 loop preload=auto crossorigin=anonymous autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video>
+                class="placeholder-RiOie5 media-IWKWD4"></video> -->
               </div>
           </div>
         </div>
@@ -122,17 +135,19 @@ if (headerRef.value) {
           <div class=left-wrapper-_KDFs8>
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
-                <h3 class=title-ITEvEZ>中文创作，得心应手</h3>
-                <div class=desc-egHxcp>历史漫绘支持根据中文提示词进行创作，拥有更好的语义理解能力，准确把握你的需求，将抽象的思路转化为视觉作品</div>
+                <h3 class=title-ITEvEZ>情感共振的独特路径</h3>
+                <div class=desc-egHxcp>娓娓道来的声音与宣纸上的墨色触发最丰富的文化记忆与情感共鸣</div>
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>03</div>
           </div>
           <div class=media-wrapper-mac_RP>
             <div class=glitch-wrapper-H049jO>
-                          <video :src="secondVideoSrc" playsinline muted
+              <img src="../assets/home-banner4.jpeg"
+                class="swiper-item-img-MKsgw0" loading=lazy>
+                          <!-- <video :src="secondVideoSrc" playsinline muted
                 loop preload=auto crossorigin=anonymous autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video>
+                class="placeholder-RiOie5 media-IWKWD4"></video> -->
               </div>
           </div>
         </div>
@@ -142,23 +157,22 @@ if (headerRef.value) {
       <div class=box-JJ9yeN>
         <div class=header-A6lXCo>
           <div class=header-wrapper-H8cAcb>
-            <section class=header-left-rcmLJe><svg xmlns=http://www.w3.org/2000/svg width=18 height=18 fill=currentColor
+            <!-- <section class=header-left-rcmLJe><svg xmlns=http://www.w3.org/2000/svg width=18 height=18 fill=currentColor
                 viewBox="0 0 18 18">
                 <path fill-rule=evenodd
                   d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
                   clip-rule=evenodd></path>
-              </svg><span>支持文/图生图片</span></section>
+              </svg><span>支持文/图生图片</span></section> -->
             <section class=header-right-Qj0MQu>
               <h2 class=header-right-title-wwVbiL>AI绘画 梦境成真</h2>
-              <div class=header-right-text-_sJ2oa>历史漫绘绘画，仅需简单提示词，即可生成精彩的图片。
-                你还可以对现有图片进行创意改造，自定义保留人物或主体的形象特征，实现背景替换、风格联想、画风保持、姿势保持等 操作，满足各种场景的创作需求</div>
+              <div class=header-right-text-_sJ2oa> AI漫绘 穿越时光，只需简单的一篇历史故事或文化故事， 一段视觉绘画艺术的有声视频马上会呈现在你面前</div>
             </section>
           </div>
         </div>
         <div class=swiper-ZMH7zV>
           <div class=swiper-scroll-YOzToa>
-            <div class=swiper-item-O8OmVh><img src="../assets/16553d704dd2ffeba394f23581d00a71.jpg"
-                class=swiper-item-img-MKsgw0 loading=lazy alt=3D游戏人物风格，戴夸张耳饰的民族风少女>
+            <div class=swiper-item-O8OmVh><img src="../assets/home-banner5.jpeg"
+                class=swiper-item-img-MKsgw0 loading=lazy>
               <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>3D游戏人物风格，戴夸张耳饰的民族风少女</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
@@ -170,62 +184,10 @@ if (headerRef.value) {
                     </svg><span>即梦成片</span></button></a>
               </div> -->
             </div>
-            <div class=swiper-item-O8OmVh><img src=../assets/a1ab53faaa03105af440097ce6994507.jpg
+            <div class=swiper-item-O8OmVh><img src="../assets/home-banner6.jpeg"
                 class=swiper-item-img-MKsgw0 loading=lazy alt=插画风格，太空飞行器在粉色星球低空飞行>
               <!-- <div class="input-DoV4AV input-AGWlqC">
                 <div class=text-HqXWWy>插画风格，太空飞行器在粉色星球低空飞行</div><a target=_blank
-                  href=https://jimeng.jianying.com/ai-tool/login><button
-                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
-                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
-                      <path fill-rule=evenodd
-                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-                        clip-rule=evenodd></path>
-                    </svg><span>即梦成片</span></button></a>
-              </div> -->
-            </div>
-            <div class=swiper-item-O8OmVh><img src="../assets/ef9a1c8cee8f2683f4cf86e1ed3b4568.jpg"
-                class=swiper-item-img-MKsgw0 loading=lazy alt=未来风，女性机械人形AI>
-              <!-- <div class="input-DoV4AV input-AGWlqC">
-                <div class=text-HqXWWy>未来风，女性机械人形AI</div><a target=_blank
-                  href=https://jimeng.jianying.com/ai-tool/login><button
-                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
-                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
-                      <path fill-rule=evenodd
-                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-                        clip-rule=evenodd></path>
-                    </svg><span>即梦成片</span></button></a>
-              </div> -->
-            </div>
-            <div class=swiper-item-O8OmVh><img src="../assets/72e341cd2c10937149d15d4b0cabc29b.jpg"
-                class=swiper-item-img-MKsgw0 loading=lazy alt=超写实插画，夜晚月光下的花园>
-              <!-- <div class="input-DoV4AV input-AGWlqC">
-                <div class=text-HqXWWy>超写实插画，夜晚月光下的花园</div><a target=_blank
-                  href=https://jimeng.jianying.com/ai-tool/login><button
-                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
-                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
-                      <path fill-rule=evenodd
-                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-                        clip-rule=evenodd></path>
-                    </svg><span>即梦成片</span></button></a>
-              </div> -->
-            </div>
-            <div class=swiper-item-O8OmVh><img src="../assets/2e964985358fdb6384627a7270a17169.jpg"
-                class=swiper-item-img-MKsgw0 loading=lazy alt=文艺复兴风格，身着贵族丝绸服饰猫咪>
-              <!-- <div class="input-DoV4AV input-AGWlqC">
-                <div class=text-HqXWWy>文艺复兴风格，身着贵族丝绸服饰猫咪</div><a target=_blank
-                  href=https://jimeng.jianying.com/ai-tool/login><button
-                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
-                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
-                      <path fill-rule=evenodd
-                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
-                        clip-rule=evenodd></path>
-                    </svg><span>即梦成片</span></button></a>
-              </div> -->
-            </div>
-            <div class=swiper-item-O8OmVh><img src=../assets/f705427ac51c673def0080daf37c1638.jpg
-                class=swiper-item-img-MKsgw0 loading=lazy alt=电影质感，盔甲勇士在火光下奔赴战场>
-              <!-- <div class="input-DoV4AV input-AGWlqC">
-                <div class=text-HqXWWy>电影质感，盔甲勇士在火光下奔赴战场</div><a target=_blank
                   href=https://jimeng.jianying.com/ai-tool/login><button
                     class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
                       width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
@@ -291,15 +253,14 @@ if (headerRef.value) {
     <section class=box-u5bhZT>
       <div class=main-whiUyf>
         <h2 class=title-lyHCac>创意涌动 灵感绽放</h2>
-        <div class=desc-VYvN1G>在历史漫绘的创意社区，与其他用户共同探索无限的影像灵感。让创意在相互碰撞中激发，一起创造精彩</div>
+        <div class=desc-VYvN1G>相同故事不同创意</div>
         <a class="btn-EoHtfv" @click="handleCreate">
           <span>立即创作</span></a>
       </div>
       <div class=animate-box-tJU6nw>
         <div><a
             class="box-T63Hos fifth-gli-0-0 animate-box-col-item-ZEEtY9"
-            style=opacity:1;transform:none;will-change:auto><img src="../assets/bc8ca9c978546c1f860a5f956a3e8a27.jpg"
-              alt=🍰Berry的作品 loading=lazy class=img-ereslv>
+            style=opacity:1;transform:none;will-change:auto><img src="../assets/home-banner7.jpeg" loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/bba253381c98b6b9d5f9756f20609860.png"
                   class=info-user-avatar-oqMcG_ alt=🍰Berry-avatar loading=lazy>
@@ -322,10 +283,10 @@ if (headerRef.value) {
           </a><a
 
             class="box-T63Hos fifth-gli-0-1 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/7b6a9bfcab51b666af9617d5412fa7eb.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner8.jpeg"
               alt=盒饭饭喜欢吃丸子的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
-              <div class=info-user-grfmwA><img src=../assets/6824739c8e5412ceca744601d3bc7bd7.png
+              <div class=info-user-grfmwA><img src="../assets/home-banner8.jpeg"
                   class=info-user-avatar-oqMcG_ alt=盒饭饭喜欢吃丸子-avatar loading=lazy>
                 <div class=info-user-username-qTlg_K>盒饭饭喜欢吃丸子</div>
               </div>
@@ -346,7 +307,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-2 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/9117feceeca108fe7124ca0d3138833e.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner9.jpeg"
               alt=小树树爱世界！的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/aff6013bfae6bbb6c2f0b95fdd897ee4.png"
@@ -370,7 +331,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-3 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/364a3909f4c74b6a3c9b7372ead7c3ac.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner10.jpeg"
               alt=晓梦的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/0c030e5c6cdd41697fd23f9abc4461ba.png"
@@ -394,7 +355,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-4 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src="../assets/3a9958c9996efd1262af55471d145a52.jpg"
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner11.jpeg"
               alt=公主的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src=../assets/d397a8c8cee1d176b3e7002ba592fb7f.png
@@ -417,7 +378,7 @@ if (headerRef.value) {
             </div>
           </a><a
             class="box-T63Hos fifth-gli-0-5 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src="../assets/2e776a1b9bdae479f92d8177ae032888.jpg"
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner12.jpeg"
               alt=塔尼雅的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/1d246226398958ee3404c4f3349fc162.png"
@@ -441,7 +402,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-6 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src="../assets/c262213618f5bf49c8659bc4b077d3f6.jpg"
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner13.jpeg"
               alt="不吃草的 花牛的作品" loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/8b362aff3c866a4ae5de60c176e45442.png"
@@ -465,7 +426,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-7 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/69e5540dd5d3baf99e21fe72faf26caf.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner14.jpeg"
               alt=水水的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src=../assets/188a11e0382cd013ad100c12c31baed7.png
@@ -488,7 +449,7 @@ if (headerRef.value) {
             </div>
           </a><a
             class="box-T63Hos fifth-gli-0-8 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/8a2a7d652b23189a3215883daea697c0.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner15.jpeg"
               alt=晗槑槑的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/a18a8ebdaf49a5cbe3bb47c05f4716a8.png"
@@ -512,7 +473,7 @@ if (headerRef.value) {
           </a></div>
         <div><a
             class="box-T63Hos fifth-gli-0-9 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src="../assets/81189f2c63dbd7ce135736a0154a7900.jpg"
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner16.jpeg"
               alt=🍰Berry的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/bba253381c98b6b9d5f9756f20609860.png"
@@ -535,7 +496,7 @@ if (headerRef.value) {
             </div>
           </a><a
             class="box-T63Hos fifth-gli-0-10 animate-box-col-item-ZEEtY9"
-            style="opacity:1;transform:none;will-change:auto"><img src=../assets/4e57aa45fa986a94bee227eaf53f9f68.jpg
+            style="opacity:1;transform:none;will-change:auto"><img src="../assets/home-banner2.jpeg"
               alt=檬檬的作品 loading=lazy class=img-ereslv>
             <div class=info-HRkDXz>
               <div class=info-user-grfmwA><img src="../assets/89bdb0eece32df4c4ff7a9da59a1d5db.png"
@@ -559,21 +520,21 @@ if (headerRef.value) {
           </a></div>
       </div>
     </section>
-    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/6cce6b304b6e64adaa18722e1983ed26.png alt=历史漫绘
+    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/logo.png alt=历史漫绘
         loading=lazy>
          <a class="btn-EoHtfv" @click="handleCreate">
           <span>开启智能创作</span></a>
     </section>
     <section class=footer-container_b27af>
-      <div class="links-wrapper_b27af nav-wrapper_b27af"><span><a
+      <!-- <div class="links-wrapper_b27af nav-wrapper_b27af"><span><a
             class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >文生图</a></span><span><a
             class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af">视频生成</a></span><span><a
             class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >智能画布</a></span><span><a
             class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af" >探索</a></span><span><a
-            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af">未来影像计划</a></span></div>
+            class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af">未来影像计划</a></span></div> -->
       <div class="links-wrapper_b27af privacy-wrapper_b27af">
         <div class=anchor-wrapper_b27af>
-          <div class=inner-wrapper_b27af><a
+          <!-- <div class=inner-wrapper_b27af><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
               aria-label=历史漫绘-营业执照 >营业执照</a><span
               class="divider_b27af small_b27af"></span><a
@@ -582,13 +543,13 @@ if (headerRef.value) {
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
               aria-label=历史漫绘-隐私政策 >隐私政策</a>
-          </div>
+          </div> -->
           <div class="inner-wrapper_b27af company-wrapper_b27af">
             <div class=icp-wrapper_b27af><span class="divider_b27af small_b27af"></span>
               <a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-                aria-label="历史漫绘-粤ICP备13065114号" target="_blank" rel="noopener;noreferrer"
-                 >粤ICP备13065114号</a>
+                aria-label="历史漫绘-京ICP备2024090455号" target="_blank" rel="noopener;noreferrer"
+                 >京ICP备2024090455号</a>
                 <span class="divider_b27af small_b27af"></span>
                 <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
                  target=_blank rel=noopener;noreferrer
@@ -596,18 +557,20 @@ if (headerRef.value) {
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
-                aria-label=历史漫绘-粤公网安备44030002004191号 target=_blank rel=noopener;noreferrer
+                aria-label=历史漫绘-京ICP备2024090455号-2 target=_blank rel=noopener;noreferrer
                 ><img class=link-icon_b27af
-                  src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>粤公网安备44030002004191号</a>
+                  src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>京ICP备2024090455号-2</a>
             </div>
           </div>
         </div>
         <div class="inner-wrapper_b27af privacy-text-wrapper_b27af"><span class="divider_b27af small_b27af"></span><span
-            class="link_b27af small_b27af text_b27af">深圳市脸萌科技有限公司</span><span
-            class="divider_b27af small_b27af"></span><span
-            class="link_b27af small_b27af text_b27af">深圳市南山区招商街道水湾社区太子路51号太子广场1104</span></div>
+            class="link_b27af small_b27af text_b27af">北京阿班智能科技有限公司</span><span
+            class="divider_b27af small_b27af"></span>
+            <!-- <span
+            class="link_b27af small_b27af text_b27af">深圳市南山区招商街道水湾社区太子路51号太子广场1104</span> -->
+            </div>
       </div>
-      <div class=social-wrapper_b27af><a class="jimeng-link jimeng-link-theme-black social_b27af"
+      <!-- <div class=social-wrapper_b27af><a class="jimeng-link jimeng-link-theme-black social_b27af"
           aria-label=历史漫绘-undefined target=_blank
          ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
@@ -636,7 +599,7 @@ if (headerRef.value) {
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m5.46-15.87a1.6 1.6 0 0 0-.58-.112c-.848 0-1.528.65-1.952 1.145-.51.595-1.032 1.358-1.627 2.25a67 67 0 0 1-.85 1.245c-.169.24-.325.467-.466.694a16 16 0 0 0-.465-.694l-.43-.62-.42-.625c-.595-.89-1.118-1.67-1.628-2.25-.425-.496-1.102-1.145-1.952-1.145-.196 0-.396.042-.579.112-.34.128-.807.424-1.062 1.133-.142.409-.211.905-.198 1.541.028 1.076.27 2.448.538 3.863.298 1.556.552 2.588.849 3.351.197.525.41.922.65 1.205.44.523.906.636 1.23.636.221 0 .44-.048.638-.142.17-.07.708-.325 1.812-2.108q.576-.922 1.032-1.91.458.987 1.032 1.91c1.054 1.726 1.606 2.006 1.793 2.1l.018.01c.199.093.416.14.636.14.326 0 .793-.114 1.232-.636.28-.364.499-.77.65-1.204.297-.765.552-1.796.849-3.352.269-1.415.524-2.787.537-3.863.015-.636-.043-1.132-.225-1.543-.255-.706-.722-1.003-1.062-1.13M5.077 5.588c.013-.014.027-.014.042-.014.042 0 .268.028.792.622.453.51.948 1.245 1.515 2.094q.197.282.399.583.164.245.336.492a2 2 0 0 1 .127.184q.235.305.424.638c.068.111.108.197.136.255l.02.041c-.227.594-.665 1.457-1.145 2.25-.638 1.046-1.035 1.471-1.176 1.584-.084-.085-.297-.339-.552-1.104-.225-.65-.438-1.54-.678-2.815-.255-1.359-.495-2.646-.51-3.609 0-.438.03-.763.114-.99.066-.169.12-.194.149-.208zm9.04.594c.523-.594.75-.623.797-.623a.1.1 0 0 1 .037.015l.008.003c.03.014.084.037.162.181.085.226.127.551.113.99-.029.96-.254 2.25-.509 3.607-.24 1.26-.452 2.165-.68 2.816-.254.778-.466 1.034-.551 1.104-.141-.116-.538-.538-1.174-1.585-.481-.793-.92-1.655-1.147-2.25a1.5 1.5 0 0 1 .157-.297 7 7 0 0 1 .384-.573q.014-.018.026-.037l.126-.181c.253-.366.493-.718.731-1.068l.006-.008c.567-.85 1.061-1.584 1.513-2.094"
               clip-rule=evenodd></path>
-          </svg></span></div>
+          </svg></span></div> -->
     </section>
   </div>
 </template>
@@ -729,9 +692,9 @@ html {
 }
 
 .icon-SyMPuO {
-  height: 85px;
-  margin-bottom: 36px;
-  width: 280px
+  height: 100px;
+  width: 300px;
+  object-fit: cover;
 }
 
 
@@ -1936,8 +1899,9 @@ html {
   --second-media-width: var(--second-r-wrapper-width);
   --second-media-height: 486px;
   --second-amazing-line-display: block;
-  background-color: #004dc8;
-  background-image: url(../assets/0f78492865d51594acd23c4953b826c0.jpg);
+ /* background-color: #004dc8;
+  background-image: url(../assets/0f78492865d51594acd23c4953b826c0.jpg); */
+  background: #111;
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;

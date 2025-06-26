@@ -25,16 +25,26 @@
     </div>
     <div class="actions-wrapper" v-else>
       <el-dropdown>
-        <span class="el-dropdown-link">
-          <img
+        <div class="el-dropdown-link avatar-custom">
+          <span class="avatar-text">{{  userInfo.user_name.slice(0,1)}}</span>
+
+          <!-- <img
             style="width: 40px;height: 40px;cursor: pointer;"
             src="../assets/user-avatar-default.png"
-          />
-        </span>
+          /> -->
+        </div>
         <template #dropdown>
           <div class="dropdown-content">
             <div class="dropdown-base">
-              <img class="img" src="../assets/user-avatar-default.png" alt />
+              <!-- <img class="img" src="../assets/user-avatar-default.png" alt /> -->
+              <div class="avatar-custom" >
+                <span class="avatar-text">{{  userInfo.user_name.slice(0,1)}}</span>
+
+                  <!-- <img
+                    style="width: 40px;height: 40px;cursor: pointer;"
+                    src="../assets/user-avatar-default.png"
+                  /> -->
+              </div>
               <div class="base-info">
                 <div class="base-info-name base-info-item">
                   <span class="text">{{ userInfo.user_name }}</span>
@@ -151,6 +161,19 @@ defineExpose({
 </script>
 
 <style lang="scss">
+.avatar-custom {
+  width: 50px;
+  height: 50px;
+  background-color: #ecf2ff;
+  color: #05f;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
 .el-dialog {
   background-color: transparent !important;
   box-shadow: none !important;
@@ -191,6 +214,7 @@ defineExpose({
     }
 
     .base-info {
+      margin-left: 10px;
       flex: auto;
 
       &-name {
@@ -239,6 +263,7 @@ defineExpose({
   padding: 0 24px;
   width: 100%;
   z-index: 10;
+  
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   background-color: rgba(15, 17, 21, 0.4);
@@ -253,8 +278,8 @@ defineExpose({
   }
 
   .header-logo-img {
-    height: 22.13px;
-    width: 88px;
+    width: 160px;
+    object-fit: cover;
   }
 
   .actions-wrapper {
