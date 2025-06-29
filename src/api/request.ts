@@ -85,6 +85,13 @@ request.interceptors.response.use(
     // if (code === undefined) {
     //   return response.data
     // }
+    if(code === 1 && config.url.indexOf('paydetail') === -1) {
+      return errorHandle(code, message || '请求异常')
+    }
+    
+    if(config.url.indexOf('generating') !== -1) {
+      return response.data
+    }
     if (code === 0) {
       return data
     }

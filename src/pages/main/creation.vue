@@ -195,7 +195,7 @@ const heightNum = ref(0)
 const videoResult = ref('')
 let setTimeoutValue: any = null
 onMounted(() => {
-   radioDetail = radioList.value[0]
+  radioDetail = radioList.value[0]
   getVoiceList()
 })
 
@@ -274,24 +274,40 @@ const handleGenerate = async () => {
     })
     return
   }
+  if (!audioRef.value.paused) {
+    clearTimeout(setTimeoutValue)
+    audioRef.value.pause()
+  }
   submitLoading.value = true
   try {
     const userInfo = userStore.getUserInfo
-    const res = await api.home.generatingVideo({
+    const res: string = await api.home.generatingVideo({
       "user_id": userInfo.user_id,
       "story": keywords.value,
       "voice_id": voiceDetail.value?.id || '',
       "width": width,
       "height": height
     })
+  
+    const jsonSegments = res.split('}').filter(seg => seg.trim());
+
+    let url = null;
+    for (const segment of jsonSegments) {
+      try {
+        const jsonStr = segment + '}}'; 
+        const data = JSON.parse(jsonStr);
+        if (data.data?.url) {
+          url = data.data.url; 
+        }
+      } catch (e) {
+        console.warn("解析失败:", segment);
+      }
+    }
+    videoResult.value = 'http://' + url
+
     submitLoading.value = false
   } catch (err) {
     submitLoading.value = false
-    // const res = {
-    //   "video_url": 'https://media.w3.org/2010/05/sintel/trailer.mp4'
-    // }
-    // videoResult.value = res.video_url
-
   }
 }
 

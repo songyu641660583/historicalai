@@ -20,7 +20,7 @@ export default {
     login: (data: any) => post('/api/login', data), // 登录
   sign: (data: any) => post('/api/sign', data),// 注册
   getVerificationCode: (data: any) => post('/api/code', data), // 获取验证码
-  generatingVideo: (data: any) => post('/api/generating_video', data), // 生成漫画视频
+  generatingVideo: (data: any) => post('/api/generating', data), // 生成漫画视频
   getVoiceList: (data: any) => post('/api/voices', data), // 获取语音列表
   getBill: (data: any) => post('/api/bill', data), // 获取账单
   getBalance: (data: any) => post('/api/balance', data), // 获取余额
