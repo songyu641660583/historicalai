@@ -1,6 +1,6 @@
 import { post } from '../http'
-import getConfig from '../../../config/index'
-const { proxyUrl } = getConfig(import.meta.env)
+// import getConfig from '../../../config/index'
+// const { proxyUrl } = getConfig(import.meta.env)
 // const PROXY_URL_ENUM:  any = {
 //   development: 'http://www.historicalai.cn',
 //   alpha: 'http://www.historicalai.cn',

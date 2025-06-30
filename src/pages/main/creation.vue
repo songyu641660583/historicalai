@@ -125,7 +125,7 @@
         <p>暂无内容，开始你的创意吧</p>
       </div>
       <div class="video-container" v-else>
-        <video :src="videoResult" controls></video>
+        <video :src="videoResult" ref="videoRef" controls></video>
       </div>
     </div>
   </div>
@@ -134,12 +134,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
 
 const audioRef: any = ref(null);
+const videoRef: any = ref(null);
 const userStore = useUserStore()
 const keywords = ref('')
 const activeIndex = ref(0)
@@ -164,7 +165,7 @@ const radioList = ref([
     width: 1280,
     height: 720
   },
-   {
+  {
     value: '9:16',
     width: 720,
     height: 1280
@@ -192,12 +193,22 @@ const voiceDetail: any = ref(null)
 
 const withNum = ref(0)
 const heightNum = ref(0)
-const videoResult = ref('')
-let setTimeoutValue: any = null
+// 'https://media.w3.org/2010/05/sintel/trailer.mp4'
+const videoResult = ref()
 onMounted(() => {
   radioDetail = radioList.value[0]
   getVoiceList()
 })
+watch(() => voiceDetail.value, (async () => {
+  await nextTick();
+  if (videoRef.value) {
+    videoRef.value.addEventListener('play', () => {
+      if (!audioRef.value.paused) {
+        audioRef.value.pause()
+      }
+    });
+  }
+}), { immediate: true })
 
 const handleRate = (index: number) => {
   activeIndex.value = index
@@ -209,17 +220,16 @@ const handleCustom = () => {
 }
 
 const handleVoiceClick = (item: any) => {
+  if (!videoRef.value.paused) {
+    videoRef.value.pause()
+  }
   voiceDetail.value = item
   if (!audioRef.value.paused) {
-    clearTimeout(setTimeoutValue)
     audioRef.value.pause()
   }
   if (audioRef.value) {
-    audioRef.value.src = 'http://' + item.url
+    audioRef.value.src = item.url
     audioRef.value.play()
-    // setTimeoutValue = setTimeout(() => {
-    //   audioRef.value.pause()
-    // }, 6000)
   }
 }
 
@@ -261,7 +271,7 @@ const handleGenerate = async () => {
     width = withNum.value
     height = heightNum.value
   } else {
-    if(radioDetail) {
+    if (radioDetail) {
       width = radioDetail.width
       height = radioDetail.height
     }
@@ -275,8 +285,10 @@ const handleGenerate = async () => {
     return
   }
   if (!audioRef.value.paused) {
-    clearTimeout(setTimeoutValue)
     audioRef.value.pause()
+  }
+  if (videoRef?.value && !videoRef.value.paused) {
+    videoRef.value.pause()
   }
   submitLoading.value = true
   try {
@@ -288,22 +300,22 @@ const handleGenerate = async () => {
       "width": width,
       "height": height
     })
-  
+
     const jsonSegments = res.split('}').filter(seg => seg.trim());
 
     let url = null;
     for (const segment of jsonSegments) {
       try {
-        const jsonStr = segment + '}}'; 
+        const jsonStr = segment + '}}';
         const data = JSON.parse(jsonStr);
         if (data.data?.url) {
-          url = data.data.url; 
+          url = data.data.url;
         }
       } catch (e) {
         console.warn("解析失败:", segment);
       }
     }
-    videoResult.value = 'http://' + url
+    videoResult.value =  url
 
     submitLoading.value = false
   } catch (err) {
@@ -314,14 +326,17 @@ const handleGenerate = async () => {
 </script>
 <style lang="scss">
 .voiceList-dropdown .el-dropdown-menu {
-  max-height: 180px; /* 设置最大高度 */
-  overflow-y: auto;  /* 超出时显示垂直滚动条 */
+  max-height: 180px;
+  /* 设置最大高度 */
+  overflow-y: auto;
+  /* 超出时显示垂直滚动条 */
 }
+
 .creation {
   padding: 20px 30px 0;
 
   width: 100%;
-   min-height: 90%;
+  min-height: 90%;
   display: flex;
   gap: 30px;
 
@@ -808,7 +823,7 @@ textarea {
 
 .submit-button-container-disabled-b37874 {
   cursor: pointer;
-  opacity: .7
+  /* opacity: .7 */
 }
 
 .prompt-container-_7730c {
