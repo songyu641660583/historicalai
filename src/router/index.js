@@ -9,6 +9,8 @@ import Creationiew from '../pages/main/creation.vue'
 import BillRevordView from '../pages/main/billRecord.vue'
 import RechargeView from '../pages/main/recharge.vue'
 import ConfirmPayView from '../pages/main/confirmPay.vue'
+import DeepSeekView from '../pages/main/deepSeek.vue'
+import StoryBoolView from '../pages/main/storyBooks.vue'
 import HelpView from '../pages/main/help.vue'
 
 export const routes = [
@@ -41,6 +43,20 @@ export const routes = [
         text: '漫绘创作',
         name: 'Creationiew',
         component: Creationiew,
+        iconName: 'video-icon'
+      },
+           {
+        path: 'deepseek',
+        text: 'deepseek',
+        name: 'DeepSeek',
+        component: DeepSeekView,
+        iconName: 'video-icon'
+      },
+        {
+        path: 'storyBooks',
+        text: '故事集',
+        name: 'StoryBooks',
+        component: StoryBoolView,
         iconName: 'video-icon'
       },
         {

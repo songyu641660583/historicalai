@@ -18,25 +18,28 @@
   </svg>
   <div class="confirm-pay">
     <div class="confirm-info">
-      <div class="order-expire">
-        订单提交成功，请尽快完成付款！支付订单号：{{ wechatTrade_id }}2
+      <div class="order-expire" v-if="!isPaySuccess">
+        订单提交成功，请尽快完成付款！支付订单号：{{ wechatTrade_id }}
         <div>
           请在倒计时
           <span class="countdown">{{ formattedTime }}</span>
           前完成支付，否则订单会被自动取消
         </div>
       </div>
+      <div class="order-expire" v-else>
+        您的订单已付款成功！支付订单号：{{ wechatTrade_id }}
+      </div>
       <div class="order-money">
         <div>
-          应付金额
+          {{ isPaySuccess ? "已付款" : "应付金额" }}
           <span class="money">{{ payMoney }}.00</span>元
         </div>
         <div class="order-product">历史漫绘嗨币充值</div>
       </div>
     </div>
     <div class="confirm-content">
-      <div class="confirm-content-title">请选择支付方式</div>
-      <ul class="pay-channel">
+      <div class="confirm-content-title" v-if="!isPaySuccess">请选择支付方式</div>
+      <ul class="pay-channel" v-if="!isPaySuccess">
         <li @click="handlePayChannel('wechat')">
           <div class="pay-channel-item line" :class="{ ' pay-channel-active': payType === 'wechat' }">
             <div class="pay-channel-item-check" v-if="payType === 'wechat'">
@@ -86,179 +89,194 @@
           }}.00元</el-button>
       </div>
       <div class="qr-content" v-if="payType === 'wechat'">
-        <div class="qrcode-info">
-          <div class="qrcode-img" v-loading="codeLoading">
-            <img :src="wxQrUrl" alt v-if="wxQrUrl" />
-          </div>
+        <template v-if="!isPaySuccess">
+          <div class="qrcode-info">
+            <div class="qrcode-img" v-loading="codeLoading">
+              <img :src="wxQrUrl" alt v-if="wxQrUrl" />
+            </div>
 
-          <div class="qrcode-tips">请用微信扫码支付</div>
-        </div>
-        <div class="qrcode-msg">
-          <ul class="pay-method-scanpay-limit wx-msg">
-            <li class="pay-limit-head">
-              <div>
-                <span>支付方式</span>
-                <span>限额信息</span>
-              </div>
-            </li>
-            <li class="limit_content limit_color">
-              <div>
-                <span>微信零钱</span>
-                <span>以微信限额为准</span>
-              </div>
-            </li>
-            <li class="limit_content">
-              <div>
-                <span>微信绑定的银行卡</span>
-                <span>
-                  以银行限额为准<br />
-                  <a style="color: #3e97ff" target="_blank"
-                    href="https://kf.qq.com/touch/sappfaq/151210NZzmuY151210ZRj2y2.html?platform=15&amp;ADTAG=veda.weixinpay.wenti&amp;code=023rCzgI0pN3zf2f6EdI0RoqgI0rCzgw&amp;state=123&amp;from=message&amp;isappinstalled=0">银行卡限额信息</a>
-                </span>
-              </div>
-            </li>
-          </ul>
+            <div class="qrcode-tips">请用微信扫码支付</div>
+          </div>
+          <div class="qrcode-msg">
+            <ul class="pay-method-scanpay-limit wx-msg">
+              <li class="pay-limit-head">
+                <div>
+                  <span>支付方式</span>
+                  <span>限额信息</span>
+                </div>
+              </li>
+              <li class="limit_content limit_color">
+                <div>
+                  <span>微信零钱</span>
+                  <span>以微信限额为准</span>
+                </div>
+              </li>
+              <li class="limit_content">
+                <div>
+                  <span>微信绑定的银行卡</span>
+                  <span>
+                    以银行限额为准<br />
+                    <a style="color: #3e97ff" target="_blank"
+                      href="https://kf.qq.com/touch/sappfaq/151210NZzmuY151210ZRj2y2.html?platform=15&amp;ADTAG=veda.weixinpay.wenti&amp;code=023rCzgI0pN3zf2f6EdI0RoqgI0rCzgw&amp;state=123&amp;from=message&amp;isappinstalled=0">银行卡限额信息</a>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </template>
+        <div class="pay-success" v-if="isPaySuccess">
+          <div class="pay-success-icon">
+            <el-icon size="86" color="#00DA3F">
+              <SuccessFilled />
+            </el-icon>
+          </div>
+          <div class="pay-success-status">支付成功</div>
+          <div class="pay-success-text">订单金额{{ payMoney }}.00元</div>
+          <div class="pay-success-text">入账金额{{ payMoney }}.00元</div>
+          <div class="pay-success-text">交易流水号{{ payMwechatTrade_idoney }}</div>
+          <el-button @click="handleBack" style="margin-top: 20px" type="danger">返回</el-button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, computed, onMounted, onUnmounted  } from "vue"
-import { ElMessageBox, ElMessage } from "element-plus"
-import { useRoute, useRouter } from "vue-router"
-import { getAssetsFile } from "@/utils"
-import api from "@/api"
-import { useUserStore } from "@/store"
-import QRCode from 'qrcode'
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ElMessageBox, ElMessage } from "element-plus";
+import { useRoute, useRouter } from "vue-router";
+import { getAssetsFile } from "@/utils";
+import api from "@/api";
+import { useUserStore } from "@/store";
+import QRCode from "qrcode";
 
-const userStore = useUserStore()
+const userStore = useUserStore();
 
-const router = useRouter()
+const router = useRouter();
 
-const route = useRoute()
+const route = useRoute();
 
-const payType = ref("wechat")
-const wxQrUrl = ref("")
-const payMoney = ref(0)
-const totalTime = 30 * 60 * 1000
-const remainingTime = ref(totalTime)
-const isRunning = ref(false)
-const isPaused = ref(false)
-const codeLoading = ref(false)
-let wxPayResult = null
-const wechatTrade_id = ref('')
-let payTimer = null
+const isPaySuccess = ref(false);
+const payType = ref("wechat");
+const wxQrUrl = ref("");
+const payMoney = ref(0);
+const totalTime = 30 * 60 * 1000;
+const remainingTime = ref(totalTime);
+const isRunning = ref(false);
+const isPaused = ref(false);
+const codeLoading = ref(false);
+let wxPayResult = null;
+const wechatTrade_id = ref("");
+let payTimer = null;
 
-
-let timer = null
-let startTime = 0
-let pauseTime = 0
+let timer = null;
+let startTime = 0;
+let pauseTime = 0;
 
 const formattedTime = computed(() => {
-  const hours = Math.floor(remainingTime.value / (1000 * 60 * 60))
-  const minutes = Math.floor((remainingTime.value % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((remainingTime.value % (1000 * 60)) / 1000)
+  const hours = Math.floor(remainingTime.value / (1000 * 60 * 60));
+  const minutes = Math.floor((remainingTime.value % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((remainingTime.value % (1000 * 60)) / 1000);
 
   return `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
-    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
-})
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+});
 onMounted(() => {
-  payMoney.value = localStorage.getItem("rechargeMoney")
-  startCountdown()
-  getWxCode()
-})
+  payMoney.value = localStorage.getItem("rechargeMoney");
+  startCountdown();
+  getWxCode();
+});
 onUnmounted(() => {
-  if (payTimer) clearTimeout(payTimer)
-  if (timer) clearTimeout(timer)
-})
+  if (payTimer) clearTimeout(payTimer);
+  if (timer) clearTimeout(timer);
+});
 async function getWxPayResult() {
-  if (wxPayResult) return
+  if (wxPayResult) return;
   payTimer = setTimeout(async () => {
     try {
       const res = await api.home.payDetails({
         user_id: userStore.getUserInfo.user_id,
-        trade_id: wechatTrade_id.value
-      })
+        trade_id: wechatTrade_id.value,
+      });
       if (res.trans_id) {
-        ElMessageBox.alert("支付成功", "提示", {
-          confirmButtonText: "前往账单",
-          callback: (action) => {
-            router.replace('/main/billRevord')
-          },
-        })
-        wxPayResult = res
+        isPaySuccess.value = true;
+        // ElMessageBox.alert("支付成功", "提示", {
+        //   confirmButtonText: "前往账单",
+        //   callback: (action) => {
+        //     router.replace("/main/billRevord");
+        //   },
+        // });
+        wxPayResult = res;
       }
     } catch (err) {
-      getWxPayResult()
+      getWxPayResult();
     }
-
-  }, 3000)
+  }, 3000);
 }
 
 async function getWxCode() {
-  codeLoading.value = true
+  codeLoading.value = true;
   try {
-    const userInfo = userStore.getUserInfo
+    const userInfo = userStore.getUserInfo;
     const res = await api.home.getWeChatQyCode({
       user_id: userInfo.user_id,
-      money: Number(payMoney.value)
-    })
-    wechatTrade_id.value = res.trade_id
+      money: Number(payMoney.value),
+    });
+    wechatTrade_id.value = res.trade_id;
 
     wxQrUrl.value = await QRCode.toDataURL(res.qr_url.code_url, {
       width: 200,
-      margin: 2
-    })
-    codeLoading.value = false
-    getWxPayResult()
-
-  } catch (err) {
-
-  }
+      margin: 2,
+    });
+    codeLoading.value = false;
+    getWxPayResult();
+  } catch (err) { }
 }
 
 const handleToAlipay = () => {
   ElMessageBox.alert("请在新打开的支付宝页面完成支付", "提示", {
     confirmButtonText: "知道了",
     callback: (action) => {
-      router.back()
+      router.back();
     },
-  })
-}
+  });
+};
 
 const startCountdown = () => {
-  if (isRunning.value) return
+  if (isRunning.value) return;
 
-  isRunning.value = true
-  isPaused.value = false
-  startTime = Date.now()
+  isRunning.value = true;
+  isPaused.value = false;
+  startTime = Date.now();
 
   timer = setInterval(() => {
-    const elapsed = Date.now() - startTime
-    remainingTime.value = Math.max(totalTime - elapsed, 0)
+    const elapsed = Date.now() - startTime;
+    remainingTime.value = Math.max(totalTime - elapsed, 0);
 
     if (remainingTime.value <= 0) {
       ElMessageBox.alert("支付时间超时", "提示", {
         confirmButtonText: "返回",
         callback: (action) => {
-          router.back()
+          router.back();
         },
-      })
-      clearInterval(timer)
-      isRunning.value = false
-      remainingTime.value = 0
+      });
+      clearInterval(timer);
+      isRunning.value = false;
+      remainingTime.value = 0;
     }
-  }, 100)
-}
+  }, 100);
+};
 function handlePayChannel(type) {
-  payType.value = type
+  payType.value = type;
   if (type === "wechat") {
-    getWxCode()
+    getWxCode();
   } else if (type === "alipay") {
     // wxCode.value = getAssetsFile('alipay-icon.png') // 模拟获取支付宝二维码链接
   }
+}
+
+function handleBack() {
+  router.back();
 }
 function getList() { }
 </script>
@@ -282,6 +300,26 @@ function getList() { }
     padding: 28px 40px 40px;
     font-size: 14px;
     color: #222;
+
+    .pay-success {
+      margin-top: 110px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+      font-size: #222;
+
+      &-icon {}
+
+      &-status {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      &-text {
+        font-size: 16px;
+      }
+    }
 
     .alipay-content {
       text-align: center;
@@ -326,8 +364,6 @@ function getList() { }
             height: 200px;
           }
         }
-
-
 
         .qrcode-tips {
           height: 50px;

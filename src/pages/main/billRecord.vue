@@ -61,6 +61,7 @@
             ¥{{ scope.row.money }}
           </template>
         </el-table-column>
+        <el-table-column prop="payment" label="嗨币" width="180" />
       </dd-table>
     </div>
   </div>

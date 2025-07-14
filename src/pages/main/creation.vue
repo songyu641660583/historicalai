@@ -10,10 +10,10 @@
                 <div class=arco-form-item-control id=prompt>
                   <div class=arco-form-item-control-children>
                     <div class=prompt-container-_7730c>
-                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=3000
-                          class="arco-textarea input-d73634" placeholder="描述想要生成的视频内容"
+                      <div class=arco-textarea-wrapper><textarea v-model="keywords" maxlength=20000
+                          class="arco-textarea input-d73634" placeholder="输入漫画故事"
                           style="height:260px;min-height:260px;max-height:360px"></textarea><span
-                          class=arco-textarea-word-limit>{{ keywords.length }}/3000</span></div>
+                          class=arco-textarea-word-limit>{{ keywords.length }}/20000</span></div>
                     </div>
                   </div>
                 </div>
@@ -127,6 +127,47 @@
       <div class="video-container" v-else>
         <video :src="videoResult" ref="videoRef" controls></video>
       </div>
+      <div class="video-content-title">视频帧预览</div>
+      <!-- 视频帧 -->
+      <div class="video-frame">
+        <swiper-container :slides-per-view="'auto'" :space-between="20" :centered-slides="false" navigation="true"
+          style="width: 100%; height: 100%;">
+          <swiper-slide style="width:250px !important;" v-for="(item, index) in videoFrame" :key="index">
+            <div class="custom-slide">
+              <img :src="getAssetsFile('home-banner2.jpeg')" alt="暂无数据" />
+              <div class="desc">{{ item.text }}</div>
+            </div>
+
+          </swiper-slide>
+        </swiper-container>
+
+      </div>
+      <div class="video-content-title">声音文本编辑</div>
+      <!-- 声音文本 -->
+      <div class="voice-text">
+        <div class="voice-edit-item" v-for="(item, index) in voiceTextList" :key="index">
+          <div class="voice-edit-item-img">
+            <img src="../../assets/empty.png" alt="暂无数据" />
+          </div>
+          <div class="voice-edit-item-from">
+            <div class="voice-edit-item-from-input">
+              <el-input type="textarea" :autosize="{ minRows: 6, maxRows: 6 }" placeholder="请输入内容" resize="none"
+                v-model="item.content">
+              </el-input>
+            </div>
+            <div class="voice-edit-item-from-options">
+              <el-button type="primary">重新生成</el-button>
+              <div class="play">
+                <el-icon size="16">
+                  <CaretRight />
+                </el-icon>
+                <i class="el-icon-caret-right"></i>
+                <span>播放</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="audio" style="position: absolute;right: -3000px;top: -2000px;width: 0;height: 0;overflow: hidden;">
@@ -138,6 +179,7 @@ import { ref, onMounted, watch, nextTick } from 'vue'
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
+import { getAssetsFile } from '@/utils'
 
 const audioRef: any = ref(null);
 const videoRef: any = ref(null);
@@ -191,6 +233,47 @@ const submitLoading = ref(false)
 const voiceList: any = ref([])
 const voiceDetail: any = ref(null)
 
+const videoFrame = ref([
+  {
+    img: '1',
+    text: '视频帧slide1'
+  },
+  {
+    img: '1',
+    text: '视频帧slide2'
+  },
+  {
+    img: '1',
+    text: '视频帧slide3'
+  },
+  {
+    img: '1',
+    text: '视频帧slide4'
+  },
+  {
+    img: '1',
+    text: '视频帧slide1'
+  },
+  {
+    img: '1',
+    text: '视频帧slide1'
+  },
+  {
+    img: '1',
+    text: '视频帧slide9'
+  },
+])
+const voiceTextList = ref([
+  {
+    content: '山东高速广东夫妇',
+    img: ''
+  },
+  {
+    content: '山东高速广东夫妇',
+    img: ''
+  }
+])
+
 const withNum = ref(0)
 const heightNum = ref(0)
 // 'https://media.w3.org/2010/05/sintel/trailer.mp4'
@@ -236,16 +319,16 @@ const handleVoiceClick = (item: any) => {
 async function getVoiceList() {
   try {
     const userInfo = userStore.getUserInfo
-    if (!userInfo.user_id) {
-      ElMessage({
-        message: '请先登录',
-        type: 'warning',
-      })
-      setInterval(() => {
-        userStore.logout()
-      }, 1000)
-      return
-    }
+    // if (!userInfo.user_id) {
+    //   ElMessage({
+    //     message: '请先登录',
+    //     type: 'warning',
+    //   })
+    //   setInterval(() => {
+    //     userStore.logout()
+    //   }, 1000)
+    //   return
+    // }
     const res = await api.home.getVoiceList({
       "user_id": userInfo.user_id,
     })
@@ -315,7 +398,7 @@ const handleGenerate = async () => {
         console.warn("解析失败:", segment);
       }
     }
-    videoResult.value =  url
+    videoResult.value = url
 
     submitLoading.value = false
   } catch (err) {
@@ -325,11 +408,44 @@ const handleGenerate = async () => {
 
 </script>
 <style lang="scss">
+.custom-slide {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 8px;
+
+  img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .desc {
+    width: 100%;
+    margin-top: 10px;
+    height: 50px;
+    font-size: 14px;
+    color: #666;
+    text-align: left;
+    display: -webkit-box;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /*! autoprefixer: on */
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+  }
+}
+
 .voiceList-dropdown .el-dropdown-menu {
   max-height: 180px;
-  /* 设置最大高度 */
   overflow-y: auto;
-  /* 超出时显示垂直滚动条 */
 }
 
 .creation {
@@ -349,12 +465,15 @@ const handleGenerate = async () => {
 
   &-left {
     flex: none;
+
     width: 420px;
     overflow-y: auto;
   }
 
   &-right {
     flex: auto;
+    overflow-y: auto;
+    padding-bottom: 20px;
 
     .video-container,
     .video-container video {
@@ -378,6 +497,65 @@ const handleGenerate = async () => {
         margin-bottom: 5px;
         width: 140px;
       }
+    }
+
+    .video-content-title {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .video-frame {
+      margin-top: 15px;
+    }
+
+    .voice-text {
+      --el-border-radius-base: 12px;
+      --el-text-color-regular: #222;
+
+      .voice-edit-item {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+
+        &-img {
+          flex: none;
+          height: 130px;
+          width: 250px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &-from {
+          flex: auto;
+
+          &-options {
+            --el-border-radius-base: 4px;
+
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+
+            .play {
+              margin-left: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 1px;
+              cursor: pointer;
+              font-size: 14px;
+              color: #514cf9;
+            }
+          }
+        }
+
+      }
+
     }
 
   }
@@ -807,7 +985,8 @@ textarea {
 .submit-button-container-_6fea6 {
   margin-top: 40px;
   align-items: center;
-  background: linear-gradient(78deg, #0093ff -3.23%, #0060ff 51.11%, #ce63ff 98.65%);
+  background: #409eff;
+  /* background: linear-gradient(78deg, #0093ff -3.23%, #0060ff 51.11%, #ce63ff 98.65%); */
   border-radius: 8px;
   color: #fff;
   display: flex;

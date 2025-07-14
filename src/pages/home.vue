@@ -110,7 +110,17 @@ if (headerRef.value) {
           </div>
         </div>
         <div class=box-nt966n>
-          <div class=left-wrapper-_KDFs8>
+        
+          <div class=media-wrapper-mac_RP style="padding-left:0;">
+            <div class=glitch-wrapper-H049jO>
+              <img src="../assets/home-banner3.jpeg"
+                class="swiper-item-img-MKsgw0" loading=lazy>
+                            <!-- <video :src="secondVideoSrc" playsinline muted
+                loop preload=auto crossorigin=anonymous autoplay
+                class="placeholder-RiOie5 media-IWKWD4"></video> -->
+              </div>
+          </div>
+            <div class=left-wrapper-_KDFs8 style="padding-left: 20px;padding-right: 0px;">
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>
@@ -120,15 +130,6 @@ if (headerRef.value) {
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>02</div>
-          </div>
-          <div class=media-wrapper-mac_RP>
-            <div class=glitch-wrapper-H049jO>
-              <img src="../assets/home-banner3.jpeg"
-                class="swiper-item-img-MKsgw0" loading=lazy>
-                            <!-- <video :src="secondVideoSrc" playsinline muted
-                loop preload=auto crossorigin=anonymous autoplay
-                class="placeholder-RiOie5 media-IWKWD4"></video> -->
-              </div>
           </div>
         </div>
         <div class=box-nt966n>
@@ -545,15 +546,16 @@ if (headerRef.value) {
               aria-label=历史漫绘-隐私政策 >隐私政策</a>
           </div> -->
           <div class="inner-wrapper_b27af company-wrapper_b27af">
-            <div class=icp-wrapper_b27af><span class="divider_b27af small_b27af"></span>
+            <div class=icp-wrapper_b27af>
+              <!-- <span class="divider_b27af small_b27af"></span> -->
               <a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
                 aria-label="历史漫绘-京ICP备2024090455号" target="_blank" rel="noopener;noreferrer"
                  >京ICP备2024090455号</a>
-                <span class="divider_b27af small_b27af"></span>
-                <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
+                <!-- <span class="divider_b27af small_b27af"></span> -->
+                <!-- <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
                  target=_blank rel=noopener;noreferrer
-                >粤B2-20190879</a>
+                >粤B2-20190879</a> -->
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
@@ -564,8 +566,9 @@ if (headerRef.value) {
           </div>
         </div>
         <div class="inner-wrapper_b27af privacy-text-wrapper_b27af"><span class="divider_b27af small_b27af"></span><span
-            class="link_b27af small_b27af text_b27af">北京阿班智能科技有限公司</span><span
-            class="divider_b27af small_b27af"></span>
+            class="link_b27af small_b27af text_b27af">北京阿班智能科技有限公司</span>
+            <!-- <span
+            class="divider_b27af small_b27af"></span> -->
             <!-- <span
             class="link_b27af small_b27af text_b27af">深圳市南山区招商街道水湾社区太子路51号太子广场1104</span> -->
             </div>
@@ -606,7 +609,6 @@ if (headerRef.value) {
 
 
 
-<style lang="scss" scoped></style>
 <style>
 :root {
   --sf-img-0: url("../assets/d61bb4677a049b8109d3c3c943f57fe1.png")
@@ -671,7 +673,8 @@ body,
 html {
   cursor: -webkit-image-set(var(--sf-img-0) 1x, var(--sf-img-1) 2x)4 0, auto;
   cursor: image-set(var(--sf-img-0) 1x, var(--sf-img-1) 2x)4 0, auto;
-  font-family: Albert Sans, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif !important
+  font-family: ;
+  /* font-family: Albert Sans, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif !important */
 }
 </style>
 
@@ -681,7 +684,8 @@ html {
 
 .box-aQs010 {
   align-items: center;
-  background-color: #000;
+  /* background-color: #000; */
+  background-color: #fff;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -723,10 +727,13 @@ html {
 
 .btn-EoHtfv {
   align-items: center;
-  border: 1px solid rgba(224, 245, 255, .6);
+  /* border: 1px solid rgba(224, 245, 255, .6); */
+  border: 1px solid rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.8);
   border-radius: 8px;
   box-sizing: border-box;
-  color: #ebf8ff;
+  /* color: #ebf8ff; */
+  color: #fff;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -746,8 +753,8 @@ html {
 
 @media (hover:hover) and (pointer:fine) {
   .btn-EoHtfv:hover {
-    background-color: #ebf8ff;
-    color: #1d2129
+    background-color: #000;
+    color: #fff
   }
 }
 
@@ -1040,7 +1047,8 @@ html {
 }
 
 .bg-box-iGxURO {
-  background: radial-gradient(88.89% 182.5%at 69.13% 5.25%, #1375c8 0, #157acd 28.99%, #0c3560 72.78%, #060c20 100%);
+  background: #fff;
+  /* background: radial-gradient(88.89% 182.5%at 69.13% 5.25%, #1375c8 0, #157acd 28.99%, #0c3560 72.78%, #060c20 100%); */
   pointer-events: none;
   z-index: -1
 }
@@ -1283,7 +1291,8 @@ html {
 }
 
 .box-u5bhZT {
-  background-color: #111318;
+  /* background-color: #111318; */
+  background-color: #E0E0E0;
   box-sizing: border-box;
   padding-top: 120px;
   position: relative
@@ -1298,7 +1307,8 @@ html {
 }
 
 .title-lyHCac {
-  color: #ebf8ff;
+  /* color: #ebf8ff; */
+  color: #111;
   font-size: 54px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -1306,7 +1316,8 @@ html {
 }
 
 .desc-VYvN1G {
-  color: rgba(224, 245, 255, .6);
+  /* color: rgba(224, 245, 255, .6); */
+  color: #111;
   font-size: 16px;
   line-height: 24px;
   margin-bottom: 32px;
@@ -1485,7 +1496,8 @@ html {
 }
 
 .scroll-box-GKIdsN {
-  background-color: #111318;
+  /* background-color: #111318; */
+  background: #eeeeee;
   color: #ebf8ff;
   position: relative
 }
@@ -1535,7 +1547,8 @@ html {
 }
 
 .header-right-title-wwVbiL {
-  color: #ebf8ff;
+  /* color: #ebf8ff; */
+  color: #111;
   display: inline-block;
   font-size: 54px;
   font-weight: 500;
@@ -1544,7 +1557,8 @@ html {
 }
 
 .header-right-text-_sJ2oa {
-  color: rgba(224, 245, 255, .6);
+  /* color: rgba(224, 245, 255, .6); */
+  color: #111;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1739,7 +1753,8 @@ html {
 }
 
 .title-ITEvEZ {
-  color: #ebf8ff;
+  /* color: #ebf8ff; */
+  color: #111;;
   font-size: 36px;
   line-height: 50px;
   margin-bottom: 8px
@@ -1752,13 +1767,15 @@ html {
 }
 
 .desc-egHxcp {
-  color: rgba(224, 245, 255, .851);
+  /* color: rgba(224, 245, 255, .851); */
+  color: #111;
   font-size: 16px;
   line-height: 24px
 }
 
 .indexed-FjnNj2 {
-  color: rgba(224, 245, 255, .851);
+  /* color: rgba(224, 245, 255, .851); */
+  color: #111;
   font-size: 40px;
   font-weight: 100;
   line-height: 48px
@@ -1773,7 +1790,8 @@ html {
 }
 
 .media-wrapper-mac_RP:before {
-  background-color: #e9e9e9;
+  /* background-color: #e9e9e9; */
+  /* background-color: #111;
   content: "";
   display: var(--second-amazing-line-display);
   height: 100%;
@@ -1781,7 +1799,7 @@ html {
   opacity: .2;
   position: absolute;
   top: 0;
-  width: 1px
+  width: 1px */
 }
 
 .glitch-wrapper-H049jO {
@@ -1900,8 +1918,10 @@ html {
   --second-media-height: 486px;
   --second-amazing-line-display: block;
  /* background-color: #004dc8;
-  background-image: url(../assets/0f78492865d51594acd23c4953b826c0.jpg); */
-  background: #111;
+  background-image: url(../assets/0f78492865d51594acd23c4953b826c0.jpg); 
+ ;*/
+  background-color: #F5F5F5;
+   /* background: #111; */
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
@@ -1940,7 +1960,7 @@ html {
   width: var(--second-r-wrapper-width)
 }
 
-.header-right-wrapper-acr3jw:before {
+/* .header-right-wrapper-acr3jw:before {
   background-color: #e9e9e9;
   content: "";
   display: var(--second-amazing-line-display);
@@ -1950,10 +1970,10 @@ html {
   position: absolute;
   top: 0;
   width: 1px
-}
+} */
 
 .header-title-_0vLTk {
-  background: url(../assets/12bd57428557d7555b7ee8c64cc7c95a.svg)no-repeat 0/contain;
+  background: url(../assets/linggan.svg)no-repeat 0/contain;
   color: transparent;
   font-size: 58px;
   line-height: 58px;
@@ -1962,7 +1982,8 @@ html {
 }
 
 .header-desc-HoXsdg {
-  color: #ebf8ff;
+  /* color: #ebf8ff; */
+  color: #111;
   font-size: 20px;
   font-weight: 400;
   line-height: 28px
@@ -2076,7 +2097,8 @@ html {
 
 .jimeng-button-text {
   background-color: transparent;
-  color: hsla(0, 0%, 100%, .8)
+  color: #333;
+  /* color: hsla(0, 0%, 100%, .8); */
 }
 
 .jimeng-button-text:hover {

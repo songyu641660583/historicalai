@@ -8,7 +8,12 @@ import DdTable from '@/components/Table/index.vue'
 import 'animate.css'
 import './style.css'
 import 'element-plus/dist/index.css'
+// 引入 swiper 的 element bundle
+import 'swiper/element/bundle'
 
+// 注册 swiper 的自定义元素
+import { register } from 'swiper/element/bundle'
+register() // 💥 必须注册！
 // 定义全局组件
 const components = { DdTable }
 

@@ -266,7 +266,8 @@ defineExpose({
   
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  background-color: rgba(15, 17, 21, 0.4);
+  // background-color: rgba(15, 17, 21, 0.4);
+  background-color: #fff;
   transition: all 0.3s cubic-bezier(0.44, 0, 0.56, 1);
 
   .header-logo {
