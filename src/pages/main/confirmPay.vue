@@ -323,7 +323,6 @@ function getList() { }
 
     .alipay-content {
       text-align: center;
-      font-family: PingFang SC;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -334,7 +333,6 @@ function getList() { }
         margin-top: 20px;
         background: #f95959;
         border-radius: 4px;
-        font-family: PingFang SC;
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
@@ -470,9 +468,6 @@ function getList() { }
     }
 
     .pay-channel-info .channel-title {
-      font-family: PingFangSC-Regular, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-        Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Microsoft Yahei, "微软雅黑",
-        Oxygen-Sans, Helvetica Neue;
       font-size: 14px;
       color: #555;
     }

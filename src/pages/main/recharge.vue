@@ -293,7 +293,6 @@ function handleRecord() {
     .CMIKu {
       color: #020814;
       display: inline-block;
-      font-family: Roboto;
       font-weight: 700;
       height: 33px;
       margin-top: 10px;

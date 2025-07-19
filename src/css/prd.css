@@ -1,0 +1,75 @@
+.prd-module {
+  padding: 120px 0 160px;
+  background-color: #F1F1F1;
+}
+
+.prd-module-in {
+  margin: 0 auto;
+  width: 1280px;
+  overflow: hidden;
+}
+
+.prd-module-in img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prd-module-in .prd-title {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.prd-module-in .prd-content {
+  margin-top: 6px;
+  height: 48px;
+  color: #6D6D6D;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.prd-module-in .hr {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(123, 123, 123, 0) 0%, #7B7B7B 44.5%, rgba(123, 123, 123, 0) 100%);
+}
+
+.prd-module-in .prd-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prd-module-in .prd-flex > div {
+  flex: 1;
+  position: relative;
+  padding: 60px;
+}
+
+.prd-module-in .prd-flex > div .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #7B7B7B;
+}
+
+.prd-module-in .prd-flex > div .grident {
+  background: linear-gradient(180deg, #7B7B7B 0%, rgba(123, 123, 123, 0) 100%);
+}
+
+.prd-module-in .prd-flex > div .prd-img {
+  width: 520px;
+  height: 394px;
+}
+
+.prd-module-in .prd-flex > div .prd-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.prd-module-in .prd-card1 .prd-img {
+  margin-top: 8px;
+  height: 500px;
+}

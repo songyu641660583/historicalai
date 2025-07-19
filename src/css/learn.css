@@ -1,0 +1,135 @@
+.learn-module {
+  padding: 120px 0;
+  background-color: #f1f1f1;
+}
+
+.learn-module-in {
+  margin: 0 auto;
+  width: 1280px;
+  overflow: hidden;
+}
+
+.learn-module-in .learn-tips {
+  color: #6d6d6d;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.learn-module-in .learn-title {
+  padding: 20px 0;
+  color: #000;
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+.learn-module-in .learn-content {
+  color: #6d6d6d;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.learn-module-in .learn-main {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background: url("@/assets/bg-quick-learning-01.png") no-repeat;
+  background-size: cover;
+}
+
+.learn-module-in .learn-main-item {
+  display: flex;
+  padding: 20px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  position: absolute;
+  width: 280px;
+  height: 148px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 2px solid #c6c6c6;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 24px 0px rgba(198, 215, 209, 0.2);
+}
+
+.learn-module-in .learn-main-item:nth-child(1) {
+  top: 270px;
+}
+
+.learn-module-in .learn-main-item:nth-child(2) {
+  top: 20px;
+  left: 330px;
+}
+
+.learn-module-in .learn-main-item:nth-child(2) img {
+  transform: scale(1.6);
+}
+
+.learn-module-in .learn-main-item:nth-child(3) {
+  top: 122px;
+  right: 334px;
+}
+
+.learn-module-in .learn-main-item:nth-child(4) {
+  top: 280px;
+  right: 2px;
+}
+
+.learn-module-in .learn-main-item:nth-child(5) {
+  top: 401px;
+  right: 480px;
+  width: 320px;
+  border-radius: 12px;
+  background: #18ca8d;
+  box-shadow: 0px 0px 40px 0px rgba(105, 255, 225, 0.4);
+  border: none;
+}
+
+.learn-module-in .learn-main-item:nth-child(5) img {
+  transform: scale(1.6);
+}
+
+.learn-module-in .learn-main-item:nth-child(5) div {
+  color: #fff !important;
+}
+
+.learn-module-in .learn-main-item-title {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  /* 175% */
+}
+
+.learn-module-in .learn-main-item-content {
+  color: #b0b0b0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 142.857% */
+}
+
+.learn-module-in .learn-main-item-img {
+  position: absolute;
+  bottom: -68px;
+  left: 50%;
+  margin-left: -32px;
+}
+
+.learn-module-in .learn-main-item-img img {
+  width: 64px;
+  height: 48px;
+}

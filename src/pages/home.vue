@@ -19,6 +19,7 @@ const headerRef: any = ref(null)
 
 const firstData = ref([firstVideo1, firstVideo2, firstVideo3, firstVideo4])
 const firstDataPoster = ref([firstVideoPoster1, firstVideoPoster2, firstVideoPoster3, firstVideoPoster4])
+const firstDataName = ref(['赤壁之战', '大闹天宫', '荆轲刺秦王', '桃园结义'])
 // const firstData = ref(['https://media.w3.org/2010/05/sintel/trailer.mp4','https://vjs.zencdn.net/v/oceans.mp4','https://www.w3schools.com/html/movie.mp4','https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4'])
 const firstIndex = ref(0)
 
@@ -58,7 +59,10 @@ if (headerRef.value) {
         </video>
       </div>
       <div class=right-box-rgRoBY>
-        <img @click="handleFirstChange(index)" class=right-box-item-qgzhq3 :class="{active: firstIndex === index}" :src="item" alt=""  v-for="(item, index) in firstDataPoster" :key="index" />
+        <div class="first-poster-item" :class="{active: firstIndex === index}" v-for="(item, index) in firstDataPoster" :key="index" > 
+          <span class="poster-name">{{ firstDataName[index] }}</span>
+          <img @click="handleFirstChange(index)" class=right-box-item-qgzhq3 :class="{active: firstIndex === index}" :src="item" alt="" />
+        </div>
       </div>
       <!-- <div class=bottom-bYPxPC>
         <div class="input-DoV4AV input-flrsTo">
@@ -126,7 +130,7 @@ if (headerRef.value) {
                 <h3 class=title-ITEvEZ>
                   <p>文化基因的现代表达</p>
                 </h3>
-                <div class=desc-egHxcp>使用ai技术把历史从一维空间变换到多维空间，更生动的表达</div>
+                <div class=desc-egHxcp>使用AI技术把历史从一维空间变换到多维空间，更生动的表达</div>
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
             <div class=indexed-FjnNj2>02</div>
@@ -634,7 +638,8 @@ video {
   font: inherit;
   margin: 0;
   padding: 0;
-  vertical-align: baseline
+  vertical-align: baseline;
+  
 }
 
 section {
@@ -673,12 +678,30 @@ body,
 html {
   cursor: -webkit-image-set(var(--sf-img-0) 1x, var(--sf-img-1) 2x)4 0, auto;
   cursor: image-set(var(--sf-img-0) 1x, var(--sf-img-1) 2x)4 0, auto;
-  font-family: ;
-  /* font-family: Albert Sans, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif !important */
 }
 </style>
 
 <style>
+.first-poster-item {
+  position: relative;
+
+}
+.first-poster-item .poster-name {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
+  color: #000;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.first-poster-item.active .poster-name {
+  opacity: 1;
+}
 
 
 
@@ -2078,10 +2101,6 @@ html {
   padding: 8px 16px;
   position: relative;
   transition-duration: .3s;
-  transition-property: background-color, color, border, background, -webkit-backdrop-filter;
-  transition-property: background-color, color, border, backdrop-filter, background;
-  transition-property: background-color, color, border, backdrop-filter, background, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(.44, 0, .56, 1)
 }
 
 .jimeng-button-primary {
@@ -2098,7 +2117,7 @@ html {
 .jimeng-button-text {
   background-color: transparent;
   color: #333;
-  /* color: hsla(0, 0%, 100%, .8); */
+  transition: 0.3s;
 }
 
 .jimeng-button-text:hover {
@@ -2106,7 +2125,7 @@ html {
   backdrop-filter: blur(6px);
   background: hsla(0, 0%, 100%, .12);
   border: .5px solid hsla(0, 0%, 100%, .08);
-  color: #fff
+  color: #000;
 }
 
 .jimeng-link {

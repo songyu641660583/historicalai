@@ -17,7 +17,7 @@
       <span>
         <button
           @click="handleLogin"
-          class="jimeng-button jimeng-button-text undefined"
+          class="jimeng-button jimeng-button-text"
           aria-label="登录-历史漫绘"
         >登录/注册</button>
       </span>

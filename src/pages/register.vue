@@ -131,9 +131,8 @@
                                   <el-checkbox style="margin-right: 6px;position: relative;top:2px" v-model="agreeValue"
                                     size="large" />
                                   <span>点击开始体验代表同意历史漫绘 </span>
-                                  <a href=https://www.volcengine.cn/docs/6256/64903 target=_blank
-                                    rel="noopener noreferrer">服务条款</a>和 <a
-                                    href=https://www.volcengine.cn/docs/6256/64902 target=_blank
+                                  <a target=_blank
+                                    rel="noopener noreferrer">服务条款</a>和 <a target=_blank
                                     rel="noopener noreferrer">隐私政策</a>
                                 </div>
                                 <div style="position:relative">

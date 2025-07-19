@@ -50,14 +50,14 @@ export const routes = [
         text: 'deepseek',
         name: 'DeepSeek',
         component: DeepSeekView,
-        iconName: 'video-icon'
+        iconName: 'deepseek-icon'
       },
         {
         path: 'storyBooks',
         text: '故事集',
         name: 'StoryBooks',
         component: StoryBoolView,
-        iconName: 'video-icon'
+        iconName: 'book-icon'
       },
         {
         path: 'recharge',

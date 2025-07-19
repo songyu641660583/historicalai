@@ -24,7 +24,8 @@ function addProxyOptions(options, viteEnv) {
       target: api.apiProxyTarget,
       // pathRewrite: api.pathRewrite,
       rewrite: (path) => {
-        return path.replace(/^\/api/, '');
+        // return path.replace(/^\/api/, '');
+        return path
       },
       changeOrigin: true
     }

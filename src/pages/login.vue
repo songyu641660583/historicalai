@@ -150,9 +150,9 @@
                                   </div>
                                 </div>
                                 <div class=protocol-eGDdjF>登录视为您已阅读并同意历史漫绘 <a
-                                    href=https://www.volcengine.cn/docs/6256/64903 target=_blank
+                                    target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
-                                    href=https://www.volcengine.cn/docs/6256/64902 target=_blank
+                                    target=_blank
                                     rel="noopener noreferrer">隐私政策</a></div>
                                 <div style="position:relative;margin-top: 10px;">
                                   <el-button @click="handleLogin" :loading="submitLoading" class="submitBtn"
