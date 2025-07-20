@@ -1,5 +1,5 @@
 <template>
-  <div class="story" v-loading="submitLoading" element-loading-text="正在创作中，预计需要5-10分钟，请耐心等待...">
+  <div class="story" v-loading="submitLoading" element-loading-text="正在创作中，预计需要1-3分钟，请耐心等待...">
     <div class="story-left module">
       <div class="title">生成故事</div>
       <div class=form-wrapper-_4819c>
@@ -37,19 +37,27 @@
         <img src="../../assets/empty.png" alt="暂无数据" />
         <p>暂无内容，开始你的创意吧</p>
       </div>
-      <div v-else class="story-container" v-html="storyResult"> </div>
+      <div v-else class="story-container">
+         <div class="create-btn" style="display: flex;justify-content: flex-end;">
+        <el-button type="primary" @click="handleCreate">漫绘创作</el-button>
+      </div>
+      <div class="story-content"  v-html="storyResult"></div>
+        
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref } from 'vue'
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
-import { getAssetsFile } from '@/utils'
 
-const videoRef: any = ref(null);
+import { useRouter } from "vue-router";
+
 const userStore = useUserStore()
+const router = useRouter();
+
 const keywords = ref('')
 const storyResult = ref('')
 
@@ -67,31 +75,38 @@ const handleGenerate = async () => {
   submitLoading.value = true
   try {
     const userInfo = userStore.getUserInfo
-    const res: string = await api.home.generatingVideo({
+    const res: string = await api.home.deepseek({
       "user_id": userInfo.user_id,
-      "story": keywords.value
+      "text": keywords.value
     })
 
-    // const jsonSegments = res.split('}').filter(seg => seg.trim());
+    const jsonSegments = res.split('}').filter(seg => seg.trim());
 
-    // let url = null;
-    // for (const segment of jsonSegments) {
-    //   try {
-    //     const jsonStr = segment + '}}';
-    //     const data = JSON.parse(jsonStr);
-    //     if (data.data?.url) {
-    //       url = data.data.url;
-    //     }
-    //   } catch (e) {
-    //     console.warn("解析失败:", segment);
-    //   }
-    // }
-    storyResult.value = res
+    for (const segment of jsonSegments) {
+      try {
+        const jsonStr = segment + '}}';
+        const data = JSON.parse(jsonStr);
+        storyResult.value += data?.data?.text || ''
+
+      } catch (e) {
+        console.warn("解析失败:", segment);
+      }
+    }
 
     submitLoading.value = false
   } catch (err) {
     submitLoading.value = false
   }
+}
+
+const handleCreate = () => {
+  localStorage.setItem('book-content', storyResult.value)
+  router.push({
+    path: '/main/creation',
+    query: {
+      bookContent: '1'
+    }
+  })
 }
 
 </script>
@@ -130,7 +145,6 @@ const handleGenerate = async () => {
     .story-container {
       width: 100%;
       max-height: 100%;
-      border-radius: 20px;
       line-height: 28px;
     overflow-y: auto;
 

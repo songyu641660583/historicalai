@@ -89,7 +89,7 @@ request.interceptors.response.use(
       return errorHandle(code, message || '请求异常')
     }
     
-    if(config.url.indexOf('generating') !== -1) {
+    if(config.url.indexOf('generating') !== -1 || config.url.indexOf('deepseek') !== -1) {
       return response.data
     }
     if (code === 0) {
