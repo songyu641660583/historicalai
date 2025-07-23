@@ -86,18 +86,18 @@ request.interceptors.response.use(
     //   return response.data
     // }
     if(code === 1 && config.url.indexOf('paydetail') === -1) {
-      return errorHandle(code, message || '请求异常')
+       errorHandle(code, message || '请求异常')
     }
     
-    if(config.url.indexOf('generating') !== -1 || config.url.indexOf('deepseek') !== -1) {
+    if(config.url.indexOf('generatingv2') !== -1 || config.url.indexOf('deepseek') !== -1) {
       return response.data
     }
     if (code === 0) {
       return data
     }
-    if(config.url.indexOf('paydetail') === -1) {
-      errorHandle(code, message || '请求异常')
-    }
+    // if(config.url.indexOf('paydetail') === -1) {
+    //   errorHandle(code, message || '请求异常')
+    // }
 
     return Promise.reject(response.data)
   },

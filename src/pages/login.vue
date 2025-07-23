@@ -24,7 +24,7 @@
   <div class="arco-spin layoutSpin-pr7cPJ">
               <div class=arco-spin-children>
                 <div class="loginCard-w1Ov0n cardHasTab-Uzr9RE">
-                  <div class=title-EHSTny>欢迎来到历史漫绘</div>
+                  <div class=title-EHSTny>欢迎来到西行漫记</div>
                   <div
                     class="arco-tabs arco-tabs-horizontal arco-tabs-line arco-tabs-top arco-tabs-size-default accountTab-uAbUd4">
                     <div
@@ -149,7 +149,7 @@
                                     <div class="count-down" v-if="countDownText">{{ countDownText }}s</div>
                                   </div>
                                 </div>
-                                <div class=protocol-eGDdjF>登录视为您已阅读并同意历史漫绘 <a
+                                <div class=protocol-eGDdjF>登录视为您已阅读并同意西行漫记 <a
                                     target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a
                                     target=_blank

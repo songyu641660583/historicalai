@@ -1,7 +1,7 @@
 <template>
   <div class="header" :style="{position: isFixed ? 'fixed' : 'initial'}">
     <div class="header-logo" @click="handleHome">
-      <img class="header-logo-img" width="84" height="22.13" src="../assets/logo.png" alt="历史漫绘" />
+      <img class="header-logo-img" width="84" height="22.13" src="../assets/logo.png" alt="西行漫记" />
     </div>
     <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
             href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
@@ -15,11 +15,12 @@
     href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div>-->
     <div class="actions-wrapper_43a49" v-if="!userInfo.user_id">
       <span>
-        <button
+        <!-- <button
           @click="handleLogin"
           class="jimeng-button jimeng-button-text"
-          aria-label="登录-历史漫绘"
-        >登录/注册</button>
+          aria-label="登录-西行漫记"
+        >登录/注册</button> -->
+        <a class="btn-EoHtfv login-btn" @click="handleLogin"><span>登录/注册</span></a>
       </span>
       <span></span>
     </div>
@@ -161,6 +162,10 @@ defineExpose({
 </script>
 
 <style lang="scss">
+.login-btn {
+  width: 100px !important;
+  padding: 10px 0 !important;
+}
 .avatar-custom {
   width: 50px;
   height: 50px;

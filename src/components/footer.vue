@@ -2,7 +2,7 @@
    <div class="footer-YtwIpo">
      <div class="custom-module">试用体验内容均由人工智能模型生成，不代表平台立场 <span>免责声明</span><span>测试协议</span><span>隐私政策</span></div> 
           <!-- <div class=beian-QKzV2L>
-            <div class=text-wdR8Ms>版权所有©北京历史漫绘科技有限公司2025 </div>
+            <div class=text-wdR8Ms>版权所有©北京西行漫记科技有限公司2025 </div>
             <div class=below-fXUkWQ>
               <div class=beianAndICP-GiJ8Fz><img class=badge-iAUu6L
                   src="../assets/702340561abc924294d76328b8a5c055.png"><a

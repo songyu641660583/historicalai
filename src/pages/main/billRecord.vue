@@ -58,10 +58,10 @@
         <el-table-column prop="payment" label="交易方式" width="180" />
         <el-table-column prop="money" label="交易金额">
           <template  #default="scope">
-            ¥{{ scope.row.money }}
+            {{ scope.row.money ? '¥' + scope.row.money : '--' }}
           </template>
         </el-table-column>
-        <el-table-column prop="payment" label="嗨币" width="180" />
+        <el-table-column prop="future_coin" label="嗨币" width="180" />
       </dd-table>
     </div>
   </div>

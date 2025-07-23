@@ -1,6 +1,7 @@
  /* @use "sass:math"; */
  * {
-  font-family: "SimSun", "宋体", serif !important;
+  /* font-family: "SimSun", "宋体", serif !important; */
+  font-family: Songti TC !important
 
  }
 body, html,

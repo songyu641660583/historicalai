@@ -48,7 +48,7 @@ if (headerRef.value) {
 </script>
 
 <template>
-  <div id=root>
+  <div id=root class="home-root">
     <headerComponent isFixed ref="headerRef" />
     <section class=box-weRFZa>
       <div class=bg-box-iGxURO>
@@ -74,7 +74,7 @@ if (headerRef.value) {
                   clip-rule=evenodd></path>
               </svg><span>即梦成片</span></button></a>
         </div>
-        <div class=tip-q4L709>此视频内容由 历史漫绘 生成</div>
+        <div class=tip-q4L709>此视频内容由 西行漫记 生成</div>
       </div> -->
 
       
@@ -88,8 +88,8 @@ if (headerRef.value) {
               clip-rule=evenodd></path>
           </svg><span>支持文/图 生视频</span></div> -->
         <div class=header-right-wrapper-acr3jw>
-          <h2 style="#000" class=header-title-_0vLTk>灵感即刻成片</h2>
-          <div style="#000" class=header-desc-HoXsdg>A漫绘历史故事，AI生成漫画，输入一段历史或文化故事，即刻生成优质有声漫画</div>
+          <h2 style="#000" class=header-title-_0vLTk>故事即刻成片</h2>
+          <div style="#000" class=header-desc-HoXsdg>漫绘历史故事，AI生成漫画，输入一段历史或文化故事，即刻生成优质有声漫画</div>
         </div>
       </div>
       <div>
@@ -124,7 +124,9 @@ if (headerRef.value) {
                 class="placeholder-RiOie5 media-IWKWD4"></video> -->
               </div>
           </div>
-            <div class=left-wrapper-_KDFs8 style="padding-left: 20px;padding-right: 0px;">
+            <div class=left-wrapper-_KDFs8 style="padding-left: 20px;padding-right: 30px;">
+            <div class=indexed-FjnNj2>02</div>
+
             <div class=info-wrapper-GtziBS>
               <div class=info-WFSzvO>
                 <h3 class=title-ITEvEZ>
@@ -133,7 +135,6 @@ if (headerRef.value) {
                 <div class=desc-egHxcp>使用AI技术把历史从一维空间变换到多维空间，更生动的表达</div>
               </div><a class="btn-EoHtfv" @click="handleCreate"><span>立即创作</span></a>
             </div>
-            <div class=indexed-FjnNj2>02</div>
           </div>
         </div>
         <div class=box-nt966n>
@@ -202,6 +203,45 @@ if (headerRef.value) {
                     </svg><span>即梦成片</span></button></a>
               </div> -->
             </div>
+             <div class=swiper-item-O8OmVh><img src="../assets/home-banner40.jpg"
+                class=swiper-item-img-MKsgw0 loading=lazy alt=插画风格，太空飞行器在粉色星球低空飞行>
+              <!-- <div class="input-DoV4AV input-AGWlqC">
+                <div class=text-HqXWWy>插画风格，太空飞行器在粉色星球低空飞行</div><a target=_blank
+                  href=https://jimeng.jianying.com/ai-tool/login><button
+                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
+                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
+                      <path fill-rule=evenodd
+                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
+                        clip-rule=evenodd></path>
+                    </svg><span>即梦成片</span></button></a>
+              </div> -->
+            </div>
+             <div class=swiper-item-O8OmVh><img src="../assets/home-banner41.jpg"
+                class=swiper-item-img-MKsgw0 loading=lazy alt=插画风格，太空飞行器在粉色星球低空飞行>
+              <!-- <div class="input-DoV4AV input-AGWlqC">
+                <div class=text-HqXWWy>插画风格，太空飞行器在粉色星球低空飞行</div><a target=_blank
+                  href=https://jimeng.jianying.com/ai-tool/login><button
+                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
+                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
+                      <path fill-rule=evenodd
+                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
+                        clip-rule=evenodd></path>
+                    </svg><span>即梦成片</span></button></a>
+              </div> -->
+            </div>
+             <div class=swiper-item-O8OmVh><img src="../assets/home-banner42.jpg"
+                class=swiper-item-img-MKsgw0 loading=lazy alt=插画风格，太空飞行器在粉色星球低空飞行>
+              <!-- <div class="input-DoV4AV input-AGWlqC">
+                <div class=text-HqXWWy>插画风格，太空飞行器在粉色星球低空飞行</div><a target=_blank
+                  href=https://jimeng.jianying.com/ai-tool/login><button
+                    class="jimeng-button jimeng-button-primary button-_IoMtQ"><svg xmlns=http://www.w3.org/2000/svg
+                      width=18 height=18 fill=currentColor viewBox="0 0 18 18" class=icon-HfdJ8F>
+                      <path fill-rule=evenodd
+                        d="M10.921 4.229a4 4 0 0 0-.198.007l-.054-.004a.19.19 0 0 1-.142-.136l-.002-.008a.2.2 0 0 1 .08-.22c.947-.633 1.301-1.48 1.062-2.963a.12.12 0 0 1 .08-.136.115.115 0 0 1 .141.064c.603 1.365 1.398 1.84 2.526 1.8a.19.19 0 0 1 .185.134l.002.007a.2.2 0 0 1-.04.193l-.053.043q-.081.051-.161.107c-.337.202-.948.476-1.667.71s-1.373.37-1.759.402M4.07 13.088q-.301.002-.595.02a2 2 0 0 1-.162-.01.57.57 0 0 1-.425-.41l-.007-.022a.6.6 0 0 1 .24-.66c2.842-1.9 3.903-4.44 3.186-8.89a.366.366 0 0 1 .243-.409.344.344 0 0 1 .421.194c1.81 4.094 4.194 5.517 7.577 5.4.25-.01.476.155.554.4l.007.023a.6.6 0 0 1-.12.578q-.07.06-.158.128-.244.154-.485.322c-1.01.607-2.842 1.43-5 2.13-2.16.7-4.117 1.109-5.276 1.206m5.552-.449c1.072-.35 2.04-.787 2.854-1.247l-.002.001c-1.011 1.124-1.739 2.471-1.755 3.912a.46.46 0 0 1-.312.436.44.44 0 0 1-.498-.18c-.805-1.195-2.117-1.894-3.545-2.228.987-.1 2.108-.32 3.258-.694m4.101-8.976a5.287 5.287 0 0 1-2.037.647c.476.112.913.345 1.181.743.038.055.104.08.166.06a.15.15 0 0 0 .105-.145c.005-.48.248-.93.585-1.304"
+                        clip-rule=evenodd></path>
+                    </svg><span>即梦成片</span></button></a>
+              </div> -->
+            </div>
           </div>
         </div>
         <div class="footer-hyIk9i sf-hidden"></div>
@@ -211,7 +251,7 @@ if (headerRef.value) {
       <div class=header-VkY2QN>
         <h2 class=title-VW8Iaq>智能画布 多图AI融合</h2>
         <div class=desc-y0bP_u>
-          <div>历史漫绘一站式智能画布，集成AI拼图生成能力，并提供局部重绘、一键扩图、图像消除和抠图等多功能强大操作。你可以在同一画布上实现多元素的无缝拼接，确保AI绘画的创作风格统一和谐。</div>
+          <div>西行漫记一站式智能画布，集成AI拼图生成能力，并提供局部重绘、一键扩图、图像消除和抠图等多功能强大操作。你可以在同一画布上实现多元素的无缝拼接，确保AI绘画的创作风格统一和谐。</div>
         </div>
         <div class=cta-btn-wrapper-C8T0Ze><a class="btn-EoHtfv"
             href=https://jimeng.jianying.com/ai-tool/login><svg xmlns=http://www.w3.org/2000/svg width=18 height=18
@@ -525,7 +565,7 @@ if (headerRef.value) {
           </a></div>
       </div>
     </section>
-    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/logo.png alt=历史漫绘
+    <section class=box-aQs010><img class=icon-SyMPuO src=../assets/logo.png alt=西行漫记
         loading=lazy>
          <a class="btn-EoHtfv" @click="handleCreate">
           <span>开启智能创作</span></a>
@@ -541,20 +581,20 @@ if (headerRef.value) {
         <div class=anchor-wrapper_b27af>
           <!-- <div class=inner-wrapper_b27af><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=历史漫绘-营业执照 >营业执照</a><span
+              aria-label=西行漫记-营业执照 >营业执照</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=历史漫绘-用户协议>用户协议</a><span
+              aria-label=西行漫记-用户协议>用户协议</a><span
               class="divider_b27af small_b27af"></span><a
               class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-              aria-label=历史漫绘-隐私政策 >隐私政策</a>
+              aria-label=西行漫记-隐私政策 >隐私政策</a>
           </div> -->
           <div class="inner-wrapper_b27af company-wrapper_b27af">
             <div class=icp-wrapper_b27af>
               <!-- <span class="divider_b27af small_b27af"></span> -->
               <a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
-                aria-label="历史漫绘-京ICP备2024090455号" target="_blank" rel="noopener;noreferrer"
+                aria-label="西行漫记-京ICP备2024090455号" target="_blank" rel="noopener;noreferrer"
                  >京ICP备2024090455号</a>
                 <!-- <span class="divider_b27af small_b27af"></span> -->
                 <!-- <a class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af"
@@ -563,7 +603,7 @@ if (headerRef.value) {
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
-                aria-label=历史漫绘-京ICP备2024090455号-2 target=_blank rel=noopener;noreferrer
+                aria-label=西行漫记-京ICP备2024090455号-2 target=_blank rel=noopener;noreferrer
                 ><img class=link-icon_b27af
                   src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>京ICP备2024090455号-2</a>
             </div>
@@ -578,19 +618,19 @@ if (headerRef.value) {
             </div>
       </div>
       <!-- <div class=social-wrapper_b27af><a class="jimeng-link jimeng-link-theme-black social_b27af"
-          aria-label=历史漫绘-undefined target=_blank
+          aria-label=西行漫记-undefined target=_blank
          ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m5.57-13.22v.471l-.001.001V8.9a5.26 5.26 0 0 1-3.006-.919 468 468 0 0 0 .015 4.062c.002.13.004.26-.006.388a4.1 4.1 0 0 1-.584 1.818 4.1 4.1 0 0 1-1.126 1.237 3.74 3.74 0 0 1-2.072.684 4.7 4.7 0 0 1-1.12-.087 4 4 0 0 1-1.448-.61l-.03-.026a3.89 3.89 0 0 1-1.61-2.393 3.8 3.8 0 0 1 .504-2.819c.334-.53.79-.975 1.329-1.296a4.08 4.08 0 0 1 2.645-.54q0 .082-.002.166c-.001.11-.003.22.002.331.008.15.007.3.006.453l-.001.164v1.06a1.6 1.6 0 0 0-.862-.026 2.24 2.24 0 0 0-.926.432 1.55 1.55 0 0 0-.396.48 1.77 1.77 0 0 0-.188 1.015c.042.341.188.66.418.916q.241.265.553.442a1.84 1.84 0 0 0 2.443-.699c.15-.26.23-.552.235-.85V6.906q.008-1.19.005-2.38v-.7h2.185q-.002.274.049.54h.012q.096.452.316.856c.22.428.555.787.966 1.038a.3.3 0 0 1 .065.059c.49.3 1.054.46 1.63.462"
               clip-rule=evenodd></path>
-          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=历史漫绘-B站空间 target=_blank
+          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=西行漫记-B站空间 target=_blank
          ><svg
             xmlns=http://www.w3.org/2000/svg width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
               d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10m-2.45-4.844h4.92l-.028.007v.171c0 .178.064.343.193.471a.65.65 0 0 0 .47.193.65.65 0 0 0 .472-.193.65.65 0 0 0 .193-.471v-.164h.321c1.193 0 2.157-.886 2.157-1.978v-5.22a1.83 1.83 0 0 0-.55-1.335c-.4-.414-.986-.65-1.593-.65h-2.377l1.27-1.135q.354-.312.044-.657c-.207-.236-.429-.25-.657-.043l-2.042 1.821h-.686l-2.042-1.82c-.236-.2-.45-.186-.657.042-.2.236-.186.45.043.657L8.258 5.98H5.894c-1.192 0-2.156.886-2.156 1.978v5.22c0 1.092.964 1.977 2.156 1.977h.329v.165a.63.63 0 0 0 .192.47.68.68 0 0 0 .472.194.65.65 0 0 0 .47-.193.65.65 0 0 0 .194-.471zm3.435-2.378a.44.44 0 0 1-.278.093.45.45 0 0 1-.357-.179l-.372-.457-.378.45a.47.47 0 0 1-.65.057l-.514-.428a.28.28 0 0 1-.1-.257.26.26 0 0 1 .172-.207.27.27 0 0 1 .27.05l.458.378.393-.464a.45.45 0 0 1 .357-.164c.142 0 .27.064.357.17l.385.472.529-.393a.26.26 0 0 1 .285-.05c.1.036.164.122.172.229 0 .107-.043.207-.136.257zM8.722 9.322a.416.416 0 0 1-.322.5s-2.092.47-2.085.47a.413.413 0 0 1-.5-.32.413.413 0 0 1 .322-.5l2.078-.479a.45.45 0 0 1 .321.057q.152.1.186.272m4.977.978-2.078-.478a.466.466 0 0 1-.343-.507.44.44 0 0 1 .186-.272.4.4 0 0 1 .32-.057l2.079.479a.424.424 0 0 1 .235.7.43.43 0 0 1-.4.135"
               clip-rule=evenodd></path>
-          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=历史漫绘-小红书主页 target=_blank
+          </svg></a><a class="jimeng-link jimeng-link-theme-black social_b27af" aria-label=西行漫记-小红书主页 target=_blank
          ><svg xmlns=http://www.w3.org/2000/svg
             width=1em height=1em viewBox="0 0 20 20">
             <path fill-rule=evenodd
@@ -616,6 +656,9 @@ if (headerRef.value) {
 <style>
 :root {
   --sf-img-0: url("../assets/d61bb4677a049b8109d3c3c943f57fe1.png")
+}
+.home-root {
+  margin-top: 68px;
 }
 </style>
 <style>
@@ -693,8 +736,8 @@ html {
   transform: translateY(-50%);
   color: #000;
   white-space: nowrap;
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: bolder;
+  font-size: 22px;
   opacity: 0;
   transition: 1s;
 }
@@ -719,7 +762,9 @@ html {
 }
 
 .icon-SyMPuO {
-  height: 100px;
+  margin-left: 15px;
+  /* height: 100px; */
+  margin-bottom: 15px;
   width: 300px;
   object-fit: cover;
 }
@@ -731,7 +776,7 @@ html {
   }
 
   .icon-SyMPuO {
-    height: 76px;
+    /* height: 76px; */
     width: 252px
   }
 }
@@ -742,7 +787,7 @@ html {
   }
 
   .icon-SyMPuO {
-    height: 40px;
+    /* height: 40px; */
     margin-bottom: 28px;
     width: 140px
   }
@@ -1127,7 +1172,7 @@ html {
   border-radius: 8px;
   cursor: pointer;
   height: 20px;
-  opacity: .3;
+  opacity: .8;
   overflow: hidden;
   transition-duration: .3s;
   transition-property: width, height, opacity;
@@ -1333,7 +1378,7 @@ html {
   /* color: #ebf8ff; */
   color: #111;
   font-size: 54px;
-  font-weight: 600;
+  font-weight: bold;
   margin-bottom: 12px;
   text-align: center
 }
@@ -1574,7 +1619,7 @@ html {
   color: #111;
   display: inline-block;
   font-size: 54px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 64px;
   margin-bottom: 10px
 }
@@ -1589,7 +1634,7 @@ html {
 }
 
 .swiper-ZMH7zV {
-  height: 563px;
+  height: 403px;
   overflow-x: auto;
   width: 100%
 }
@@ -1605,10 +1650,10 @@ html {
 }
 
 .swiper-item-O8OmVh {
-  flex: 0 0 1000px;
+  flex: 0 0 700px;
   height: 100%;
   position: relative;
-  width: 1000px
+  width: 700px
 }
 
 .swiper-item-img-MKsgw0 {
@@ -1640,12 +1685,12 @@ html {
 
 @media screen and (max-width:1440px) {
   .swiper-ZMH7zV {
-    height: 450px
+    height: 310px
   }
 
   .swiper-item-O8OmVh {
-    flex: 0 0 800px;
-    width: 800px
+    flex: 0 0 600px;
+    width: 600px
   }
 }
 
@@ -1780,7 +1825,9 @@ html {
   color: #111;;
   font-size: 36px;
   line-height: 50px;
+  font-weight: bold;
   margin-bottom: 8px
+  
 }
 
 .title-ITEvEZ>p {

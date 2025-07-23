@@ -15,7 +15,7 @@
               :key="book.bid"
               @click="showDirectory(book)"
             >
-              <div class="book-title">{{ book.name }}</div>
+              <div class="book-title" :title="book.name">{{ book.name }}</div>
             </div>
           </div>
         </div>
@@ -306,6 +306,14 @@ body {
   font-size: 15px;
   /* margin-bottom: 5px; */
   color: var(--text-color);
+      display: -webkit-box;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /*! autoprefixer: on */
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .book-author {

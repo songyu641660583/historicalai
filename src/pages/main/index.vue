@@ -4,8 +4,8 @@
     <div class="main-container">
       <div class="main-container-left" :class="{ slider: isCollapse }">
         <div class="left-logo">
-          <img :style="{ display: isCollapse ? 'none' : 'block' }" src="@/assets/logo.png" alt="">
-          <span>历史漫绘</span>
+          <!-- <img :style="{ display: isCollapse ? 'none' : 'block' }" src="@/assets/logo.png" alt=""> -->
+          <span>西行漫记</span>
         </div>
         <div class="left-content">
           <el-menu :hide-timeout="20000" :collapse-transition="false" :collapse="isCollapse" :default-openeds="openedMenus"
@@ -124,6 +124,7 @@ const handleSlider = () => {
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 18px;
 
         img {
           margin-left: -10px;

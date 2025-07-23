@@ -1,7 +1,7 @@
 <template>
   <div class="story" v-loading="submitLoading" element-loading-text="正在创作中，预计需要1-3分钟，请耐心等待...">
     <div class="story-left module">
-      <div class="title">生成故事</div>
+      <!-- <div class="title">生成故事</div> -->
       <div class=form-wrapper-_4819c>
         <form class="arco-form arco-form-horizontal arco-form-size-default">
           <div class="arco-row arco-row-align-start arco-row-justify-start arco-form-item arco-form-layout-horizontal">
@@ -22,12 +22,14 @@
           </div>
           <div @click="handleGenerate"
             class="submit-button-container-_6fea6 submit-button-container-disabled-b37874 seaweed-submit-button-container-df22a0">
-            <div style="display:flex;align-items:center;gap:8px"><svg xmlns=http://www.w3.org/2000/svg width=17
+            <div style="display:flex;align-items:center;gap:8px">
+              <!-- <svg xmlns=http://www.w3.org/2000/svg width=17
                 height=16 fill=none viewBox="0 0 17 16">
                 <path fill=#fff
                   d="M6.654 2.936a.37.37 0 0 1 .692 0L8.503 6.06a.74.74 0 0 0 .436.436l3.125 1.157a.37.37 0 0 1 0 .692L8.94 9.503a.74.74 0 0 0-.436.436l-1.157 3.125a.37.37 0 0 1-.692 0L5.497 9.94a.74.74 0 0 0-.436-.436L1.936 8.346a.37.37 0 0 1 0-.692L5.06 6.497a.74.74 0 0 0 .436-.436zM12.856 2.39a.154.154 0 0 1 .288 0l.451 1.22a.5.5 0 0 0 .296.295l1.22.45a.154.154 0 0 1 0 .29l-1.22.45a.5.5 0 0 0-.296.296l-.45 1.22a.154.154 0 0 1-.29 0l-.45-1.22a.5.5 0 0 0-.296-.296l-1.22-.45a.154.154 0 0 1 0-.29l1.22-.45a.5.5 0 0 0 .296-.296zM12.856 9.39a.154.154 0 0 1 .288 0l.482 1.302c.031.084.098.15.182.182l1.302.482a.154.154 0 0 1 0 .288l-1.302.482a.3.3 0 0 0-.182.182l-.482 1.302a.154.154 0 0 1-.288 0l-.482-1.302a.3.3 0 0 0-.182-.182l-1.302-.482a.154.154 0 0 1 0-.288l1.302-.482a.3.3 0 0 0 .182-.182z"
                   style="fill:rgb(255,255,255);fill-opacity:1"></path>
-              </svg><span class=font-medium>立即生成</span></div>
+              </svg> -->
+              <span class=font-medium>立即生成</span></div>
           </div>
         </form>
       </div>
@@ -167,38 +169,6 @@ const handleCreate = () => {
   }
 }
 
-.form-wrapper-_4819c {
-  margin-top: 20px;
-  flex: 1 1;
-  overflow-y: scroll;
-  scrollbar-width: none
-}
-
-.form-wrapper-_4819c ::-webkit-scrollbar {
-  display: none
-}
-
-.form-wrapper-_4819c .arco-form-label-item {
-  padding-right: 12px
-}
-
-.form-wrapper-_4819c .arco-form-label-item label {
-  color: #0c0d0e;
-  font-size: 12px
-}
-
-.form-wrapper-_4819c .fold-button-f935cb {
-  color: #737a87;
-  cursor: pointer
-}
-
-.form-wrapper-_4819c .fold-button-f935cb:hover {
-  opacity: .7
-}
-
-.form-wrapper-_4819c .fold-content-_9ece8 {
-  overflow: hidden
-}
 </style>
 
 <style>

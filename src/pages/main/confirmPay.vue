@@ -34,7 +34,7 @@
           {{ isPaySuccess ? "已付款" : "应付金额" }}
           <span class="money">{{ payMoney }}.00</span>元
         </div>
-        <div class="order-product">历史漫绘嗨币充值</div>
+        <div class="order-product">西行漫记嗨币充值</div>
       </div>
     </div>
     <div class="confirm-content">
@@ -133,7 +133,7 @@
           <div class="pay-success-status">支付成功</div>
           <div class="pay-success-text">订单金额{{ payMoney }}.00元</div>
           <div class="pay-success-text">入账金额{{ payMoney }}.00元</div>
-          <div class="pay-success-text">交易流水号{{ payMwechatTrade_idoney }}</div>
+          <div class="pay-success-text">交易流水号{{ trans_id }}</div>
           <el-button @click="handleBack" style="margin-top: 20px" type="danger">返回</el-button>
         </div>
       </div>
@@ -165,7 +165,9 @@ const isRunning = ref(false);
 const isPaused = ref(false);
 const codeLoading = ref(false);
 let wxPayResult = null;
-const wechatTrade_id = ref("");
+const wechatTrade_id = ref(""); // 订单号
+const trans_id = ref('') // 流水号
+
 let payTimer = null;
 
 let timer = null;
@@ -199,6 +201,7 @@ async function getWxPayResult() {
         trade_id: wechatTrade_id.value,
       });
       if (res.trans_id) {
+        trans_id.value = res.trans_id;
         isPaySuccess.value = true;
         // ElMessageBox.alert("支付成功", "提示", {
         //   confirmButtonText: "前往账单",

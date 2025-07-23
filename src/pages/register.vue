@@ -2,7 +2,7 @@
  <div class="arco-spin layoutSpin-pr7cPJ">
               <div class=arco-spin-children>
                 <div class="loginCard-w1Ov0n cardHasTab-Uzr9RE">
-                  <div class=title-EHSTny>欢迎来到历史漫绘</div>
+                  <div class=title-EHSTny>欢迎来到西行漫记</div>
                   <div
                     class="arco-tabs arco-tabs-horizontal arco-tabs-line arco-tabs-top arco-tabs-size-default accountTab-uAbUd4">
                     <div
@@ -130,7 +130,7 @@
                                 <div class=protocol-eGDdjF>
                                   <el-checkbox style="margin-right: 6px;position: relative;top:2px" v-model="agreeValue"
                                     size="large" />
-                                  <span>点击开始体验代表同意历史漫绘 </span>
+                                  <span>点击开始体验代表同意西行漫记 </span>
                                   <a target=_blank
                                     rel="noopener noreferrer">服务条款</a>和 <a target=_blank
                                     rel="noopener noreferrer">隐私政策</a>
