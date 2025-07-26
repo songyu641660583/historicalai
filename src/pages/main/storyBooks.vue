@@ -35,16 +35,17 @@
         </div>
       </div>
       
-      <ul class="chapter-list">
-        <li 
+      <div class="chapter-list" v-if="directorys">
+        <div 
           class="chapter-item" 
           v-for="chapter in directorys" 
           :key="chapter.lid"
-          @click="showContent(chapter)"
+        
         >
-          {{ chapter.name }}
-        </li>
-      </ul>
+         <div class="sub-title">{{ chapter.sub }}</div>
+         <div class="chapter-name" @click="showContent(item)" v-for="(item, index) in chapter.children" :key="chapter.sub + index"> {{ item.name }}</div>
+        </div>
+      </div>
       
       <a class="back-btn" @click="backToHome">返回书籍列表</a>
     </div>
@@ -90,9 +91,11 @@ const categories = ref([]);
 
 const bookDesc = ref('')
 
-const directorys = ref([])
+const directorys = ref(null)
 
 const chapterContent = ref('')
+const subTitle = ref('')
+
 
 const handleCreate = () => {
   let content = ''
@@ -106,8 +109,6 @@ const handleCreate = () => {
       bookContent: '1'
     }
   })
-
-  
 }
 
 
@@ -149,10 +150,21 @@ const getDirectoryByBook = async (bid) => {
       "user_id": userInfo.user_id,
       bid
     })
-    directorys.value = res.listings
+    let dirCateMap = {}
+    res.listings.forEach(item => {
+      if(!dirCateMap[item.sub]){
+        dirCateMap[item.sub] = {
+          sub: item.sub,
+          children: []
+        }
+      }
+      dirCateMap[item.sub].children.push(item)
+    })
+   
+    directorys.value = dirCateMap
     bookDesc.value = res.desc[0] || ''
   } catch (err) {
-     directorys.value = []
+     directorys.value = null
   }
 };
 
@@ -375,18 +387,32 @@ body {
 }
 
 .chapter-item {
-  padding: 12px 15px;
-  border-bottom: 1px dashed var(--border-color);
+  position: relative;
+ 
+}
+.chapter-item .sub-title {
+  padding-left: 12px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+
+}
+.chapter-name {
+  display: block;
+  padding: 12px 15px 12px 24px;
+
+  width: 100%;
+   border-bottom: 1px dashed var(--border-color);
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.chapter-item:hover {
+.chapter-name:hover{
   background-color: var(--primary-light);
   color: var(--primary-color);
 }
 
-.chapter-item:last-child {
+.chapter-item .chapter-name:last-child {
   border-bottom: none;
 }
 

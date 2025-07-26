@@ -2043,12 +2043,13 @@ html {
 } */
 
 .header-title-_0vLTk {
-  background: url(../assets/linggan.svg)no-repeat 0/contain;
-  color: transparent;
-  font-size: 58px;
-  line-height: 58px;
+ /*  background: url(../assets/linggan.svg)no-repeat 0/contain;*/
+  color: #000;
+  font-size: 54px;
+  line-height: 54px;
   margin-bottom: 16px;
-  width: 486px
+  width: 486px;
+  font-weight: bold;
 }
 
 .header-desc-HoXsdg {

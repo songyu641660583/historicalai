@@ -1,7 +1,7 @@
 <template>
   <div class="header" :style="{position: isFixed ? 'fixed' : 'initial'}">
     <div class="header-logo" @click="handleHome">
-      <img class="header-logo-img" width="84" height="22.13" src="../assets/logo.png" alt="西行漫记" />
+      <img class="header-logo-img"  src="../assets/logo.png" alt="西行漫记" />
     </div>
     <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
             href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
@@ -280,11 +280,11 @@ defineExpose({
     cursor: pointer;
     display: flex;
     justify-content: start;
-    width: 190px;
+    width: 230px;
   }
 
   .header-logo-img {
-    width: 160px;
+    width: 230px;
     object-fit: cover;
   }
 
