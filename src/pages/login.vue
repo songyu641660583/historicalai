@@ -1339,7 +1339,6 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  background: url('../assets/login-bg.jpeg') no-repeat;
 }
 
 .layoutNew-s99CBg .header-V8bS8f {

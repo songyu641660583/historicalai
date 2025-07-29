@@ -603,9 +603,9 @@ if (headerRef.value) {
             </div>
             <div class=icp2_b27af><span class="divider_b27af small_b27af"></span><a
                 class="jimeng-link jimeng-link-theme-black jimeng-link-underline link_b27af small_b27af link-icon-anchor_b27af"
-                aria-label=西行漫记-京ICP备2024090455号-2 target=_blank rel=noopener;noreferrer
+                aria-label=西行漫记-京ICP备2024090455号-3 target=_blank rel=noopener;noreferrer
                 ><img class=link-icon_b27af
-                  src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>京ICP备2024090455号-2</a>
+                  src="../assets/eeae7db8a09c133147bbdec1a5ed50ef.png" width=12 height=13 alt=公安图标>京ICP备2024090455号-3</a>
             </div>
           </div>
         </div>
@@ -655,7 +655,7 @@ if (headerRef.value) {
 
 <style>
 :root {
-  --sf-img-0: url("../assets/d61bb4677a049b8109d3c3c943f57fe1.png")
+ /* --sf-img-0: url("../assets/d61bb4677a049b8109d3c3c943f57fe1.png")*/
 }
 .home-root {
   margin-top: 68px;

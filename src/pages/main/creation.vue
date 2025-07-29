@@ -1,5 +1,7 @@
 <template>
-  <div class="creation" v-loading="submitLoading" element-loading-text="正在创作中，预计需要5-10分钟，请耐心等待...">
+  <div class="loading-fix" v-if="submitLoading" v-loading="submitLoading" element-loading-text="正在创作中，预计需要5-10分钟，请耐心等待..."></div>
+  
+  <div class="creation">
     <div class="creation-left module">
       <div class="title">生成漫画视频</div>
       <div class=form-wrapper-_4819c>
@@ -130,6 +132,8 @@
       </div>
       <template v-else>
         <div style="display: flex;justify-content: flex-end;margin-bottom: 15px;">
+            <el-button type="primary" :disabled="!videoUrl"
+            @click="handleDownloadVideo">下载视频</el-button>
           <el-button title="需要重新生成至少一次图片或音频" type="primary" :disabled="disabledBtn"
             @click="handleReGeneralVideo">重新生成视频</el-button>
         </div>
@@ -151,7 +155,7 @@
           </swiper-container>
 
         </div>
-        <div class="video-content-title">视频帧模块</div>
+        <div class="video-content-title">视频帧编辑</div>
         <!-- 声音文本 -->
         <div class="voice-text">
           <div v-for="(item, index) in imgFrame" :key="index">
@@ -167,7 +171,7 @@
                   </el-input>
                 </div>
                 <div class="voice-edit-item-from-options" style="margin-bottom: 15px">
-                  <span class="tips">通过编辑上述提示词可重新生成图片</span>
+                  <span class="tips">编辑上述提示词重新生成图片</span>
                   <el-button type="primary" @click="handleReGeneralImg(index)">重新生成图片</el-button>
                 </div>
                 <div class="voice-edit-item-from-input">
@@ -176,8 +180,14 @@
                   </el-input>
                 </div>
                 <div class="voice-edit-item-from-options">
-                  <span class="tips">通过编辑上述提示词可重新生成音频</span>
+                    <span class="tips">
+                      编辑上述提示词重新生成音频
+                    </span>
+                  
                   <div style="display: flex;">
+                   <div class="play" style="margin-right: 5px;">
+                      <span style="color:#333;"><span>时长：</span>{{audioFrame[index].duration}}秒</span>
+                    </div>
                     <div class="play" @click="handleFrameAudio(index)">
                       <el-icon size="16">
                         <CaretRight />
@@ -210,7 +220,7 @@ import { useRoute } from "vue-router";
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
-// import aaa from './data.js'
+import aaa from './data.js'
 
 const route = useRoute();
 
@@ -279,7 +289,6 @@ let rid = ''
 const disabledBtn = ref(true)
 function robustParseStreamData(streamData: string) {
 const lines = streamData.trim().split('\n');
-console.log('lines', lines)
   
   // 2. 过滤空行并解析每行JSON
   const result = lines
@@ -299,6 +308,27 @@ console.log('lines', lines)
 
 
 onMounted(async () => {
+    const resultArray = robustParseStreamData(aaa)
+    resultArray.forEach((item: any) => {
+      const dataItem: any = item.data
+      if (dataItem.type === 1 && dataItem?.img?.img?.data) {
+        imgFrame.value.push({
+          ...dataItem.img,
+          originText: dataItem.img.text
+        })
+      }
+      if (dataItem.type === 2 && dataItem?.audio?.audio?.data) {
+        audioFrame.value.push({
+          ...dataItem.audio,
+          playStatus: 'pause'
+        })
+      }
+      if (dataItem.type === 0 && dataItem?.video?.url) {
+        videoUrl.value = dataItem?.video?.url
+        rid = dataItem?.video?.rid || ''
+      }
+    })
+
   if (route.query.bookContent === '1') {
     const bookContent = localStorage.getItem('book-content')
     if (bookContent) {
@@ -324,6 +354,15 @@ watch(() => voiceDetail.value, (async () => {
     });
   }
 }), { immediate: true })
+
+const handleDownloadVideo = () => {
+  const link = document.createElement('a')
+  link.href = videoUrl.value 
+  link.download = '西行漫记.mp4'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
 const handleReGeneralVideo = async () => {
   if (submitLoading.value) return
   submitLoading.value = true
@@ -634,6 +673,14 @@ const handleGenerate = async () => {
 .voiceList-dropdown .el-dropdown-menu {
   max-height: 180px;
   overflow-y: auto;
+}
+.loading-fix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1111;
 }
 
 .creation {

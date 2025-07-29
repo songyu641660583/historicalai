@@ -169,8 +169,8 @@ defineExpose({
 .avatar-custom {
   width: 50px;
   height: 50px;
-  background-color: #ecf2ff;
-  color: #05f;
+  background-color: #4e4c4b;
+  color: #f4f7f7;
   border-radius: 50%;
   display: flex;
   justify-content: center;
