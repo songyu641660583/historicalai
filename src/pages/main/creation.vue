@@ -220,7 +220,7 @@ import { useRoute } from "vue-router";
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
-import aaa from './data.js'
+// import aaa from './data.js'
 
 const route = useRoute();
 
@@ -308,27 +308,6 @@ const lines = streamData.trim().split('\n');
 
 
 onMounted(async () => {
-    const resultArray = robustParseStreamData(aaa)
-    resultArray.forEach((item: any) => {
-      const dataItem: any = item.data
-      if (dataItem.type === 1 && dataItem?.img?.img?.data) {
-        imgFrame.value.push({
-          ...dataItem.img,
-          originText: dataItem.img.text
-        })
-      }
-      if (dataItem.type === 2 && dataItem?.audio?.audio?.data) {
-        audioFrame.value.push({
-          ...dataItem.audio,
-          playStatus: 'pause'
-        })
-      }
-      if (dataItem.type === 0 && dataItem?.video?.url) {
-        videoUrl.value = dataItem?.video?.url
-        rid = dataItem?.video?.rid || ''
-      }
-    })
-
   if (route.query.bookContent === '1') {
     const bookContent = localStorage.getItem('book-content')
     if (bookContent) {
