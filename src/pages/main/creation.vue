@@ -215,11 +215,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, onMounted, watch, nextTick, inject } from 'vue'
 import { useRoute } from "vue-router";
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
+
 // import aaa from './data.js'
 
 const route = useRoute();
@@ -333,6 +334,8 @@ watch(() => voiceDetail.value, (async () => {
     });
   }
 }), { immediate: true })
+
+const handleLogin = inject('handleLogin')
 
 const handleDownloadVideo = () => {
   const link = document.createElement('a')
@@ -513,16 +516,16 @@ const handleVoiceClick = (item: any) => {
 async function getVoiceList() {
   try {
     const userInfo = userStore.getUserInfo
-    if (!userInfo.user_id) {
-      ElMessage({
-        message: '请先登录',
-        type: 'warning',
-      })
-      setInterval(() => {
-        userStore.logout()
-      }, 1000)
-      return
-    }
+    // if (!userInfo.user_id) {
+    //   ElMessage({
+    //     message: '请先登录',
+    //     type: 'warning',
+    //   })
+    //   setInterval(() => {
+    //     userStore.logout()
+    //   }, 1000)
+    //   return
+    // }
     const res = await api.home.getVoiceList({
       "user_id": userInfo.user_id,
     })
@@ -534,6 +537,11 @@ async function getVoiceList() {
 }
 
 const handleGenerate = async () => {
+  const userInfo = userStore.getUserInfo
+  if (!userInfo.user_id) {
+    handleLogin && handleLogin()
+    return
+  }
   if (submitLoading.value) return
   let width = null
   let height = null

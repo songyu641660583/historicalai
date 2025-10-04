@@ -35,13 +35,14 @@ setInterval(() => {
 }, 15000)
 
 const handleCreate = () => {
-  if(userStore.getUserInfo.user_id) {
-    router.push('/main/creation')
-  }else{
-if (headerRef.value) {
-    headerRef.value.handleLogin()
-  }
-  }
+  router.push('/main/creation')
+  // if(userStore.getUserInfo.user_id) {
+  //   router.push('/main/creation')
+  // }else{
+  //   if (headerRef.value) {
+  //       headerRef.value.handleLogin()
+  //     }
+  // }
   // window.location.href = '/create'
 }
 
@@ -2243,7 +2244,7 @@ html {
   flex-direction: row;
   gap: 16px;
   justify-content: right;
-  width: 190px
+  /* width: 190px; */
 }
 
 .bg-effects_43a49 {

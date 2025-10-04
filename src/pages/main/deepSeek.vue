@@ -50,7 +50,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import api from '@/api'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
@@ -64,8 +64,13 @@ const keywords = ref('')
 const storyResult = ref('')
 
 const submitLoading = ref(false)
-
+const handleLogin = inject('handleLogin')
 const handleGenerate = async () => {
+    const userInfo = userStore.getUserInfo
+  if (!userInfo.user_id) {
+    handleLogin && handleLogin()
+    return
+  }
   if (submitLoading.value) return
   if (!keywords.value.trim()) {
     ElMessage({

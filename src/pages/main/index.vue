@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <headerComponent />
+    <headerComponent ref="headerRef" />
     <div class="main-container">
       <div class="main-container-left" :class="{ slider: isCollapse }">
         <div class="left-logo">
@@ -20,7 +20,7 @@
                   <span>{{ item.text }}</span>
                 </template>
                 <template v-for="child in item.children">
-                  <el-menu-item :class="{'is-active': item.path + '/' + child.path === activePath}" v-if="!child.hidden" :index="child.path" :key="child.path">
+                  <el-menu-item :class="{'is-active': item.path + '/' + child.path === activePath}" v-if="!child.hidden && (child.isLogin ?  userId : true)" :index="child.path" :key="child.path">
                     <img class="menu-icon" :src="getAssetsFile(child.iconName + '.png')" alt="">
                     {{ child.text }}</el-menu-item>
                 </template>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="main-container-right" :class="{ slider: isCollapse }">
-        <router-view />
+        <router-view ref="routerViewRef"/>
         <footerComponent />
       </div>
     </div>
@@ -47,21 +47,34 @@
 </template>
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, provide, computed } from 'vue'
 import { routes } from '../../router'
 import headerComponent from '../../components/header.vue'
 import footerComponent from '../../components/footer.vue'
 import { getAssetsFile } from '@/utils'
+import { useUserStore } from '@/store'
+
+const userStore = useUserStore()
 
 const route = useRoute()
 const activePath = ref('')
 const openedMenus = ref(['3'])
 const isCollapse = ref(false)
 
+const headerRef: any = ref(null)
+const routerViewRef: any = ref(null)
+
+const userId = computed(() => userStore.getUserInfo.user_id)
+
 // 监听路由变化，更新激活的菜单项
 watch(() => route.path, (newPath) => {
   activePath.value = newPath
 }, { immediate: true })
+
+const handleLogin = () => {
+  console.log('登录')
+   headerRef.value.handleLogin()
+}
 
 const handleMenuSelect = (index: number) => {
   console.log('菜单选中:', index)
@@ -70,7 +83,7 @@ const handleMenuSelect = (index: number) => {
 const handleSlider = () => {
   isCollapse.value = !isCollapse.value
 }
-
+provide('handleLogin', handleLogin)
 
 </script>
 <style lang="scss">

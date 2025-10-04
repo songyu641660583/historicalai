@@ -64,21 +64,24 @@ export const routes = [
         text: '充值',
         name: 'RechargeView',
         component: RechargeView,
-        iconName: 'pay-icon'
+        iconName: 'pay-icon',
+        isLogin: true
       },
        {
         path: 'confirmPay',
         text: '确认支付',
         name: 'ConfirmPay',
         component: ConfirmPayView,
-        hidden: true
+        hidden: true,
+        isLogin: true
       },
        {
         path: 'billRevord',
         text: '账单',
         name: 'BillRevordView',
         component: BillRevordView,
-        iconName: 'bill-icon'
+        iconName: 'bill-icon',
+        isLogin: true
       },
       //  {
       //   path: 'help',

@@ -3,16 +3,15 @@
     <div class="header-logo" @click="handleHome">
       <img class="header-logo-img"  src="../assets/logo.png" alt="西行漫记" />
     </div>
-    <!-- <div class=links-wrapper_43a49><span><a class="jimeng-link jimeng-link-theme-white" aria-label=文生图 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/image/generate>文生图</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=视频生成 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>视频生成</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=智能画布 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/home>智能画布</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=探索 target=_blank
-            href=https://jimeng.jianying.com/ai-tool/explore>探索</a></span><span><a
-            class="jimeng-link jimeng-link-theme-white" aria-label=未来影像计划 target=_blank
-    href=https://jimeng.jianying.com/visionary>未来影像计划</a></span></div>-->
+    <div style="display: flex; align-items: center;">
+
+    <div class="actions-wrapper_43a49">
+      <span>
+        <a class="btn-EoHtfv login-btn" @click="handleCreate"><span>立即创作</span></a>
+      </span>
+      <span></span>
+    </div>
+    
     <div class="actions-wrapper_43a49" v-if="!userInfo.user_id">
       <span>
         <!-- <button
@@ -72,6 +71,8 @@
         </template>
       </el-dropdown>
     </div>
+    </div>
+
   </div>
   <!-- <div class="login-module">
        <LoginComponent></LoginComponent>
@@ -109,6 +110,16 @@ const userInfo = computed(() => userStore.getUserInfo)
 //   account: '123423424'
 // })
 const router = useRouter()
+
+const handleCreate = () => {
+      router.push('/main/creation')
+  // if(userStore.getUserInfo.user_id) {
+  //   router.push('/main/creation')
+  // }else{
+  //   handleLogin()
+  // }
+  // window.location.href = '/create'
+}
 
 // const userInfo = userStore.getUserInfo
 
@@ -294,7 +305,8 @@ defineExpose({
     flex-direction: row;
     gap: 16px;
     justify-content: right;
-    width: 190px;
+    margin-left: 15px;
+    /* width: 190px; */
   }
 }
 </style>
